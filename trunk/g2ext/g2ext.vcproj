@@ -523,6 +523,10 @@
 				Name="externals"
 				>
 				<File
+					RelativePath=".\ex_array.h"
+					>
+				</File>
+				<File
 					RelativePath=".\ex_ieeefloat.h"
 					>
 				</File>
@@ -710,6 +714,10 @@
 			<Filter
 				Name="externals"
 				>
+				<File
+					RelativePath=".\ex_array.cpp"
+					>
+				</File>
 				<File
 					RelativePath=".\ex_ieeefloat.cpp"
 					>

@@ -33,8 +33,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define cstr( ... ) _cstr( __VA_ARGS__, NULL )
 #define cwcs( ... ) _cwcs( __VA_ARGS__, NULL )
 
-LPCSTR  _cstr( LPCSTR str1, ... );
-LPCWSTR _cwcs( LPCWSTR str1, ... );
+#define strtopwcs strtowcs
+#define wcstopstr wcstostr
+
+LPSTR  _cstr( LPCSTR str1, ... );
+LPWSTR _cwcs( LPCWSTR str1, ... );
 
 char DXIKeyToChar(UINT uKey);
 
@@ -46,11 +49,11 @@ UINT FileCRC32(LPCWSTR lpwFileName);
 LPCWSTR swprintf_r(LPCWSTR format, ...);
 LPCSTR sprintf_r(LPCSTR format, ...);
 
-LPCWSTR strtowcs(LPCSTR str);
-LPCSTR wcstostr(LPCWSTR wcs);
+LPWSTR strtowcs(LPCSTR str);
+LPSTR wcstostr(LPCWSTR wcs);
 
-wchar_t* strtopwcs(LPCSTR str);
-char* wcstopstr(LPCWSTR str);
+//wchar_t* strtopwcs(LPCSTR str);
+//char* wcstopstr(LPCWSTR str);
 
 wchar_t* cwctowc(LPCWSTR cwc);
 char* cctoc(LPCSTR cc);
@@ -58,11 +61,11 @@ char* cctoc(LPCSTR cc);
 char* substr(const char* str, size_t begin, size_t len);
 wchar_t* subwcs(const wchar_t* str, size_t begin, size_t len);
 
-const wchar_t* wcstoupper(wchar_t* str);
-const wchar_t* wcstolower(wchar_t* str);
+wchar_t* wcstoupper(wchar_t* str);
+wchar_t* wcstolower(wchar_t* str);
 
-const char* strtoupper(char* str);
-const char* strtolower(char* str);
+char* strtoupper(char* str);
+char* strtolower(char* str);
 
 //////////////////////////////////////////////////////////////////////////
 
