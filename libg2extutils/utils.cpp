@@ -90,7 +90,7 @@ UINT FileCRC32(LPCWSTR lpwFileName)
 /** std::string cstr( const char* str1, ... )
 * combines all strings till the first empty string or NULL is spotted
 */
-LPCSTR _cstr(const char* str1, ...) // ATTENTION: Buffer overflows possible!!!
+LPSTR _cstr(const char* str1, ...) // ATTENTION: Buffer overflows possible!!!
 {
 	std::list<const char*>	lTempVal;
 	size_t					templen;
@@ -147,13 +147,13 @@ LPCSTR _cstr(const char* str1, ...) // ATTENTION: Buffer overflows possible!!!
 		tmplen -= templen;
 	}
 
-	return (const char*)retstrptr;
+	return retstrptr;
 }
 
 /** std::string cwcs( const wchar_t* str1, ... )
 * combines all strings till the first empty string or NULL is spotted
 */
-LPCWSTR _cwcs(const wchar_t* str1, ...) // ATTENTION: Buffer overflows possible!!!
+LPWSTR _cwcs(const wchar_t* str1, ...) // ATTENTION: Buffer overflows possible!!!
 {
 	std::list<const wchar_t*>	lTempVal;
 	size_t						templen;
@@ -210,10 +210,10 @@ LPCWSTR _cwcs(const wchar_t* str1, ...) // ATTENTION: Buffer overflows possible!
 		tmplen -= templen;
 	}
 
-	return (const wchar_t*)retstrptr;
+	return retstrptr;
 }
 
-const wchar_t* swprintf_r(const wchar_t* format, ...)
+const wchar_t* swprintf_r(const wchar_t* format, ...) // ATTENTION: Not threadsave! Result of last call will be invalidated on next call!
 {
 	static wchar_t buffer[512] = {0};
 
@@ -225,7 +225,7 @@ const wchar_t* swprintf_r(const wchar_t* format, ...)
 	return buffer;
 };
 
-const char* sprintf_r(const char* format, ...)
+const char* sprintf_r(const char* format, ...) // ATTENTION: Not threadsave! Result of last call will be invalidated on next call!
 {
 	static char buffer[512] = {0};
 
@@ -237,7 +237,7 @@ const char* sprintf_r(const char* format, ...)
 	return buffer;
 };
 
-const wchar_t* strtowcs(const char* str)
+wchar_t* strtowcs(const char* str)
 {
 	size_t		origsize		= strlen(str)+1;
 	size_t		convertedChars	= 0;
@@ -247,7 +247,7 @@ const wchar_t* strtowcs(const char* str)
 	return wcs;
 };
 
-const char* wcstostr(const wchar_t* wcs)
+char* wcstostr(const wchar_t* wcs)
 {
 	size_t		origsize		= wcslen(wcs)+1;
 	size_t		convertedChars	= 0;
@@ -255,24 +255,6 @@ const char* wcstostr(const wchar_t* wcs)
 	wcstombs_s(&convertedChars, str, origsize, wcs, _TRUNCATE);
 
 	return str;
-};
-
-wchar_t* strtopwcs(const char* str)
-{
-	size_t sStrLen = strlen(str);
-	sStrLen++;
-	wchar_t* wcTmp = new wchar_t[sStrLen];
-	wcscpy_s(wcTmp, sStrLen, strtowcs(str));
-	return wcTmp;
-};
-
-char* wcstopstr(const wchar_t* str)
-{
-	size_t sStrLen = wcslen(str);
-	sStrLen++;
-	char* cTemp = new char[sStrLen];
-	strcpy_s(cTemp, sStrLen, wcstostr(str));
-	return cTemp;
 };
 
 wchar_t* cwctowc(const wchar_t* cwc)
@@ -286,8 +268,7 @@ wchar_t* cwctowc(const wchar_t* cwc)
 
 char* cctoc(const char* cc)
 {
-	size_t sStrLen = strlen(cc);
-	sStrLen++;
+	size_t sStrLen = strlen(cc) + 1;
 	char* cTmp = new char[sStrLen];
 	strcpy_s(cTmp, sStrLen, cc);
 	return cTmp;
@@ -295,60 +276,69 @@ char* cctoc(const char* cc)
 
 char* substr(const char* str, size_t begin, size_t len)
 {
-	if (str == 0 || strlen(str) == 0 || strlen(str) < begin || strlen(str) < (begin+len))
+	if (str == 0 || strlen(str) < (begin+len)) // " || strlen(str) == 0 || strlen(str) < begin" <- the last check covers this, too
 		return NULL;
 
 	char* dest = new char[len+1];
-	strncat_s(dest, strlen(str), str + begin, len);
+	strncpy_s(dest, len, str+begin, len);
+	dest[len] = 0;
+	//strncat_s(dest, strlen(str), str + begin, len);
 	return dest;
 };
 
 wchar_t* subwcs(const wchar_t* str, size_t begin, size_t len)
 {
-	if (str == 0 || wcslen(str) == 0 || wcslen(str) < begin || wcslen(str) < (begin+len))
+	if (str == 0 || wcslen(str) < (begin+len)) //  "|| wcslen(str) == 0 || wcslen(str) < begin" <- the last check covers this, too
 		return NULL;
 
-	wchar_t* dest = new wchar_t[len+1*sizeof(wchar_t)];
-	wcsncat_s(dest, wcslen(str)*sizeof(wchar_t), str + begin, len);
+	wchar_t* dest = new wchar_t[len+1];
+	wcsncpy_s(dest, len, str+begin, len);
+	dest[len] = 0;
+	//wcsncat_s(dest, wcslen(str)*sizeof(wchar_t), str + begin, len);
 	return dest;
 };
 
-const wchar_t* wcstolower(wchar_t* str)
+wchar_t* wcstolower(wchar_t* str)
 {
 	for(unsigned int i = 0; i < wcslen(str); i++)
 	{
-		if(str[i] >= 0x0041 && str[i] <= 0x005A)
-			str[i] += 0x0020;
+		str[i] = towlower(str[i]);
+		//if(str[i] >= 0x0041 && str[i] <= 0x005A)
+		//	str[i] += 0x0020;
 	};
 	return str;
 };
 
-const wchar_t* wcstoupper(wchar_t* str)
+wchar_t* wcstoupper(wchar_t* str)
 {
 	for(unsigned int i = 0; i < wcslen(str); i++)
 	{
-		if(str[i] >= 0x061 && str[i] <= 0x007A)
-			str[i] -= 0x0020;
+		str[i] = towupper(str[i]);
+		//if(str[i] >= 0x061 && str[i] <= 0x007A)
+		//	str[i] -= 0x0020;
 	};
 	return str;
 };
 
-const char* strtolower(char* str)
+char* strtolower(char* str)
 {
 	for(unsigned int i = 0; i < strlen(str); i++)
 	{
-		if(str[i] >= 0x41 && str[i] <= 0x5A)
-			str[i] += 0x20;
+		str[i] = tolower(str[i]);
+		//if(str[i] >= 0x41 && str[i] <= 0x5A)
+		//	str[i] += 0x20;
 	};
 	return str;
 };
 
-const char* strtoupper(char* str)
+char* strtoupper(char* str)
 {
 	for(unsigned int i = 0; i < strlen(str); i++)
 	{
-		if(str[i] >= 0x61 && str[i] <= 0x7A)
-			str[i] -= 0x20;
+		str[i] = toupper(str[i]);
+		//if(str[i] >= 0x61 && str[i] <= 0x7A)
+		//	str[i] -= 0x20;
 	};
 	return str;
 };
+
