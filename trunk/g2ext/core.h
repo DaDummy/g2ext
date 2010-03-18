@@ -41,11 +41,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 //////////////////////////////////////////////////////////////////////////
 
-Interface IConsole;
-Interface IStatistics;
-Interface ICoreIngame;
-Interface ICoreOutgame;
-Interface ILog;
+class IConsole;
+class IStatistics;
+class ICoreIngame;
+class ICoreOutgame;
+class ILog;
 
 class zCParser;
 class zCConsole;
@@ -209,7 +209,7 @@ typedef stdext::hash_map<LPCWSTR, PPLUGIN>		 hmPlugin;
 
 //////////////////////////////////////////////////////////////////////////
 
-class CCoreIngame : public TSingleton<CCoreIngame>, implements ICoreIngame
+class CCoreIngame : public TSingleton<CCoreIngame>, public ICoreIngame
 {
 friend DWORD __stdcall SplashThreadProc(void* param);
 private:
@@ -337,7 +337,7 @@ public: // callbacks
 
 //////////////////////////////////////////////////////////////////////////
 
-class CCoreOutgame : implements ICoreOutgame
+class CCoreOutgame : public ICoreOutgame
 {
 private: // mod
 	PMODINFO				m_pModInfo;

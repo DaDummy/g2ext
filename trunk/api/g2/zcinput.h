@@ -204,6 +204,64 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 // Alternate names for keys originally not used on US keyboards.
 #define KEY_CIRCUMFLEX      KEY_PREVTRACK       /* Japanese keyboard */
 
+// g2 option keys
+#define G2_OPTION_KEY_END			zSTRING("keyEnd")
+#define G2_OPTION_KEY_HEAL			zSTRING("keyHeal")
+#define G2_OPTION_KEY_POTION		zSTRING("keyPotion")
+#define G2_OPTION_KEY_LOCK_TARGET	zSTRING("keyLockTarget")
+#define G2_OPTION_KEY_PARADE		zSTRING("keyParade")
+#define G2_OPTION_KEY_ACTION_RIGHT	zSTRING("keyActionRight")
+#define G2_OPTION_KEY_ACTION_LEFT	zSTRING("keyActionLeft")
+#define G2_OPTION_KEY_UP			zSTRING("keyUp")
+#define G2_OPTION_KEY_DOWN			zSTRING("keyDown")
+#define G2_OPTION_KEY_LEFT			zSTRING("keyLeft")
+#define G2_OPTION_KEY_RIGHT			zSTRING("keyRight")
+#define G2_OPTION_KEY_STRAFE_LEFT	zSTRING("keyStrafeLeft")
+#define G2_OPTION_KEY_STRAFE_RIGHT	zSTRING("keyStrafeRight")
+#define G2_OPTION_KEY_ACTION		zSTRING("keyAction")
+#define G2_OPTION_KEY_SLOW			zSTRING("keySlow")
+#define G2_OPTION_KEY_SMOVE			zSTRING("keySMove")
+#define G2_OPTION_KEY_WEAPON		zSTRING("keyWeapon")
+#define G2_OPTION_KEY_SNEAK			zSTRING("keySneak")
+#define G2_OPTION_KEY_LOOK			zSTRING("keyLook")
+#define G2_OPTION_KEY_LOOK_FP		zSTRING("keyLookFP")
+#define G2_OPTION_KEY_INVENTORY		zSTRING("keyInventory")
+#define G2_OPTION_KEY_SHOW_STATUS	zSTRING("keyShowStatus")
+#define G2_OPTION_KEY_SHOW_LOG		zSTRING("keyShowLog")
+#define G2_OPTION_KEY_SHOW_MAP		zSTRING("keyShowMap")
+
+// g2 logical keys
+enum LogicalKey : zWORD
+{
+	LOGICAL_KEY_LEFT			= 1,	// turn left
+	LOGICAL_KEY_RIGHT,					// turn right
+	LOGICAL_KEY_UP,						// forward  / menu up
+	LOGICAL_KEY_DOWN,					// backward / menu down
+	LOGICAL_KEY_ACTION,					// action
+	LOGICAL_KEY_SLOW,
+	LOGICAL_KEY_ACTION2,				// alternative action
+	LOGICAL_KEY_WEAPON,					// toggle fight/normal mode
+	LOGICAL_KEY_SMOVE			= 11,
+	LOGICAL_KEY_SMOVE2,
+	LOGICAL_KEY_SHIFT,
+	LOGICAL_KEY_END,
+	LOGICAL_KEY_INVENTORY,				// open/close inventory
+	LOGICAL_KEY_LOOK,
+	LOGICAL_KEY_SNEAK,
+	LOGICAL_KEY_STRAFELEFT,				// strafe left
+	LOGICAL_KEY_STRAFERIGHT,			// strafe right
+	LOGICAL_KEY_SCREEN_STATUS,			// open/close character status
+	LOGICAL_KEY_SCREEN_LOG,				// open/close quest log
+	LOGICAL_KEY_SCREEN_MAP,				// open/close map
+	LOGICAL_KEY_LOOK_FP,
+	LOGICAL_KEY_LOCK_TARGET,
+	LOGICAL_KEY_PARADE,
+	LOGICAL_KEY_ACTIONLEFT,
+	LOGICAL_KEY_ACTIONRIGHT,
+	LOGICAL_KEY_LAME_POTION,
+	LOGICAL_KEY_LAME_HEAL
+};
+
 /** Insert description. */
 class zCInput
 {
@@ -417,18 +475,124 @@ public:
 		XCALL(0x004D4E00);
 	};
 
-	//.text:004D4A10 ; public: __thiscall zCInput_Win32::zCInput_Win32(struct HWND__ * *)
-	/** Insert description. 
+	//.text:004CC020 ; int __stdcall zCInput__BindOption(int, int, int, int, int, int, void *Memory, int, int)
+	// WTF happened to that parameters list?!?
+	/** Binds the keys in keyList (if any) and the keys defined in the option to the logicalKey.
+	* This method unbinds all existing key bindings before applying the new ones.
+	* @param option		Option in gothic2.ini where to get keys from (can be invalid)
+	* @param logicalKey	Logical key to which the keys are getting bound to
+	* @param keyList	List of additional keys (can be empty)
+	* @returns	nothing
 	* @usable Ingame only
 	*/
+	void BindOption(const zSTRING option, LogicalKey logicalKey, zCArray<zWORD> keyList)
+	{
+		XCALL(0x004CC020)
+	};
+
+	// emulating missing method
+	/** Unbinds the specified logical key (action)
+	* @param logicalKey	Logical key to unbind
+	* @usable Ingame only
+	*/
+	void Unbind(LogicalKey logicalKey)
+	{
+		BindOption(zSTRING(""), logicalKey, zCArray<zWORD>());
+	};
+
+	// emulating missing method
+	/** Insert description.
+	* @usable Ingame only
+	*/
+	void Bind(LogicalKey logicalKey, zCArray<zWORD> keyList)
+	{
+		BindOption(zSTRING(""), logicalKey, keyList);
+	};
+
+	//.text:004CC370 ; public: int __thiscall zCInput::IsBinded(unsigned short, unsigned short)
+	/** Insert description.
+	* @usable Ingame only
+	*/
+	int IsBinded(LogicalKey logicalKey, zWORD key)
+	{
+		XCALL(0x004CC370)
+	};
+
+	//.text:004CC470 ; public: int __thiscall zCInput::IsBindedToggled(unsigned short, unsigned short)
+	/** Insert description.
+	 * @usable Ingame only
+	 */
+	int IsBindedToggled(LogicalKey logicalKey, zWORD key)
+	{
+		XCALL(0x004CC470)
+	};
+
+	//.text:004CC5D0 ; public: unsigned short __thiscall zCInput::GetFirstBindedLogicalKey(unsigned short)
+	/** Insert description.
+	 * @usable Ingame only
+	 */
+	LogicalKey GetFirstBindedLogicalKey(zWORD key)
+	{
+		XCALL(0x004CC5D0)
+	};
+
+	//.text:004CFE00 ; public: void __thiscall zCInput::BindKeys(int)
+	/** Insert description.
+	 * @usable Ingame only
+	 */
+	void BindKeys(int)
+	{
+		XCALL(0x004CFE00)
+	};
+
+	//.text:004D15D0 ; public: static unsigned short __cdecl zCInput::GetControlValueByName(class zSTRING const &)
+	/** Insert description.
+	 * @usable Ingame only
+	 */
+	static zWORD GetControlValueByName(const zSTRING&)
+	{
+		XCALL(0x004D15D0)
+	};
+
+	//.text:004D1680 ; public: static class zSTRING __cdecl zCInput::GetNameByControlValue(unsigned short)
+	/** Insert description.
+	 * @usable Ingame only
+	 */
+	static zSTRING GetNameByControlValue(zWORD)
+	{
+		XCALL(0x004D1680)
+	};
+
+	//.text:004CBC60 ; public: virtual unsigned short __thiscall zCInput::GetKey(int, int)
+	/** Insert description.
+	 * @usable Ingame only
+	 */
+	//virtual unsigned short GetKey(int, int) = NULL;
+	//{
+	//	XCALL(0x004CBC60)
+	//};
+
+	//.text:004D54D0 ; public: virtual void __thiscall zCInput_Win32::SetKey(int, int)
+	/** Insert description. 
+	 * @usable Ingame only
+	 */
+	void SetKey(zINT pA, zINT pB)
+	{
+		XCALL(0x004D54D0);
+	};
+
+	//.text:004D4A10 ; public: __thiscall zCInput_Win32::zCInput_Win32(struct HWND__ * *)
+	/** Insert description. 
+	 * @usable Ingame only
+	 */
 	zCInput(HWND pA)
 	{
 		XCALL(0x004D4A10);
 	};
 
 	/** This method returns the current zCInput instance
-	* @usable Ingame only
-	*/
+	 * @usable Ingame only
+	 */
 	inline static zCInput*	GetInput()		{ return *(zCInput**)0x008D1650; };
 };
 

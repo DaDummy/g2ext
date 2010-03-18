@@ -1,10 +1,16 @@
 @echo off
 
+setlocal
+
+if "%1"=="dadummy" goto skipcls1
 cls
+:skipcls1
 
 call "%VS90COMNTOOLS%\vsvars32.bat"
 
+if "%1"=="dadummy" goto skipcls2
 cls
+:skipcls2
 
 echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 echo.

@@ -22,6 +22,7 @@
 			IntermediateDirectory="$(ConfigurationName)"
 			ConfigurationType="2"
 			CharacterSet="1"
+			EnableManagedIncrementalBuild="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -64,7 +65,7 @@
 			<Tool
 				Name="VCLinkerTool"
 				AdditionalDependencies="BugTrapU.lib libinject.lib winmm.lib psapi.lib libg2extutils.lib"
-				LinkIncremental="2"
+				LinkIncremental="1"
 				AdditionalLibraryDirectories="./;../;../dx7sdk/lib/;../dx9sdk/lib/;../libinject/lib/;../bugtrap/;../debug/"
 				ModuleDefinitionFile="exports.def"
 				GenerateDebugInformation="true"
@@ -101,6 +102,7 @@
 			ConfigurationType="2"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
+			EnableManagedIncrementalBuild="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -187,6 +189,7 @@
 			ConfigurationType="2"
 			CharacterSet="1"
 			WholeProgramOptimization="1"
+			EnableManagedIncrementalBuild="1"
 			>
 			<Tool
 				Name="VCPreBuildEventTool"
@@ -292,6 +295,10 @@
 				</File>
 				<File
 					RelativePath="..\api\g2ext.h"
+					>
+				</File>
+				<File
+					RelativePath="..\api\interface.h"
 					>
 				</File>
 				<File
@@ -728,10 +735,6 @@
 				</File>
 			</Filter>
 		</Filter>
-		<File
-			RelativePath=".\BUGS_TODO_FIXME.txt"
-			>
-		</File>
 		<File
 			RelativePath="..\build.cmd"
 			>

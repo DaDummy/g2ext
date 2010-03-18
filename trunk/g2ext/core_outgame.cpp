@@ -263,14 +263,17 @@ bool CCoreOutgame::LoadModDll(LPCWSTR lpwFileName)
 {
 	if((lpwFileName == L"") || (lpwFileName == NULL))
 	{	
-		G2EXT_LOGF_NONE(L"No mod-dll specified. Loading without G2Ext.");
+		G2EXT_LOG_NONE(L"No mod-dll specified. Loading without G2Ext.");
 		return false;
 	};
 
 	G2EXT_LOG_NONE(L"Loading mod-dll...");
 
-	if((this->m_pModHandle = LoadLibraryA(wcstostr(lpwFileName))) == NULL)
+	// DaDummy: Why did we explicitly use the ASCII version of LoadLibrary and
+	// converted the unicode library name back to ASCII if we just could do this?
+	if((this->m_pModHandle = LoadLibrary(lpwFileName)) == NULL)
 	{
+		G2EXT_LOGF_WARNING(L"'%s' couldn't be loaded!", lpwFileName);
 		return false;
 	};
 
@@ -285,7 +288,11 @@ bool CCoreOutgame::LoadModDll(LPCWSTR lpwFileName)
 
 	this->ModCheckVersion(nVersionMajor, nVersionMinor, extDllType);
 
-	if(nVersionMajor < G2EXT_MAJOR_VERSION || nVersionMinor < G2EXT_MINOR_VERSION)
+	// DaDummy:  Please keep the following facts in mind and remember: g2ext.dll MUSN'T be OLDER
+	// than the SDK used to build the mod-dll and not the other way round ;)
+	// * G2EXT_MAJOR_VERSION: Binary incompatible (API-)changes - g2ext.dll must have exactly the SAME major version
+	// * G2EXT_MINOR_VERSION: Addons that break nothing         - g2ext.dll must have a HIGHER OR EQUAL minor version
+	if(nVersionMajor != G2EXT_MAJOR_VERSION || nVersionMinor > G2EXT_MINOR_VERSION)
 	{
 		G2EXT_LOGF_CRITICAL(L"Version mismatch! G2Ext: %i.%i Mod: %i.%i", G2EXT_MAJOR_VERSION, G2EXT_MINOR_VERSION, nVersionMajor, nVersionMinor);
 	};

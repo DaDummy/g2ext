@@ -18,27 +18,24 @@ G2Ext SDK headers © 2009, 2010 by Paindevs and Patrick Vogel
 
 /////////////////////////////////////////////////////////////////////////////*/
 
+///////////////////////////////////////////////////////////////////////////////
+// ATTENTION!
+//
+// This file contains g2ext api-internal stuff that should not be used in mods!
+//
+///////////////////////////////////////////////////////////////////////////////
+
 #ifndef __API_G2EXT_INTERFACE_H__
 #define __API_G2EXT_INTERFACE_H__
 
-#ifndef Interface
-#define Interface struct
-#endif
+#define G2EXT_BEGIN_INTERFACE_DECLARATION(name) __interface actual_##name
 
-#ifndef implements
-#define implements public
-#endif
-
-#define G2EXT_BEGIN_INTERFACE_DECLARATION(name) __interface actual_##name {
-
-#define G2EXT_DECLARE_BASED_INTERFACE(name, base)	\
-	__interface actual_##name						\
-	: public actual_##base {
+#define G2EXT_INTERFACE_IMPLEMENT_INTERFACE(name)	actual_##base
 
 #define G2EXT_INTERFACE_MEMBER(name) virtual name = NULL;
 
-#define G2EXT_END_INTERFACE_DECLARATION(name) };	\
-	Interface name : public actual_##name {			\
+#define G2EXT_END_INTERFACE_DECLARATION(name) ;		\
+	class name : public actual_##name {			\
 public:												\
 	virtual ~name() {}								\
 };

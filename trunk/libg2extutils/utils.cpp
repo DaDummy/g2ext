@@ -276,69 +276,63 @@ char* cctoc(const char* cc)
 
 char* substr(const char* str, size_t begin, size_t len)
 {
-	if (str == 0 || strlen(str) < (begin+len)) // " || strlen(str) == 0 || strlen(str) < begin" <- the last check covers this, too
-		return NULL;
+	if (str == NULL || strlen(str) < (begin+len)) // " || strlen(str) == 0 || strlen(str) < begin" <- the last check covers this, too
+		return "";
+
+	if (len == 0)
+		len = strlen(str)-begin;
 
 	char* dest = new char[len+1];
-	strncpy_s(dest, len, str+begin, len);
-	dest[len] = 0;
-	//strncat_s(dest, strlen(str), str + begin, len);
+
+	strncpy_s(dest, len+1, str+begin, len);
+
 	return dest;
 };
 
 wchar_t* subwcs(const wchar_t* str, size_t begin, size_t len)
 {
-	if (str == 0 || wcslen(str) < (begin+len)) //  "|| wcslen(str) == 0 || wcslen(str) < begin" <- the last check covers this, too
-		return NULL;
+	if (str == NULL || wcslen(str) < (begin+len)) //  "|| wcslen(str) == 0 || wcslen(str) < begin" <- the last check covers this, too
+		return L"";
+
+	if (len == 0)
+		len = wcslen(str)-begin;
 
 	wchar_t* dest = new wchar_t[len+1];
-	wcsncpy_s(dest, len, str+begin, len);
-	dest[len] = 0;
-	//wcsncat_s(dest, wcslen(str)*sizeof(wchar_t), str + begin, len);
+
+	wcsncpy_s(dest, len+1, str+begin, len);
+
 	return dest;
 };
 
 wchar_t* wcstolower(wchar_t* str)
 {
 	for(unsigned int i = 0; i < wcslen(str); i++)
-	{
 		str[i] = towlower(str[i]);
-		//if(str[i] >= 0x0041 && str[i] <= 0x005A)
-		//	str[i] += 0x0020;
-	};
+
 	return str;
 };
 
 wchar_t* wcstoupper(wchar_t* str)
 {
 	for(unsigned int i = 0; i < wcslen(str); i++)
-	{
 		str[i] = towupper(str[i]);
-		//if(str[i] >= 0x061 && str[i] <= 0x007A)
-		//	str[i] -= 0x0020;
-	};
+
 	return str;
 };
 
 char* strtolower(char* str)
 {
 	for(unsigned int i = 0; i < strlen(str); i++)
-	{
 		str[i] = tolower(str[i]);
-		//if(str[i] >= 0x41 && str[i] <= 0x5A)
-		//	str[i] += 0x20;
-	};
+
 	return str;
 };
 
 char* strtoupper(char* str)
 {
 	for(unsigned int i = 0; i < strlen(str); i++)
-	{
 		str[i] = toupper(str[i]);
-		//if(str[i] >= 0x61 && str[i] <= 0x7A)
-		//	str[i] -= 0x20;
-	};
+
 	return str;
 };
 

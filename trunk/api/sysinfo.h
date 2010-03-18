@@ -106,33 +106,34 @@ typedef struct _SYSINFO_CPU
 
 /** Insert description. */
 G2EXT_BEGIN_INTERFACE_DECLARATION(ISysInfo)
-	bool GetIs64BitOS(void) = NULL;
-	bool GetCPUSupportsFPU(void) = NULL;
-	bool GetCPUSupportsMMX(void) = NULL;
-	bool GetCPUSupportsMMXExt(void) = NULL;
-	bool GetCPUSupports3DNow(void) = NULL;
-	bool GetCPUSupports3DNow2(void) = NULL;
-	bool GetCPUSupportsHyperThreading(void) = NULL;
-	bool GetCPUSupportsNXBit(void) = NULL;
-	bool GetCPUSupportsSSE(void) = NULL;
-	bool GetCPUSupportsSSE2(void) = NULL;
-	bool GetCPUSupportsSSE3(void) = NULL;
-	bool GetCPUSupportsSSSE3(void) = NULL;
-	bool GetCPUSupportsSSE4_1(void) = NULL;
-	bool GetCPUSupportsSSE4_2(void) = NULL;
-	bool GetCPUSupportsSSE4a(void) = NULL;
-	DWORD GetCPUCacheSizeL1(void) = NULL;
-	DWORD GetCPUCacheSizeL2(void) = NULL;
-	DWORD GetCPUCacheSizeL3(void) = NULL;
-	DWORD GetTotalPhysicalSystemMemory(void) = NULL;
-	DWORD GetTotalSystemSwapMemory(void) = NULL;
-	LPCWSTR GetOSNameString(void) = NULL;
-	DWORD GetCPUCount(void) = NULL;
-	SYSINFO_CPU GetCPUInfo(void) = NULL;
-	SYSINFO_CPU_MANF GetCPUManufacturer(void) = NULL;
-	DWORD GetGPUCount(void) = NULL;
-	SYSINFO_VIDEO* GetGPUInfo(DWORD dwID = 0) = NULL;
-	SYSINFO_GPU_MANF GetGPUManufacturer(DWORD dwID = 0) = NULL;
-G2EXT_END_INTERFACE_DECLARATION(ISysInfo)
+{
+	bool				GetIs64BitOS(void)					= NULL;
+	bool				GetCPUSupportsFPU(void)				= NULL;
+	bool				GetCPUSupportsMMX(void)				= NULL;
+	bool				GetCPUSupportsMMXExt(void)			= NULL;
+	bool				GetCPUSupports3DNow(void)			= NULL;
+	bool				GetCPUSupports3DNow2(void)			= NULL;
+	bool				GetCPUSupportsHyperThreading(void)	= NULL;
+	bool				GetCPUSupportsNXBit(void)			= NULL;
+	bool				GetCPUSupportsSSE(void)				= NULL;
+	bool				GetCPUSupportsSSE2(void)			= NULL;
+	bool				GetCPUSupportsSSE3(void)			= NULL;
+	bool				GetCPUSupportsSSSE3(void)			= NULL;
+	bool				GetCPUSupportsSSE4_1(void)			= NULL;
+	bool				GetCPUSupportsSSE4_2(void)			= NULL;
+	bool				GetCPUSupportsSSE4a(void)			= NULL;
+	DWORD				GetCPUCacheSizeL1(void)				= NULL;
+	DWORD				GetCPUCacheSizeL2(void)				= NULL;
+	DWORD				GetCPUCacheSizeL3(void)				= NULL;
+	DWORD				GetTotalPhysicalSystemMemory(void)	= NULL;
+	DWORD				GetTotalSystemSwapMemory(void)		= NULL;
+	LPCWSTR				GetOSNameString(void)				= NULL;
+	DWORD				GetCPUCount(void)					= NULL;
+	SYSINFO_CPU			GetCPUInfo(void)					= NULL;
+	SYSINFO_CPU_MANF	GetCPUManufacturer(void)			= NULL;
+	DWORD				GetGPUCount(void)					= NULL;
+	SYSINFO_VIDEO*		GetGPUInfo(DWORD dwID = 0)			= NULL;
+	SYSINFO_GPU_MANF	GetGPUManufacturer(DWORD dwID = 0)	= NULL;
+} G2EXT_END_INTERFACE_DECLARATION(ISysInfo);
 
 #endif  //__G2EXT_SYSINFO_H__

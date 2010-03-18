@@ -36,7 +36,7 @@ typedef struct _SYSINFO_CPUID
 	__int32 eax, ebx, ecx, edx;
 } SYSINFO_CPUID, *PSYSINFO_CPUID;
 
-class CSysInfo : public TSingleton<CSysInfo>, implements ISysInfo
+class CSysInfo : public TSingleton<CSysInfo>, public ISysInfo
 {
 private:
 	DWORD			dwCPUCount;
