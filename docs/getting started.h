@@ -39,14 +39,10 @@
  *
  * #include "api/g2ext.h" // main G2Ext include
  *
- * HRESULT G2EXT_API G2Ext_ModVersion(int& nMajor, int& nMinor, G2EXT_DLL_TYPE& tType) 
- * { 
- * 	nMajor = G2EXT_MAJOR_VERSION; 
- * 	nMinor = G2EXT_MINOR_VERSION; 
- * 	tType = G2EXT_DLL_MOD; 
- * 	return S_OK; 
- * };
+ * // Tell the compiler that this is a g2ext mod
+ * G2EXT_DECLARE_MOD;
  * 
+ * // This Function is called when the gothic2.exe is beeing prepared (outgame)
  * HRESULT G2EXT_API G2Ext_ModPrepare(ICoreOutgame* pCore) 
  * {
  * 	// code	
@@ -54,6 +50,8 @@
  * 	return S_OK;
  * };
  * 
+ * // This Function is called when g2ext is initializing inside the gothic2-process but before
+ * // gothic2 itself starts initializing (ingame)
  * HRESULT G2EXT_API G2Ext_ModInit(ICoreIngame* pCore) 
  * {
  * 	// code
@@ -65,7 +63,7 @@
  * 
  * <b>exports.def</b>:
  * @code
- * LIBRARY	"insert_your_library_name"
+ * LIBRARY	"your_mod_dll_file_name.dll"
  * EXPORTS
  * 	G2Ext_ModVersion
  * 	G2Ext_ModPrepare
@@ -78,7 +76,7 @@
  * @image html build.jpg
  * <br />
  *
- * @note: After project was build without errors, you can find the dll in the debug/release folder of your project (, but only in case you haven't changed the output directory).
+ * @note: After project was build without errors, you can find the dll in the debug/release folder of your project.
  *
  * <br /><br />
  * @section startover_sec_02 Starting over - Using the callback system
@@ -110,6 +108,7 @@
  *
  * <b>Example code:</b>
  * @code
+ * #include "api/g2ext.h"
  * 
  * CCoreIngame* pCore = ...; // lets assume this has been initialized somehow...
  *
@@ -128,6 +127,8 @@
  * @attention Using the wrong function type on your callback will make G2Ext crash!
  * 
  * @code
+ * #include "api/g2/zcparser.h"
+ * #include "api/g2/zcview.h"
  * 
  * // G2EXT_CB_ON_INIT_HUD
  * 
@@ -159,12 +160,14 @@
  * @endcode
  * 
  * <br /><br />
- * @section startover_sec_02 Starting over - Exporting C++ functions to Daedalus
+ * @section startover_sec_03 Starting over - Exporting C++ functions to Daedalus
  * 
  * Exporting functions to Daedalus is actually a really easy and powerful thing:
  * 
  * @code
- * 
+ * #include "api/g2/zcparser.h"
+ * #include "api/g2/zstring.h"
+ *
  * zCParser* g_pParser = NULL; // Init global parser var
  * 
  *  int Mod_ExternalFunction() // func void test();
@@ -185,6 +188,8 @@
  * 
  * 	return 0;
  * };
+ *
+ * // We assume you have registred this callback correctly - for more info have a look at the previous "getting started" section
  * void __stdcall Mod_OnRegisterExternals(zCParser* pParser)
  * {
  * 	g_pParser = pParser;

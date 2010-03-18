@@ -114,7 +114,7 @@ void CCoreIngame::LoadModDll(LPCWSTR lpwFileName)
 {
 	if(lpwFileName == L"")
 	{
-		G2EXT_LOG_CRITICAL(L"assertion failed: lpwFileName == 0");
+		G2EXT_LOG_CRITICAL(L"assertion failed: lpwFileName == \"\"");
 	};
 	
 	G2EXT_LOGF_NONE(L"Loading mod: \"%s\"", lpwFileName);

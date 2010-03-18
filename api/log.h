@@ -33,7 +33,8 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 #ifndef __API_G2EXT_LOG_H__
 #define __API_G2EXT_LOG_H__
 
-#include "api/interface.h"
+// That interface stuff does not work with varargs(WriteF(...)) and the workaround isn't ready yet
+//#include "api/interface.h"
 
 #ifndef LOG_LEVEL_DEFINED
 #define LOG_LEVEL_DEFINED
@@ -62,18 +63,30 @@ enum LOG_LEVEL
 #endif //LOG_LEVEL_DEFINED
 
 /** This class delivers the logging functionality of G2Ext. */
-G2EXT_BEGIN_INTERFACE_DECLARATION(ILog)
+//G2EXT_BEGIN_INTERFACE_DECLARATION(ILog)
+class ILog
+{
+public:
 	/** This method logs the string you give to it to a file
-	* @param	eloglevel log level (should be self explaining)
-	* @param   msg message that will be logged
+	* @param	eLogLevel log level (should be self explaining)
+	* @param	wcMessage message that will be logged
 	* @usable	Always
 	*/
 	virtual void Write(LOG_LEVEL eLogLevel, LPCWSTR wcMessage) = NULL;
+
+	/** This method formats and logs the string you give to it to a file
+	 * @param	eLogLevel log level (should be self explaining)
+	 * @param   wcFormat format string (use it like in [s]printf)
+	 * @param   ... argument list
+	 * @usable	Always
+	 */
+	virtual void WriteF(LOG_LEVEL eLogLevel, LPCWSTR wcFormat, ...) = NULL;
 
 	/** This method inserts a divider into the log
 	* @usable  Always
 	*/
 	virtual void Divider(void) = NULL;
-G2EXT_END_INTERFACE_DECLARATION(ILog)
+};
+// G2EXT_END_INTERFACE_DECLARATION(ILog);
 
 #endif // __API_G2EXT_LOG_H__

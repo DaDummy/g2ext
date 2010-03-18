@@ -37,6 +37,7 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /** Insert description. */
 G2EXT_BEGIN_INTERFACE_DECLARATION(IStatistics)
+{
 	/** Insert description. 
 	* @usable Ingame only
 	*/
@@ -111,7 +112,6 @@ G2EXT_BEGIN_INTERFACE_DECLARATION(IStatistics)
 	* @usable Ingame only
 	*/
 	virtual DWORD	GetElapsedTime(void)	= NULL;
-
-G2EXT_END_INTERFACE_DECLARATION(IStatistics)
+} G2EXT_END_INTERFACE_DECLARATION(IStatistics);
 
 #endif  //__API_G2EXT_STATISTICS_H__

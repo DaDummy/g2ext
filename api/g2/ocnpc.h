@@ -60,6 +60,7 @@ class oCVisualFX;
 class TNpcSlot;
 class zCPlayerGroup;
 class zCRoute;
+class zCParticleFX;
 class zTSoundHandle;
 class oTDirectionInfo;
 
@@ -91,6 +92,19 @@ enum oCNpc_Attitude
 	NPC_ATTITUDE_ANGRY, 
 	NPC_ATTITUDE_NEUTRAL, 
 	NPC_ATTITUDE_FRIENDLY
+};
+
+enum oCNpc_WeaponMode
+{
+	NPC_WEAPON_NONE = 0,
+	NPC_WEAPON_FIST = 1,
+	NPC_WEAPON_DAG  = 2,
+	NPC_WEAPON_1HS	= 3,
+	NPC_WEAPON_2HS  = 4, 
+	NPC_WEAPON_BOW	= 5,
+	NPC_WEAPON_CBOW = 6,
+	NPC_WEAPON_MAG	= 7,
+	NPC_WEAPON_MAX  = 8
 };
 
 class oCNewsMemory 
@@ -141,7 +155,50 @@ public:
 	oCNpc*		parVictim;                                           // 0x065C oCNpc*
 	oCItem*		parItem;                                             // 0x0660 oCItem*
 	int			rntChangeCount;                                      // 0x0664 int
+};
 
+struct oSDamageDescriptor
+{
+	int				dwFieldsValid;
+	zCVob*			pVobAttacker;
+	oCNpc*			pNpcAttacker;
+	zCVob*			pVobHit;
+	oCVisualFX*		pFXHit;
+	oCItem*			pItemWeapon;
+	zUINT32			nSpellID;
+	zUINT32			nSpellCat;
+	zUINT32			nSpellLevel;
+	int				enuModeDamage;
+	int				enuModeWeapon;
+	zUINT32			aryDamage[8];
+	zREAL			fDamageTotal;
+	zREAL			fDamageMultiplier;
+	zVEC3			vecLocationHit;
+	zVEC3			vecDirectionFly;
+	zSTRING			strVisualFX;
+	zREAL			fTimeDuration;
+	zREAL			fTimeInterval;
+	zREAL			fDamagePerInterval;
+	zBOOL			bDamageDontKill;
+
+	struct
+	{					 
+		zUINT32			bOnce			: 1;
+		zUINT32			bFinished		: 1;
+		zUINT32			bIsDead			: 1;
+		zUINT32			bIsUnconscious	: 1;
+		zUINT32			lReserved		: 28;
+	};
+
+	zREAL			fAzimuth;
+	zREAL			fElevation;
+	zREAL			fTimeCurrent;
+	zREAL			fDamageReal;
+	zREAL			fDamageEffective;
+	zUINT32			aryDamageEffective[8];
+	zCVob*			pVobParticleFX;
+	zCParticleFX*	pParticleFX;
+	oCVisualFX*		pVisualFX;
 };
 
 class oTRobustTrace 
@@ -426,6 +483,16 @@ public:
 		XCALL(0x00736740)
 	};
 
+	//.text:00736750 ; public: int __thiscall oCNpc::IsUnconscious(void)
+	/** This method returns whether the NPC is unconscious or not.
+	* @returns Whether NPC is dead or not.
+	* @usable Ingame only
+	*/
+	zINT IsUnconscious(void)
+	{
+		XCALL(0x00736750)
+	};
+
 	//.text:00762250 ; public: void __thiscall oCNpc::OpenInventory(int)
 	/** This method opens the players inventory.
 	* @param p1 Unknown
@@ -477,13 +544,53 @@ public:
 	};
 
 	//.text:00730760 ; public: void __thiscall oCNpc::SetGuild(int)
-	/** Insert description. 
-	* @param This method sets the NPCs guild.
-	* @usable Ingame only
-	*/
+	/** This method sets the NPCs guild.
+	 * @param GuildId Id of the guild
+	 * @usable Ingame only
+	 */
 	void SetGuild(zINT GuildId)
 	{
 		XCALL(0x00730760);
+	};
+
+	//.text:00738C40 ; public: int __thiscall oCNpc::GetWeaponMode(void)
+	/** Gets the current NPCs weapon mode (mainly intended for hero)
+	 * @returns Current weapon mode
+	 * @usable Ingame only
+	 */
+	oCNpc_WeaponMode GetWeaponMode()
+	{
+		XCALL(0x00738C40);
+	};
+
+	//.text:00738C60 ; public: void __thiscall oCNpc::SetWeaponMode2(class zSTRING const &)
+	/** Sets the current NPCs weapon mode (seemingly intended for daedalus - use SetWeaponMode instead if possible)
+	 * @param wm Weapon mode to set
+	 * @usable Ingame only
+	 */
+	void SetWeaponMode2(const zSTRING& wm)
+	{
+		XCALL(0x00738C60);
+	};
+
+	//.text:00738E80 ; public: virtual void __thiscall oCNpc::SetWeaponMode2(int)
+	/** Sets the current NPCs weapon mode (seemingly intended for daedalus - use SetWeaponMode instead if possible)
+	 * @param wm Weapon mode to set
+	 * @usable Ingame only
+	 */
+	void SetWeaponMode2(oCNpc_WeaponMode wm)
+	{
+		XCALL(0x00738E80);
+	};
+
+	//.text:00739940 ; public: virtual void __thiscall oCNpc::SetWeaponMode(int)
+	/** Sets the current NPCs weapon mode (mainly intended for hero)
+	 * @param wm Weapon mode to set
+	 * @usable Ingame only
+	 */
+	void SetWeaponMode(oCNpc_WeaponMode wm)
+	{
+		XCALL(0x00739940);
 	};
 
 	/** This member function returns the focus Vob.

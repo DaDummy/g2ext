@@ -34,6 +34,7 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 #define __API_G2EXT_CORE_H__
 
 #include "common/osheader.h"
+
 #include "api/interface.h"
 #include "api/core.h"
 
@@ -42,11 +43,11 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 //////////////////////////////////////////////////////////////////////////
 
-Interface ICoreIngame;
-Interface ICoreOutgame;
-Interface IConsole;
-Interface IStatistics;
-Interface ILog;
+class ICoreIngame;
+class ICoreOutgame;
+class IConsole;
+class IStatistics;
+class ILog;
 
 class oCItem;
 class oCNpc;
@@ -269,6 +270,7 @@ typedef std::vector<zCVob>								vMob;
 
 /** G2Ext ingame core */
 G2EXT_BEGIN_INTERFACE_DECLARATION(ICoreIngame)
+{
 	/** Places a function hook.
 	*	@usable	Ingame only
 	*
@@ -594,12 +596,13 @@ G2EXT_BEGIN_INTERFACE_DECLARATION(ICoreIngame)
 	* @usable	Ingame only
 	*/
 	virtual IStatistics* GetStatistics(void) = NULL;
-G2EXT_END_INTERFACE_DECLARATION(ICoreIngame)
+} G2EXT_END_INTERFACE_DECLARATION(ICoreIngame);
 
 //////////////////////////////////////////////////////////////////////////
 
 /** Outgame core of G2Ext. */
 G2EXT_BEGIN_INTERFACE_DECLARATION(ICoreOutgame)
+{
 	/** This method returns the g2ext log object.
 	* @usable	Always
 	* @note	The log object is the preferred way of printing debug output.
@@ -630,7 +633,7 @@ G2EXT_BEGIN_INTERFACE_DECLARATION(ICoreOutgame)
 	* @usable	Outgame only
 	*/
 	virtual HMODULE	GetModModuleHandle(void) = NULL;
-G2EXT_END_INTERFACE_DECLARATION(ICoreOutgame)
+} G2EXT_END_INTERFACE_DECLARATION(ICoreOutgame);
 
 //////////////////////////////////////////////////////////////////////////
 

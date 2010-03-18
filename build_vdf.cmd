@@ -1,6 +1,8 @@
 @echo off
 
+if "%1"=="dadummy" goto skipcls1
 cls
+:skipcls1
 
 echo =-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=-=
 echo.

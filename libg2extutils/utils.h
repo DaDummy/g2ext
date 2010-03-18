@@ -52,9 +52,6 @@ LPCSTR sprintf_r(LPCSTR format, ...);
 LPWSTR strtowcs(LPCSTR str);
 LPSTR wcstostr(LPCWSTR wcs);
 
-//wchar_t* strtopwcs(LPCSTR str);
-//char* wcstopstr(LPCWSTR str);
-
 wchar_t* cwctowc(LPCWSTR cwc);
 char* cctoc(LPCSTR cc);
 

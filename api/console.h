@@ -38,6 +38,7 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /** Insert description. */
 G2EXT_BEGIN_INTERFACE_DECLARATION(IConsole)
+{
 	/** Insert description. 
 	* @usable Ingame only
 	*/
@@ -72,7 +73,7 @@ G2EXT_BEGIN_INTERFACE_DECLARATION(IConsole)
 	* @usable Ingame only
 	*/
 	virtual int  HandleEvent(int key) = NULL;
-G2EXT_END_INTERFACE_DECLARATION(IConsole)
+} G2EXT_END_INTERFACE_DECLARATION(IConsole);
 
 #endif  //__API_G2EXT_CONSOLE_H__
 
