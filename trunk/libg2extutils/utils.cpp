@@ -274,6 +274,24 @@ char* cctoc(const char* cc)
 	return cTmp;
 };
 
+char* substr(const char* str, int len)
+{
+	size_t abslen	= abs(len);
+	size_t begin	= 0;
+
+	if (str == NULL || abslen == 0 || strlen(str) < abslen) // " || strlen(str) == 0" <- the last checks cover this, too
+		return "";
+
+	if (len < 0)
+		begin = strlen(str) - abslen;
+
+	char* dest = new char[abslen+1];
+
+	strncpy_s(dest, abslen+1, str+begin, abslen);
+
+	return dest;
+};
+
 char* substr(const char* str, size_t begin, size_t len)
 {
 	if (str == NULL || strlen(str) < (begin+len)) // " || strlen(str) == 0 || strlen(str) < begin" <- the last check covers this, too
@@ -285,6 +303,24 @@ char* substr(const char* str, size_t begin, size_t len)
 	char* dest = new char[len+1];
 
 	strncpy_s(dest, len+1, str+begin, len);
+
+	return dest;
+};
+
+wchar_t* subwcs(const wchar_t* str, int len)
+{
+	size_t abslen	= abs(len);
+	size_t begin	= 0;
+
+	if (str == NULL || abslen == 0 || wcslen(str) < abslen) // " || strlen(str) == 0" <- the last checks cover this, too
+		return L"";
+
+	if (len < 0)
+		begin = wcslen(str) - abslen;
+
+	wchar_t* dest = new wchar_t[abslen+1];
+
+	wcsncpy_s(dest, abslen+1, str+begin, abslen);
 
 	return dest;
 };

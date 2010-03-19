@@ -33,13 +33,14 @@ void CStarter::SearchAndParseMods(void)
 	HANDLE hFind = NULL;
 	BOOL bFindRes = 1;
 
-	CSimpleIni* pIni = new CSimpleIni(true, true, false);
+	CSimpleIni* pIni = new CSimpleIni(true, false, false);
 
 	for(bFindRes = ((hFind = FindFirstFile(L"*.ini", &fFileData)) != NULL); bFindRes; bFindRes = FindNextFile(hFind, &fFileData))
 	{
-		static int i = 0;
+		// This is permanent - no need to call it multiple times
+		wcstolower(fFileData.cFileName);
 
-		if(wcscmp(L"gothic.ini", wcstolower(fFileData.cFileName)) && wcscmp(L"g2ext.ini", wcstolower(fFileData.cFileName)))
+		if(wcscmp(L"gothic.ini", fFileData.cFileName) && wcscmp(L"g2ext.ini", fFileData.cFileName))
 		{
 			PMOD pMod = new MOD();
 			
@@ -48,28 +49,28 @@ void CStarter::SearchAndParseMods(void)
 				continue;
 			};
 
-			wcscpy_s(pMod->wcIni, 256, fFileData.cFileName);
-			wcscpy_s(pMod->wcInfoTitle, 128, pIni->GetValue(L"INFO", L"Title", L"???"));
-			wcscpy_s(pMod->wcInfoVersion, 128, pIni->GetValue(L"INFO", L"Version", L""));
-			wcscpy_s(pMod->wcInfoAuthors, 128, pIni->GetValue(L"INFO", L"Authors", L""));
-			wcscpy_s(pMod->wcInfoWebpage, 128, pIni->GetValue(L"INFO", L"Webpage", L""));
-			wcscpy_s(pMod->wcInfoDescription, 512, pIni->GetValue(L"INFO", L"Description", L""));
-			wcscpy_s(pMod->wcInfoIcon, 128, pIni->GetValue(L"INFO", L"Icon", L""));
-			wcscpy_s(pMod->wcFilesVDF, 128, pIni->GetValue(L"FILES", L"VDF", L""));
-			wcscpy_s(pMod->wcSettingsPlayer, 128, pIni->GetValue(L"SETTINGS", L"Player", L"PC_Hero"));
-			wcscpy_s(pMod->wcSettingsZEN, 128, pIni->GetValue(L"SETTINGS", L"ZEN", L"NewWorld/NewWorld.zen"));
-			wcscpy_s(pMod->wcG2ExtDLL, 128, pIni->GetValue(L"G2EXT", L"DLL", L""));
-			wcscpy_s(pMod->wcG2ExtPLUGINS, 256, pIni->GetValue(L"G2EXT", L"PLUGINS", L""));
+			pMod->wcIni				= fFileData.cFileName;
+			pMod->wcInfoTitle		= pIni->GetValue(L"INFO", L"Title", L"???");
+			pMod->wcInfoVersion		= pIni->GetValue(L"INFO", L"Version", L"");
+			pMod->wcInfoAuthors		= pIni->GetValue(L"INFO", L"Authors", L"");
+			pMod->wcInfoWebpage		= pIni->GetValue(L"INFO", L"Webpage", L"");
+			pMod->wcInfoDescription	= pIni->GetValue(L"INFO", L"Description", L"");
+			pMod->wcInfoIcon		= pIni->GetValue(L"INFO", L"Icon", L"");
+			pMod->wcFilesVDF		= pIni->GetValue(L"FILES", L"VDF", L"");
+			pMod->wcSettingsPlayer	= pIni->GetValue(L"SETTINGS", L"Player", L"PC_Hero");
+			pMod->wcSettingsZEN		= pIni->GetValue(L"SETTINGS", L"ZEN", L"NewWorld/NewWorld.zen");
+			pMod->wcG2ExtDLL		= pIni->GetValue(L"G2EXT", L"DLL", L"");
+			pMod->wcG2ExtPLUGINS	= pIni->GetValue(L"G2EXT", L"PLUGINS", L"");
 
 			this->m_vMods.push_back(pMod);
 
-			this->InsertItemIntoListView(pMod->wcInfoTitle, pMod->wcInfoVersion, pMod->wcInfoAuthors);
+			this->InsertItemIntoListView(pMod->wcInfoTitle.c_str(), pMod->wcInfoVersion.c_str(), pMod->wcInfoAuthors.c_str());
 
 			pIni->Reset();
-
-			i++;
 		};
 	};
+
+	FindClose(hFind);
 
 	if(!this->m_vMods.empty())
 	{
@@ -80,5 +81,5 @@ void CStarter::SearchAndParseMods(void)
 		this->m_pSelectedMod = NULL;
 	};
 
-	G2EXT_DELETE(pIni);
+	delete pIni;
 };
