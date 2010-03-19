@@ -307,7 +307,7 @@ G2EXT_BEGIN_INTERFACE_DECLARATION(ICoreIngame)
 	*
 	*           void foo()
 	*           {
-	*               g2ext_core_i->Hook_CreateHook("test", &samplefunc, &cbfunc, false, 3);
+	*               g2ext_core_i->CreateHook("test", &samplefunc, &cbfunc, false, 3);
 	*           };
 	*   @endcode
 	*
@@ -330,6 +330,50 @@ G2EXT_BEGIN_INTERFACE_DECLARATION(ICoreIngame)
 	*               g2ext_core_i->Hook_CreateHook("test", &samplefunc, &cbfunc, true, 3);
 	*           };
 	*   @endcode
+	**/
+	virtual bool CreateHook(LPCWSTR lpwName, void* pDestination, void* pCallBack, bool bWantRegisterAccess = false, UINT uParamCount = 0) = NULL;
+	
+	/**
+	*   @brief  Places a conditional function hook.
+	*
+	*   @remarks
+	*           The callback function is called only, if the following condition is fulfilled:
+	*           - @a Caller == @a ConditionVar
+	*
+	*   @attention
+	*           Look at @ref INTOPS "this".
+	*
+	*   @param  Destination The function to be hooked.
+	*   @param  CallBack The callback function.
+	*   @param  ConditionVar The calling condition value.
+	*   @param  WantRegisterAccess Gives access to the saved registers over a sRegs-struct.
+	*   @param  ParamCount The target function's parameter count.
+	*   @return a operation handle.
+	*
+	*           @b Sample:
+	*   @code
+	*           int sampleclass::samplefunc(char* text, int& a, int b)
+	*           {
+	*               //does something...
+	*           };
+	*
+	*           void sampleclass::caller()
+	*           {
+	*               int a = 1;
+	*               this->samplefunc("test", a, 0);
+	*           };
+	*
+	*           static __stdcall void foo::cbfunc(char** text, int** a, int& b)
+	*           {
+	*           };
+	*
+	*           void foo()
+	*           {
+	*               ConditionalHook_C(&samplefunc, &cbfunc, &caller, false, 3);
+	*           };
+	*   @endcode
+	*
+	*   @sa CreateHook, ConditionalHook_C_N
 	**/
 	virtual bool CreateConditionalHook_C(LPCWSTR lpwName, void* pDestination, void* pCallBack, void* pConditionVar, bool bRegisterAccess, UINT uParamCount) = NULL;
 
