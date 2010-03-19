@@ -264,10 +264,10 @@ void CStarter::GetSelectedMod()
 		return;
 	};
 
-	SetWindowText(pStarter->m_mControls[IDT_TITLE],	pStarter->m_pSelectedMod->wcInfoTitle);
-	SetWindowText(pStarter->m_mControls[IDT_WEB], pStarter->m_pSelectedMod->wcInfoWebpage);
-	SetWindowText(pStarter->m_mControls[IDT_TEAM], pStarter->m_pSelectedMod->wcInfoAuthors);
-	SetWindowText(pStarter->m_mControls[IDT_VERSION], pStarter->m_pSelectedMod->wcInfoVersion);
+	SetWindowText(pStarter->m_mControls[IDT_TITLE],	pStarter->m_pSelectedMod->wcInfoTitle.c_str());
+	SetWindowText(pStarter->m_mControls[IDT_WEB], pStarter->m_pSelectedMod->wcInfoWebpage.c_str());
+	SetWindowText(pStarter->m_mControls[IDT_TEAM], pStarter->m_pSelectedMod->wcInfoAuthors.c_str());
+	SetWindowText(pStarter->m_mControls[IDT_VERSION], pStarter->m_pSelectedMod->wcInfoVersion.c_str());
 };
 
 LPWSTR CStarter::MakeCMD(LPCWSTR lpwExecuteable, bool bAppendExecuteable)
@@ -412,11 +412,12 @@ DWORD __stdcall CStarter::GothicThreadProc(void* dwParam)
 
 	PMODINFO pModInfo = new MODINFO();
 
-	pModInfo->lpwDMP	= subwcs(pStarter->m_pSelectedMod->wcFilesVDF, 0, wcslen(pStarter->m_pSelectedMod->wcFilesVDF));
-	pModInfo->lpwVDF	= pStarter->m_pSelectedMod->wcFilesVDF;
-	pModInfo->lpwDLL	= pStarter->m_pSelectedMod->wcG2ExtDLL;
-	pModInfo->lpwPlugins= pStarter->m_pSelectedMod->wcG2ExtPLUGINS;
-	pModInfo->lpwModIni = pStarter->m_pSelectedMod->wcIni;
+	//FIXME: cwcs(subwcs(...), ...) combo is a memoryleak
+	pModInfo->lpwDMP	= cwcs(subwcs(pStarter->m_pSelectedMod->wcFilesVDF.c_str(), wcslen(pStarter->m_pSelectedMod->wcFilesVDF.c_str())-4), L".mod");
+	pModInfo->lpwVDF	= pStarter->m_pSelectedMod->wcFilesVDF.c_str();
+	pModInfo->lpwDLL	= pStarter->m_pSelectedMod->wcG2ExtDLL.c_str();
+	pModInfo->lpwPlugins= pStarter->m_pSelectedMod->wcG2ExtPLUGINS.c_str();
+	pModInfo->lpwModIni = pStarter->m_pSelectedMod->wcIni.c_str();
 	pModInfo->lpwCMD	= pStarter->MakeCMD(L"Gothic2.exe", true);
 
 	ShowWindow(pStarter->m_hWnd, SW_SHOWMINIMIZED);
@@ -428,6 +429,8 @@ DWORD __stdcall CStarter::GothicThreadProc(void* dwParam)
 	FreeConsole(); // fix: hide G2Ext debug console
 
 	FreeLibrary(hDll);
+
+	delete [] pModInfo->lpwDMP;
 
 	G2EXT_DELETE(pModInfo);
 

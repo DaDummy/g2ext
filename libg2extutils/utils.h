@@ -55,7 +55,9 @@ LPSTR wcstostr(LPCWSTR wcs);
 wchar_t* cwctowc(LPCWSTR cwc);
 char* cctoc(LPCSTR cc);
 
+char* substr(const char* str, int len);
 char* substr(const char* str, size_t begin, size_t len);
+wchar_t* subwcs(const wchar_t* str, int len);
 wchar_t* subwcs(const wchar_t* str, size_t begin, size_t len);
 
 wchar_t* wcstoupper(wchar_t* str);

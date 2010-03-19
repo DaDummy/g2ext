@@ -26,9 +26,48 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define __G2EXT_STARTER_H__
 
 #include "api/core.h"
+
 #include "singleton.h"
+
+#include <wchar.h>
+
 #include <vector>
 #include <map>
+#include <string>
+
+using namespace std;
+
+#ifndef G2EXT_MOD_DEFINED
+#define G2EXT_MOD_DEFINED
+
+/** internal use only */
+typedef struct _MOD 
+{
+	size_t		szSize;
+
+	wstring		wcIni;
+	wstring		wcInfoTitle;
+	wstring		wcInfoVersion;
+	wstring		wcInfoAuthors;
+	wstring		wcInfoWebpage;
+	wstring		wcInfoDescription;
+	wstring		wcInfoIcon;
+
+	wstring		wcFilesVDF;
+
+	wstring		wcSettingsPlayer;
+	wstring		wcSettingsZEN;
+
+	wstring		wcG2ExtDLL;
+	wstring		wcG2ExtPLUGINS;
+
+	_MOD()
+	{
+		this->szSize = sizeof(_MOD);
+	};
+} MOD, *PMOD;
+
+#endif  //G2EXT_MOD_DEFINED
 
 class CStarter : public TSingleton<CStarter>
 {

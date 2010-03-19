@@ -203,43 +203,6 @@ typedef struct _MODINFO
 
 #endif  //G2EXT_MODINFO_DEFINED
 
-#ifndef G2EXT_MOD_DEFINED
-#define G2EXT_MOD_DEFINED
-
-/** internal use only */
-typedef struct _MOD 
-{
-	size_t		szSize;
-	wchar_t		wcIni[256];
-	wchar_t		wcInfoTitle[128];
-	wchar_t		wcInfoVersion[128];
-	wchar_t		wcInfoAuthors[128];
-	wchar_t		wcInfoWebpage[128];
-	wchar_t		wcInfoDescription[512];
-	wchar_t		wcInfoIcon[128];
-
-	wchar_t		wcFilesVDF[128];
-
-	wchar_t		wcSettingsPlayer[128];
-	wchar_t		wcSettingsZEN[128];
-
-	wchar_t		wcG2ExtDLL[128];
-	wchar_t		wcG2ExtPLUGINS[256];
-
-	_MOD()
-	{
-		ZeroMemory(this, sizeof(_MOD));
-		this->szSize = sizeof(_MOD);
-	};
-
-	~_MOD()
-	{
-		ZeroMemory(this, sizeof(_MOD));
-	};
-} MOD, *PMOD;
-
-#endif  //G2EXT_MOD_DEFINED
-
 //////////////////////////////////////////////////////////////////////////
 
 typedef HRESULT (__stdcall *G2EXT_SYSTEM_INIT_FUNC)			(PMODINFO);
