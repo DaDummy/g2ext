@@ -41,25 +41,11 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 // -- call macro from GothicX (thx, Zerxes!)
 
-#ifdef _SPACER
-#define _XCALL(uAddr, uSpacerAddr)		\
-	__asm { mov esp, ebp			}	\
-	__asm { pop ebp					}	\
-	__asm { mov eax, uSpacerAddr	}	\
-	__asm { jmp eax					}
-#else
-#define _XCALL(uAddr, uSpacerAddr)	\
-	__asm { mov esp, ebp	}		\
-	__asm { pop ebp			}		\
-	__asm { mov eax, uAddr	}		\
+#define XCALL(uAddr)			\
+	__asm { mov esp, ebp	}	\
+	__asm { pop ebp			}	\
+	__asm { mov eax, uAddr	}	\
 	__asm { jmp eax			}
-#endif
-
-#ifdef _SPACER
-#define XCALL(uAddr) _XCALL(0x00000000, uAddr)
-#else
-#define XCALL(uAddr) _XCALL(uAddr, 0x00000000)
-#endif
 
 #undef __G2EXT_API_HEADER
 
