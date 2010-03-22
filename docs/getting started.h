@@ -63,7 +63,7 @@
  * 
  * <b>exports.def</b>:
  * @code
- * LIBRARY	"your_mod_dll_file_name.dll"
+ * LIBRARY	"your_mod_dll_file_name_without_extension"
  * EXPORTS
  * 	G2Ext_ModVersion
  * 	G2Ext_ModPrepare
