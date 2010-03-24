@@ -68,9 +68,6 @@ char* strtolower(char* str);
 
 //////////////////////////////////////////////////////////////////////////
 
-#define G2EXT_DELETE( obj ) if (obj != NULL){delete obj;obj = NULL;}
-#define G2EXT_DELETE_VIEW( obj ) if (obj != NULL){obj->ClrPrintwin(); delete obj;obj = NULL;}
-
 #ifdef _DEBUG
 #define G2EXT_DEBUG( action ) action
 #define G2EXT_DEBUG_ELSE( action ) else { action }

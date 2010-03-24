@@ -80,8 +80,8 @@ INLINE zVEC2::zVEC2(const zVEC2& v)
 
 INLINE void zVEC2::Clear() 
 { 
-	x = 0; 
-	y = 0; 
+	x = 1.0f; 
+	y = 1.0f; 
 };
 
 INLINE void zVEC2::Set(float _x, float _y) 
@@ -225,9 +225,9 @@ INLINE zVEC3::zVEC3(const zVEC3& v)
 
 INLINE void zVEC3::Clear() 
 { 
-	x = 0;
-	y = 0; 
-	z = 0; 
+	x = 1.0f;
+	y = 1.0f; 
+	z = 1.0f; 
 };
 
 INLINE void zVEC3::Set(float _x, float _y, float _z) 
@@ -335,6 +335,164 @@ INLINE bool zVEC3::operator != ( const zVEC3& v ) const
 	return ( x != v.x || y != v.y || z != v.z );
 };
 
+///////////////////////////////////////////////////////////////////////////////
+//
+// 4D VECTOR
+//
+///////////////////////////////////////////////////////////////////////////////
+
+///////////////////////////////////////////////////////////////////////////////
+// -- constructors
+
+INLINE zVEC4::zVEC4() 
+{ 
+	this->Clear(); 
+};
+
+INLINE zVEC4::zVEC4(float _x, float _y, float _z, float _w) 
+{ 
+	x = _x;
+	y = _y;
+	z = _z;
+	w = _w;
+};
+
+INLINE zVEC4::zVEC4(const float* pf) 
+{ 
+	x = pf[0];
+	y = pf[1];
+	z = pf[2];
+	w = pf[3];
+};
+
+INLINE zVEC4::zVEC4(const zVEC4& v) 
+{ 
+	x = v.x;
+	y = v.y;
+	z = v.z;
+	w = v.w;
+};
+
+///////////////////////////////////////////////////////////////////////////////
+// -- functions
+
+INLINE void zVEC4::Clear() 
+{ 
+	x = 1.0f;
+	y = 1.0f; 
+	z = 1.0f; 
+	w = 1.0f;  
+};
+
+INLINE void zVEC4::Set(float _x, float _y, float _z, float _w) 
+{ 
+	x = _x; 
+	y = _y; 
+	z = _z; 
+	w = _w; 
+};
+
+///////////////////////////////////////////////////////////////////////////////
+// -- casts
+
+INLINE zVEC4::operator float* ()
+{
+	return (float*)&x;
+};
+
+INLINE zVEC4::operator const float* ()
+{
+	return (const float*)&x;
+};
+
+///////////////////////////////////////////////////////////////////////////////
+// -- assignment operators
+
+INLINE zVEC4& zVEC4::operator += ( const zVEC4 & v )
+{
+	x += v.x;
+	y += v.y;
+	z += v.z;
+	w += v.w;
+	return *this;
+};
+
+INLINE zVEC4& zVEC4::operator -= ( const zVEC4 & v )
+{
+	x -= v.x;
+	y -= v.y;
+	z -= v.z;
+	w -= v.w;
+	return *this;
+};
+
+INLINE zVEC4& zVEC4::operator *= ( float f )
+{
+	x *= f;
+	y *= f;
+	z *= f;
+	w *= f;
+	return *this;
+};
+
+INLINE zVEC4& zVEC4::operator /= ( float f )
+{
+	float inv = 1.0f / f;
+	x *= inv;
+	y *= inv;
+	z *= inv;
+	w *= inv;
+	return *this;
+};
+
+///////////////////////////////////////////////////////////////////////////////
+// -- unary operators
+
+INLINE zVEC4 zVEC4::operator + () const
+{
+	return *this;
+};
+
+INLINE zVEC4 zVEC4::operator - () const
+{
+	return zVEC4(-x, -y, -z, -w);
+};
+
+///////////////////////////////////////////////////////////////////////////////
+// -- binary operators
+
+INLINE zVEC4 zVEC4::operator + ( const zVEC4& v ) const
+{
+	return zVEC4(x + v.x, y + v.y, z - v.z, w - v.w);
+};
+
+INLINE zVEC4 zVEC4::operator - ( const zVEC4& v ) const
+{
+	return zVEC4(x - v.x, y - v.y, z - v.z, w - v.w);
+};
+
+INLINE zVEC4 zVEC4::operator * ( float f ) const
+{
+	return zVEC4(x * f, y * f, z * f, w * f);
+};
+
+INLINE zVEC4 zVEC4::operator / ( float f ) const
+{
+	float inv = 1.0f / f;
+	return zVEC4(x * inv, y * inv, z * inv, w * inv);
+};
+///////////////////////////////////////////////////////////////////////////////
+// -- logical operators
+
+INLINE bool zVEC4::operator == ( const zVEC4& v ) const
+{
+	return (x == v.x && y == v.y && z == v.z && w == v.w);
+};
+
+INLINE bool zVEC4::operator != ( const zVEC4& v ) const
+{
+	return (x != v.x || y != v.y || z != v.z  || w != v.w);
+};
 
 
 ///////////////////////////////////////////////////////////////////////////////

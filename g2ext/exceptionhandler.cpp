@@ -39,6 +39,7 @@ CExceptionHandler::CExceptionHandler()
 
 void CExceptionHandler::Exception(INT_PTR param)
 {
+	// If you see this message, Murphy's law just loved you :]
 	G2EXT_LOG_WARNING(L"I never had a slice of bread,")
 	G2EXT_LOG_WARNING(L"Particularly large and wide,")
 	G2EXT_LOG_WARNING(L"That did not fall upon the floor,")

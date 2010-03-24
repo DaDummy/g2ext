@@ -30,8 +30,8 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /////////////////////////////////////////////////////////////////////////////*/
 
-#ifndef __ZCPAR_SYMBOL_H_INCLUDED__
-#define __ZCPAR_SYMBOL_H_INCLUDED__
+#ifndef __API_G2_ZCSESSION_H__
+#define __API_G2_ZCSESSION_H__
 
 #ifndef __G2EXT_API_HEADER
 #define __G2EXT_API_HEADER
@@ -39,55 +39,26 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 #include "api/g2/ztypes.h"
 #include "api/g2/macros.h"
+#include "api/g2/zcinputcallback.h"
+
+class zCCSManager;
+class zCWorld;
+class zCCamera;
+class zCAICamera;
+class zCVob;
+class zCView;
 
 /** Insert description. */
-class zCPar_Symbol
+class zCSession : public zCInputCallback
 {
-public:
-	//.text:007A2F30 ; public: int __thiscall zCPar_Symbol::GetOffset(void)
-	/** Insert description. 
-	* @usable Ingame only
-	*/
-	void* GetOffset()
-	{
-		XCALL(0x007A2F30);
-	};
-
-	//.text:007A1DC0 ; public: void * __thiscall zCPar_Symbol::GetInstanceAdr(void)
-	/** Insert description. 
-	* @usable Ingame only
-	*/
-	void* GetInstanceAdr()
-	{
-		XCALL(0x007A1DC0);
-	};
-
-public:
-	zSTRING			name;
-	zCPar_Symbol*	next;
-
-	union
-	{
-		void*		data_ptr;
-		int*		data_pint;
-		float*		data_pfloat;
-		zSTRING*	data_pstring;
-		int			data_int;
-		float		data_float;
-	} content;
-
-	int offset;
-
-	int bitfield; 
-	int filenr; 
-	int line;
-	int line_anz;
-	int pos_beg;
-	int pos_anz;
-
-	zCPar_Symbol* parent;
+    zCCSManager* 	csMan;
+    zCWorld*   		world;
+    zCCamera*  		camera;   
+    zCAICamera* 	aiCam;
+    zCVob* 			camVob;   
+    zCView*  		viewport;
 };
 
 #undef __G2EXT_API_HEADER
 
-#endif //__ZCPAR_SYMBOL_H_INCLUDED__
+#endif // __API_G2_ZCSESSION_H__
