@@ -7,6 +7,7 @@
  * @section credits_helpers Contributors
  * @li Daniel Diepold (Zerxes)
  * @li Nico Bendlin (NicoDE)
+ * @li Sektenspinner
  *
  * @section credits_testers Testers
  * @li eliasdfg
@@ -22,7 +23,6 @@
  * @li Maximilian Augustin (hochspannung)
  * @li Piotr Przerwa (evampire)
  * @li Rico Nemetz (r3AdY)
- * @li Sektenspinner
  * @li William Welna (~SanguineRose~)
  * @li Yves Br&uuml;stle (Yagger)
  *

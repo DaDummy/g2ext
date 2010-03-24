@@ -414,6 +414,10 @@
 						>
 					</File>
 					<File
+						RelativePath=".\api\g2\ocanictrl_human.h"
+						>
+					</File>
+					<File
 						RelativePath="..\api\g2\ocgame.h"
 						>
 					</File>
@@ -454,6 +458,14 @@
 						>
 					</File>
 					<File
+						RelativePath=".\api\g2\zcaiplayer.h"
+						>
+					</File>
+					<File
+						RelativePath=".\api\g2\zcbsptree.h"
+						>
+					</File>
+					<File
 						RelativePath="..\api\g2\zccamera.h"
 						>
 					</File>
@@ -491,6 +503,10 @@
 					</File>
 					<File
 						RelativePath="..\api\g2\zcrenderer.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\g2\zcsession.h"
 						>
 					</File>
 					<File

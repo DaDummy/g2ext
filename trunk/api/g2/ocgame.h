@@ -39,12 +39,23 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 #include "api/g2/ztypes.h"
 #include "api/g2/macros.h"
-#include "api/g2/zcinputcallback.h"
+#include "api/g2/zcsession.h"
 
 class zCView;
 class zCWorld;
 class oCWorldTimer;
 class zCViewProgressBar;
+class oCSavegameManager;
+class oCViewStatusBar;
+class oCGameInfo;
+class zCVobLight;    
+class oCGuilds;                        
+class oCInfoManager;               
+class oCNewsManager;                 
+class oCSVMManager;           
+class oCTradeManager;               
+class oCPortalRoomManager;
+class oCSpawnManager;  
 
 enum oHEROSTATUS
 {
@@ -52,12 +63,115 @@ enum oHEROSTATUS
 	HERO_THREATENED,
 	HERO_FIGHTING
 };
+	
+enum oTGameDialogView
+{
+	GAME_VIEW_SCREEN,
+	GAME_VIEW_CONVERSATION,       
+	GAME_VIEW_AMBIENT,       
+	GAME_VIEW_CINEMA,       
+	GAME_VIEW_CHOICE,
+	GAME_VIEW_NOISE,
+	GAME_VIEW_MAX
+};
+
+	
+typedef struct 
+{
+	zSTRING     objName;
+	int         stateNum;
+	int         hour1,min1;
+	int         type;
+} TObjectRoutine;
 
 /** Insert description. */
-class oCGame : public zCInputCallback
+class oCGame : public zCSession
 {
 private:
-	char m_data[0x18C];
+	float 				cliprange;
+    float 				fogrange;
+    int 				inScriptStartup;
+    int 				inLoadSaveGame;
+    int 				inLevelChange;
+	
+	zCView* 			array_view[GAME_VIEW_MAX];
+    int 				array_view_visible[GAME_VIEW_MAX];
+    int 				array_view_enabled[GAME_VIEW_MAX];
+    
+    oCSavegameManager* 	savegameManager;      
+    zCView*				game_text;                           
+    zCView*				load_screen;                           
+    zCView*				save_screen;                       
+    zCView*				pause_screen;                        
+    oCViewStatusBar* 	hpBar;
+    oCViewStatusBar* 	swimBar;  
+    oCViewStatusBar* 	manaBar;
+    oCViewStatusBar* 	focusBar;
+    int 				showPlayerStatus;
+
+    int 				game_drawall;
+    int 				game_frameinfo;
+    int 				game_showaniinfo;
+    int 				game_showwaynet;
+    int 				game_testmode;
+    int 				game_editwaynet;
+    int 				game_showtime;
+    int 				game_showranges;
+    int 				drawWayBoxes;
+    int 				scriptStartup;
+    int 				showFreePoints; 
+    oCNpc*  			showRoutineNpc;   
+
+    int 				loadNextLevel;                             
+    zSTRING 			loadNextLevelName;                            
+    zSTRING 			loadNextLevelStart;                         
+    
+    zVEC3 				startpos;                   
+    oCGameInfo* 		gameInfo;
+    zCVobLight*  		pl_light;                
+    float 				pl_lightval;                          
+
+    oCWorldTimer*   	wldTimer;           
+    float 				timeStep;
+    int 				singleStep;                             
+
+    oCGuilds* 			guilds;                        
+    oCInfoManager* 		infoman;               
+    oCNewsManager*		newsman;                 
+    oCSVMManager*  		svmman;           
+    oCTradeManager*  	trademan;               
+    oCPortalRoomManager*portalman;
+    oCSpawnManager* 	spawnman;         
+    
+    float 				music_delay;                           
+    oCNpc* 				watchnpc;                               
+
+    int 				m_bWorldEntered;                             
+    float 				m_fEnterWorldTimer;                           
+    
+    int 				initial_hour;                                    
+    int 				initial_minute;                                 
+
+    //zCArray<zCVob*>           debugInstances;
+        zCVob** debugInstances_array;   //zCVob**
+        int debugInstances_numAlloc;    //int
+        int debugInstances_numInArray;  //int
+
+    int 				debugChannels;      
+    int 				debugAllInstances;
+
+	int 				oldRoutineDay;
+    
+    //zCListSort<TObjectRoutine>    objRoutineList;
+		int objRoutineList_compareFunc;           //int (*Compare)(TObjectRoutine *ele1,TObjectRoutine *ele2);
+		int objRoutineList_data;                  //TObjectRoutine*
+		int objRoutineList_next;                  //zCListSort<TObjectRoutine>*
+        
+    int currentObjectRoutine;                   //zCListSort<TObjectRoutine>*
+    
+    zCViewProgressBar* 	progressBar;
+
+	zCArray<zCVisual*>  visualList;
 public:
 	//.text:006C2BD0 ; public: virtual void __thiscall oCGame::CloseLoadscreen(void)
 	/** This method closes the loadscreen.

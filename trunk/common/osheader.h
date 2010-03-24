@@ -48,6 +48,8 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 #define _DEFTOSTR(x) #x
 #define DEFTOSTR(x) _DEFTOSTR(x)
 
+#define G2EXT_DELETE( obj ) if (obj != NULL){delete obj;obj = NULL;}
+
 #include <boost/integer.hpp>  // for boost::uint_t
 
 /** fast pointer
