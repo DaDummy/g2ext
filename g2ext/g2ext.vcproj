@@ -414,7 +414,7 @@
 						>
 					</File>
 					<File
-						RelativePath=".\api\g2\ocanictrl_human.h"
+						RelativePath="..\api\g2\ocanictrl_human.h"
 						>
 					</File>
 					<File
@@ -438,6 +438,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\api\g2\ocspell.h"
+						>
+					</File>
+					<File
 						RelativePath="..\api\g2\ocviewgothicprogressbar.h"
 						>
 					</File>
@@ -458,11 +462,11 @@
 						>
 					</File>
 					<File
-						RelativePath=".\api\g2\zcaiplayer.h"
+						RelativePath="..\api\g2\zcaiplayer.h"
 						>
 					</File>
 					<File
-						RelativePath=".\api\g2\zcbsptree.h"
+						RelativePath="..\api\g2\zcbsptree.h"
 						>
 					</File>
 					<File
@@ -483,6 +487,10 @@
 					</File>
 					<File
 						RelativePath="..\api\g2\zcmesh.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\g2\zcmodel.h"
 						>
 					</File>
 					<File
