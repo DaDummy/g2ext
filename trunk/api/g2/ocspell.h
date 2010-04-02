@@ -20,10 +20,16 @@
 #ifndef __API_G2_OCSPELL_H__
 #define __API_G2_OCSPELL_H__
 
+#ifndef __G2EXT_API_HEADER
+#define __G2EXT_API_HEADER
+#endif  //__G2EXT_API_HEADER
+
+#ifdef _G2EXT_COMPILE_SPACER
+#error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
+#endif
+
 #include "api/g2/ztypes.h"
 
-namespace g2
-{
 /** Insert description. */
 class oCSpell
 {
@@ -34,13 +40,21 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void Spell_Cast()									{ XCALL(0x004767A0) };
+	void Spell_Cast(void)									
+	{ 
+		XCALL(0x004767A0) 
+	};
 
 	//
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void StartCastEffect(zCVob* pA, const zVEC3& pB)	{ XCALL(0x00476E60) };
+	void StartCastEffect(zCVob* pA, const zVEC3& pB)	
+	{ 
+		XCALL(0x00476E60) 
+	};
 };
+
+#endif //__G2EXT_API_HEADER 
 
 #endif //__API_G2_OCSPELL_H__

@@ -26,8 +26,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "libinject.h"
 #include "console.h"
 
+#ifdef _G2EXT_COMPILE_SPACER
+#include "api/spacer/zcparser.h"
+#include "api/spacer/zcview.h"
+#else //_G2EXT_COMPILE_SPACER
 #include "api/g2/zcparser.h"
 #include "api/g2/zcview.h"
+#endif //_G2EXT_COMPILE_SPACER
 
 //////////////////////////////////////////////////////////////////////////
 

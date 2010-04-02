@@ -37,14 +37,14 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 #define __G2EXT_API_HEADER
 #endif  //__G2EXT_API_HEADER
 
-#ifdef _G2EXT_COMPILE_SPACER
-#error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
+#ifndef _G2EXT_COMPILE_SPACER
+#error Cannot use spacer headers on non spacer dll (_G2EXT_COMPILE_SPACER not defined)
 #endif
 
-#include "api/spacer/ztypes.h"
-#include "api/spacer/macros.h"
+#include "api/g2/ztypes.h"
+#include "api/g2/macros.h"
 
-#include "api/spacer/zcpar_symbol.h"
+#include "api/g2/zcpar_symbol.h"
 
 #pragma warning(disable:4731) // -- suppress C4731:"frame pointer register 'ebp' modified by inline assembly code"
 
@@ -152,153 +152,145 @@ private:
 	zSTRING add_filename;                            //zSTRING                          
 	int add_created;                                //zBOOL
 public:
-	//.text:0078DED0 ; public: __thiscall zCParser::zCParser(int)
+	//.text:007FA7F0 ; public: __thiscall zCParser::zCParser(int)
 	/** Constructor.
 	* @param  Unknown
 	* @usable Ingame only
 	*/
 	zCParser(int pA = 100)
 	{
-		XCALL(0x0078DED0);
+		XCALL(0x007FA7F0); // spacer
 	};
 
-	//.text:007900E0 ; public: void __thiscall zCParser::CreatePCode(void)
+	//.text:007FCA00 ; public: void __thiscall zCParser::CreatePCode(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void CreatePCode(void)
 	{
-		XCALL(0x007900E0);
+		XCALL(0x007FCA00); // spacer
 	};
 
-	//.text:007929F0 ; int __cdecl zCParser__CallFunc(int, ...)
+	//.text:007FF310 ; int __cdecl zCParser__CallFunc(int, ...)
 	/** Insert description. 
 	* @usable Ingame only
 	* @return	A *pointer* to the returnvalue (int/float)
 	*/
 	void* CallFunc(int pA, ...)
 	{
-		XCALL(0x007929F0);
+		XCALL(0x007FF310); // spacer
 	};
 
-	//.text:007929D0 ; public: void * __thiscall zCParser::CallFunc(class zSTRING const &)
+	//.text:007FF2F0 ; public: void * __thiscall zCParser::CallFunc(class zSTRING const &)
 	/** Insert description. 
 	* @usable Ingame only
 	* @return	A *pointer* to the returnvalue (int/float)
 	*/
 	void* CallFunc(const zSTRING & pA)
 	{
-		XCALL(0x007929D0);
+		XCALL(0x007FF2F0); // spacer
 	};
 
-	//.text:00794470 ; public: int __thiscall zCParser::CheckClassSize(int, int)
+	//.text:00800D90 ; public: int __thiscall zCParser::CheckClassSize(int, int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int CheckClassSize(int pA, int pB)
 	{
-		XCALL(0x00794470);
+		XCALL(0x00800D90); // spacer
 	};
 
-	//.text:00794450 ; public: int __thiscall zCParser::CheckClassSize(class zSTRING &, int)
+	//.text:00800D70 ; public: int __thiscall zCParser::CheckClassSize(class zSTRING &, int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int CheckClassSize(zSTRING & pA, int pB)
 	{
-		XCALL(0x00794450);
+		XCALL(0x00800D70); // spacer
 	};
 
-	//.text:00792FA0 ; public: int __thiscall zCParser::CreateInstance(int, void *)
+	//.text:007FF8C0 ; public: int __thiscall zCParser::CreateInstance(int, void *)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int CreateInstance(int pA, void * pB)
 	{
-		XCALL(0x00792FA0);
+		XCALL(0x007FF8C0); // spacer
 	};
 
-	//.text:00792F20 ; public: int __thiscall zCParser::CreateInstance(class zSTRING &, void *)
+	//.text:007FF840 ; public: int __thiscall zCParser::CreateInstance(class zSTRING &, void *)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int CreateInstance(zSTRING & pA, void * pB)
 	{
-		XCALL(0x00792F20);
+		XCALL(0x007FF840); // spacer
 	};
 
-	//.text:007A0190 ; public: void __cdecl zCParser::DefineExternal(class zSTRING const &, int (__cdecl *)(void), int, int, ...)
+	//.text:0080CAB0 ; public: void __cdecl zCParser::DefineExternal(class zSTRING const &, int (__cdecl *)(void), int, int, ...)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int DefineExternal(const zSTRING & a_SymbolName, zBOOL(__cdecl*a_ExternalProc)(), int a_ReturnType, int a_ParameterType, ...)
 	{
-		XCALL(0x007A0190);			
+		XCALL(0x0080CAB0); // spacer			
 	};
 
-	//.text:007A0550 ; public: void __thiscall zCParser::DefineExternalVar(class zSTRING const &, void *, int, int)
+	//.text:0080CE70 ; public: void __thiscall zCParser::DefineExternalVar(class zSTRING const &, void *, int, int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int DefineExternalVar(const zSTRING & a_SymbolName, void* a_ExternalVar, int a_ReturnType, int a_ParameterType)
 	{
-		XCALL(0x007A0550);
+		XCALL(0x0080CE70); // spacer
 	};
 
-	//.text:0078E730 ; public: int __thiscall zCParser::Error(void)		
+	//.text:007FB050 ; public: int __thiscall zCParser::Error(void)		
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	zBOOL Error(void)
 	{
-		XCALL(0x0078E730);
+		XCALL(0x007FB050); // spacer
 	};
 
-	//.text:00793610 ; public: int __thiscall zCParser::GetBaseClass(int)
+	//.text:007FFF30 ; public: int __thiscall zCParser::GetBaseClass(int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int GetBaseClass(int instance)
 	{
-		XCALL(0x00793610);
+		XCALL(0x007FFF30); // spacer
 	};
 
+	//.text:0080D090 ; public: void __thiscall zCParser::GetParameter(float & pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void GetParameter(float & pA)
 	{
-		XCALL(0x007A0770);
+		XCALL(0x0080D090); // spacer
 	};
 
-	//.text:007A0760 ; public: void __thiscall zCParser::GetParameter(int &)
+	//.text:0080D080 ; public: void __thiscall zCParser::GetParameter(int &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void GetParameter(int & pA)
 	{
-		XCALL(0x007A0760);
+		XCALL(0x0080D080); // spacer
 	};
 
-	//.text:007A07B0 ; public: void __thiscall zCParser::GetParameter(class zSTRING &)
+	//.text:0080D0D0 ; public: void __thiscall zCParser::GetParameter(class zSTRING &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void GetParameter(zSTRING & pA)
 	{
-		XCALL(0x007A07B0);
+		XCALL(0x0080D0D0); // spacer
 	};
 
-	//.text:00793470 ; public: int __thiscall zCParser::GetIndex(class zSTRING const &)
-	/** Insert description. 
-	* @usable Ingame only
-	*/
-	void GetParameter(const zSTRING & pA)
-	{
-		XCALL(0x00793470);
-	};
-
-	//.text:00793730 ; public: int __thiscall zCParser::GetInstance(int, int)
+	//.text:00800050 ; public: int __thiscall zCParser::GetInstance(int, int)
 	/** Gets an instance from Daedalus.
 	* @usable In an external only
 	* @param ClassId	return value of GetIndex(zSTRING& class)
@@ -307,220 +299,220 @@ public:
 	*/
 	int GetInstance(int ClassId, int Index)
 	{
-		XCALL(0x00793730);
+		XCALL(0x00800050); // spacer
 	};
 
-	//.text:007A08F0 ; public: void * __thiscall zCParser::GetInstance(void)
+	//.text:0080D210 ; public: void * __thiscall zCParser::GetInstance(void)
 	/** Gets an instance from the Daedalus stack.
-	 * @usable In an external only
-	 * @return	A pointer to the object instance.
-	 */
+	* @usable In an external only
+	* @return	A pointer to the object instance.
+	*/
 	void* GetInstance(void)
 	{
-		XCALL(0x007A08F0);
+		XCALL(0x0080D210); // spacer
 	};
 
-	//.text:007A0920 ; public: void * __thiscall zCParser::GetInstanceAndIndex(int &)
+	//.text:0080D240 ; public: void * __thiscall zCParser::GetInstanceAndIndex(int &)
 	/** Gets an instance from the Daedalus stack.
 	* @usable in an external only
 	*/
 	void* GetInstanceAndIndex(int & pA)
 	{
-		XCALL(0x007A0920);
+		XCALL(0x0080D240); // spacer
 	};
 
-	//.text:00793FD0 ; public: class zSTRING __thiscall zCParser::GetInstanceValue(int, int, void *, int)
+	//.text:008008F0 ; public: class zSTRING __thiscall zCParser::GetInstanceValue(int, int, void *, int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	zSTRING GetInstanceValue(int pA, int pB, void * pC, int pD)
 	{
-		XCALL(0x00793FD0);
+		XCALL(0x008008F0); // spacer
 	};
 
-	//.text:00793EE0 ; public: class zSTRING __thiscall zCParser::GetInstanceValue(class zSTRING &, int, void *, int)
+	//.text:00800800 ; public: class zSTRING __thiscall zCParser::GetInstanceValue(class zSTRING &, int, void *, int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	zSTRING GetInstanceValue(class zSTRING & pA, int pB, void * pC, int pD)
 	{
-		XCALL(0x00793EE0);
+		XCALL(0x00800800); // spacer
 	};
 
-	//.text:00793470 ; public: int __thiscall zCParser::GetIndex(class zSTRING const &)
+	//.text:007FFD90 ; public: int __thiscall zCParser::GetIndex(class zSTRING const &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int GetIndex(class zSTRING const & pA)
 	{
-		XCALL(0x00793470);
+		XCALL(0x007FFD90); // spacer
 	};
 
-	//.text:007938D0 ; public: class zCPar_Symbol * __thiscall zCParser::GetSymbol(class zSTRING const &)
+	//.text:008001F0 ; public: class zCPar_Symbol * __thiscall zCParser::GetSymbol(class zSTRING const &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	zCPar_Symbol* GetSymbol(const zSTRING& pA)
 	{
-		XCALL(0x007938D0);
+		XCALL(0x008001F0); // spacer
 	};
 
-	//.text:007938C0 ; public: class zCPar_Symbol * __thiscall zCParser::GetSymbol(int)
+	//.text:008001E0 ; public: class zCPar_Symbol * __thiscall zCParser::GetSymbol(int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	zCPar_Symbol* GetSymbol(int pA)
 	{
-		XCALL(0x007938C0);
+		XCALL(0x008001E0); // spacer
 	};
 
-	//.text:0078D010 ; public: static unsigned char __cdecl zCParser::GetVersion(void)
+	//.text:007F9930 ; public: static unsigned char __cdecl zCParser::GetVersion(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	static zBYTE GetVersion(void)
 	{
-		XCALL(0x0078D010);
+		XCALL(0x007F9930); // spacer
 	};
 
-	//.text:0078E900 ; public: int __thiscall zCParser::LoadDat(class zSTRING &)
+	//.text:007FB220 ; public: int __thiscall zCParser::LoadDat(class zSTRING &)
 	/** Loads a compiled *.dat file
 	* @param  File name
 	* @usable Ingame only
 	*/
 	int LoadDat(zSTRING & zsFileName)
 	{
-		XCALL(0x0078E900);
+		XCALL(0x007FB220); // spacer
 	};
 
-	//.text:00791650 ; public: int __thiscall zCParser::MergeFile(class zSTRING &)
+	//.text:007FDF70 ; public: int __thiscall zCParser::MergeFile(class zSTRING &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int MergeFile(zSTRING & zsFileName)
 	{
-		XCALL(0x00791650);
+		XCALL(0x007FDF70); // spacer
 	};
 
-	//.text:0078EBA0 ; public: int __thiscall zCParser::Parse(class zSTRING)
+	//.text:007FB4C0 ; public: int __thiscall zCParser::Parse(class zSTRING)
 	/** Parses a *.d or a *.src file
 	* @param  File name
 	* @usable Ingame only
 	*/
 	int Parse(zSTRING zsFileName)
 	{
-		XCALL(0x0078EBA0);
+		XCALL(0x007FB4C0); // spacer
 	};
 
-	//.text:0078F660 ; public: int __thiscall zCParser::ParseFile(class zSTRING &)
+	//.text:007FBF80 ; public: int __thiscall zCParser::ParseFile(class zSTRING &)
 	/** Parses a *.d file
 	* @param  File name
 	* @usable Ingame only
 	*/
 	int ParseFile(zSTRING & zsFileName)
 	{
-		XCALL(0x0078F660);
+		XCALL(0x007FBF80); // spacer
 	};
 
-	//.text:0078EE20 ; public: int __thiscall zCParser::ParseSource(class zSTRING &)
+	//.text:007FB740 ; public: int __thiscall zCParser::ParseSource(class zSTRING &)
 	/** Parses a *.src file
 	* @param  File name
 	* @usable Ingame only
 	*/
 	int ParseSource(zSTRING & zsFileName)
 	{
-		XCALL(0x0078EE20);
+		XCALL(0x007FB740); // spacer
 	};
 
-	//.text:00794C30 ; public: void __thiscall zCParser::Reparse(class zSTRING &)
+	//.text:00801550 ; public: void __thiscall zCParser::Reparse(class zSTRING &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void Reparse(zSTRING & pA)
 	{
-		XCALL(0x00794C30);
+		XCALL(0x00801550); // spacer
 	};
 
-	//.text:00793100 ; public: void __thiscall zCParser::Reset(void)
+	//.text:007FFA20 ; public: void __thiscall zCParser::Reset(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void Reset(void)
 	{
-		XCALL(0x00793100);
+		XCALL(0x007FFA20); // spacer
 	};
 
-	//.text:007969C0 ; public: int __thiscall zCParser::ResetGlobalVars(void)
+	//.text:008032E0 ; public: int __thiscall zCParser::ResetGlobalVars(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void ResetGlobalVars(void)
 	{
-		XCALL(0x007969C0);
+		XCALL(0x008032E0); // spacer
 	};
 
-	//.text:0078E740 ; public: int __thiscall zCParser::SaveDat(class zSTRING &)
+	//.text:007FB060 ; public: int __thiscall zCParser::SaveDat(class zSTRING &)
 	/** Saves a compiled *.dat file
 	* @param  File name
 	* @usable Ingame only
 	*/
 	int SaveDat(zSTRING & zsFileName)
 	{
-		XCALL(0x0078E740);
+		XCALL(0x007FB060); // spacer
 	};
 
-	//.text:0078E250 ; public: void __thiscall zCParser::SetMessageFunc(void (__cdecl *)(class zSTRING))
+	//.text:007FAB70 ; public: void __thiscall zCParser::SetMessageFunc(void (__cdecl *)(class zSTRING))
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetMessageFunc(void(__cdecl *f)(zSTRING))
 	{
-		XCALL(0x0078E250);
+		XCALL(0x007FAB70); // spacer
 	};
 
-	//.text:007A0980 ; public: void __thiscall zCParser::SetReturn(float)
+	//.text:0080D2A0 ; public: void __thiscall zCParser::SetReturn(float)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetReturn(float pA)
 	{
-		XCALL(0x007A0980);
+		XCALL(0x0080D2A0); // spacer
 	};
 
-	//.text:007A0960 ; public: void __thiscall zCParser::SetReturn(int)
+	//.text:0080D280 ; public: void __thiscall zCParser::SetReturn(int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetReturn(int pA)
 	{
-		XCALL(0x007A0960);
+		XCALL(0x0080D280); // spacer
 	};
 
-	//.text:007A09A0 ; public: void __thiscall zCParser::SetReturn(void *)
+	//.text:0080D2C0 ; public: void __thiscall zCParser::SetReturn(void *)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetReturn(void * pA)
 	{
-		XCALL(0x007A09A0);
+		XCALL(0x0080D2C0); // spacer
 	};
 
-	//.text:007A09D0 ; public: void __thiscall zCParser::SetReturn(class zSTRING &)
+	//.text:0080D2F0 ; public: void __thiscall zCParser::SetReturn(class zSTRING &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetReturn(zSTRING & pA)
 	{
-		XCALL(0x007A09A0);
+		XCALL(0x0080D2F0); // spacer
 	};
 
-	//.text:0078E260 ; public: void __thiscall zCParser::SetStopOnError(int)
+	//.text:007FAB80 ; public: void __thiscall zCParser::SetStopOnError(int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetStopOnError(zBOOL pA)
 	{
-		XCALL(0x0078E260);
+		XCALL(0x007FAB80); // spacer
 	};
 
 	/** This method returns the current zCParser instance
@@ -528,7 +520,7 @@ public:
 	*/
 	static zCParser* GetParser()
 	{
-		return (zCParser*)0x00AB40C0;
+		return (zCParser*)0x00C2A778; // spacer
 	};
 };
 

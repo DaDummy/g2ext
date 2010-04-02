@@ -30,7 +30,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "psapi.h"
 
 #include "api/stats.h"
+#ifdef _G2EXT_COMPILE_SPACER
+#include "api/spacer/macros.h"
+#else //_G2EXT_COMPILE_SPACER
 #include "api/g2/macros.h"
+#endif //_G2EXT_COMPILE_SPACER
 
 class zCView;
 
@@ -50,6 +54,7 @@ typedef struct _RENDERERSTATISTICS
 class CRendererStatistics
 {
 public:
+#ifdef _G2EXT_COMPILE_SPACER
 	//.text:00652AB0 ; public: virtual void __thiscall zCRnd_D3D::GetStatistics(struct zTRnd_Stats &)	
 	void GetStatistics(RENDERERSTATISTICS& stats)	
 	{
@@ -60,6 +65,18 @@ public:
 	{
 		return *(CRendererStatistics**)0x00982F08;
 	};
+#else //_G2EXT_COMPILE_SPACER
+	//.text:00652AB0 ; public: virtual void __thiscall zCRnd_D3D::GetStatistics(struct zTRnd_Stats &)	
+	void GetStatistics(RENDERERSTATISTICS& stats)	
+	{
+		XCALL(0x00652AB0);
+	};
+
+	static CRendererStatistics* GetInstance()
+	{
+		return *(CRendererStatistics**)0x00982F08;
+	};
+#endif //_G2EXT_COMPILE_SPACER
 };
 
 class CStatistics : public IStatistics, public TSingleton<CStatistics>

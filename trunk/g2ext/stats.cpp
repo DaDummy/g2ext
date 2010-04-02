@@ -24,7 +24,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "stats.h"
 #include <limits.h>
+#ifdef _G2EXT_COMPILE_SPACER
+#include "api/spacer/zcview.h"
+#else // _G2EXT_COMPILE_SPACER
 #include "api/g2/zcview.h"
+#endif // _G2EXT_COMPILE_SPACER
 
 CStatistics::CStatistics(void)
 {

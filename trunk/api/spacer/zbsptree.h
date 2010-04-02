@@ -30,18 +30,18 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /////////////////////////////////////////////////////////////////////////////*/
 
-#ifndef __ZCBSPTREE_H_INCLUDED__
-#define __ZCBSPTREE_H_INCLUDED__
+#ifndef __API_SPACER_ZCBSPTREE_H__
+#define __API_SPACER_ZCBSPTREE_H__
 
 #ifndef __G2EXT_API_HEADER
 #define __G2EXT_API_HEADER
 #endif  //__G2EXT_API_HEADER
 
-#ifdef _G2EXT_COMPILE_SPACER
-#error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
+#ifndef _G2EXT_COMPILE_SPACER
+#error Cannot use spacer headers on non spacer dll (_G2EXT_COMPILE_SPACER not defined)
 #endif
 
-#include "api/g2/ztypes.h"
+#include "api/spacer/ztypes.h"
 
 class zCBspNode;
 class zCBspLeaf;
@@ -109,4 +109,4 @@ class zCBspTree
 
 #undef  __G2EXT_API_HEADER
 
-#endif //__ZCBSPTREE_H_INCLUDED__
+#endif //__API_SPACER_ZCBSPTREE_H__

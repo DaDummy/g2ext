@@ -30,21 +30,21 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /////////////////////////////////////////////////////////////////////////////*/
 
-#ifndef __API_G2_ZCWORLD_H__
-#define __API_G2_ZCWORLD_H__
+#ifndef __API_SPACER_ZCWORLD_H__
+#define __API_SPACER_ZCWORLD_H__
 
 #ifndef __G2EXT_API_HEADER
 #define __G2EXT_API_HEADER
 #endif  //__G2EXT_API_HEADER
 
-#ifdef _G2EXT_COMPILE_SPACER
-#error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
+#ifndef _G2EXT_COMPILE_SPACER
+#error Cannot use spacer headers on non spacer dll (_G2EXT_COMPILE_SPACER not defined)
 #endif
 
-#include "api/g2/ztypes.h"
-#include "api/g2/macros.h"
+#include "api/spacer/ztypes.h"
+#include "api/spacer/macros.h"
 
-#include "api/g2/zcbsptree.h"
+#include "api/spacer/zcbsptree.h"
 
 class zCVob;
 class zCVertex;
@@ -116,7 +116,7 @@ private:
 	zTFrameCtr				masterFrameCtr;        
 	float					vobFarClipZ;              
 	float					vobFarClipZScalability;
-	
+
 	zCArray<zCVob*>			traceRayVobList;
 	zCArray<zCVob*>			traceRayTempIgnoreVobList;
 
@@ -165,7 +165,7 @@ private:
 	//zCVobBBox3DSorter<zCZone>::zTBoxSortHandle    zoneActiveHandle;
 	/*0x015C*/			int zoneActiveHandle_vtbl;                  //Pointer to method table
 	/*0x0160*/			int zoneActiveHandle_mySorter;              //zCBBox3DSorterBase*
-						zTBBox3D bbox3D;
+	zTBBox3D bbox3D;
 
 	/*0x017C*/			int zoneActiveHandle_indexBegin [zCWorld_DIMENSION]; //int
 	/*0x0188*/			int zoneActiveHandle_indexEnd   [zCWorld_DIMENSION]; //int
@@ -193,34 +193,34 @@ private:
 	zCListSort<oCItem>*		voblist_items;
 
 public:
-	//.text:00624810 ; public: class zCTree<class zCVob> * __thiscall zCWorld::AddVob(class zCVob *)
+	//.text:007AF6A0 ; public: class zCTree<class zCVob> * __thiscall zCWorld::AddVob(class zCVob *)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	zCTree<zCVob>* AddVob(zCVob* pA) 
 	{ 
-		XCALL(0x00624810) 
+		XCALL(0x007AF6A0) 
 	};
 
-	//.text:007800C0 ; public: virtual void __thiscall oCWorld::RemoveVob(class zCVob *)
+	//.text:007AFA00 ; public: virtual void __thiscall oCWorld::RemoveVob(class zCVob *)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void RemoveVob(zCVob* pA) 
 	{ 
-		XCALL(0x007800C0) 
+		XCALL(0x007AFA00) 
 	};
 
-	//.text:007806C0 ; public: virtual void __thiscall oCWorld::SearchVobListByName(class zSTRING const &, class zCArray<class zCVob *> &)
+	//.text:007AEF80 ; public: virtual void __thiscall oCWorld::SearchVobListByName(class zSTRING const &, class zCArray<class zCVob *> &)
 	/** Insert description.
 	* @usable Ingame only.
 	*/
 	void SearchVobListByName(const zSTRING& name, zCArray<zCVob*>& resultList)
 	{
-		XCALL(0x007806C0);
+		XCALL(0x007AEF80);
 	};
 };
 
 #undef __G2EXT_API_HEADER
 
-#endif // __API_G2_ZCWORLD_H__
+#endif // __API_SPACER_ZCWORLD_H__

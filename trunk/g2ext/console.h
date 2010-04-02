@@ -29,7 +29,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "singleton.h"
 
 #include "api/console.h"
+#ifdef _G2EXT_COMPILE_SPACER
+#include "api/spacer/zcinputcallback.h"
+#else //_G2EXT_COMPILE_SPACER
 #include "api/g2/zcinputcallback.h"
+#endif //_G2EXT_COMPILE_SPACER
 
 #include <deque>
 #include <vector>

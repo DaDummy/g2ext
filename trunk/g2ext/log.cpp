@@ -73,10 +73,13 @@ bool CLog::Open(LPCWSTR lpcFileName, bool bAllocDebugCMD, LOG_LEVEL llMinLogLeve
 		};
 		
 		if(lpcFileName == L"g2ext_ingame.log")
+		{	
 			SetWindowPos(GetConsoleWindow(), NULL, (GetSystemMetrics(SM_CXSCREEN) - width - 20), (height + 40), width, height, 0);
+		}
 		else 
+		{
 			SetWindowPos(GetConsoleWindow(), NULL, (GetSystemMetrics(SM_CXSCREEN) - width - 20), (20), width, height, 0);
-
+		};
 		// END HACK
 	};
 
@@ -149,15 +152,6 @@ void CLog::Write(LOG_LEVEL eLogLevel, const wchar_t* msg)
 				std::wcout << timebuf << msg << std::endl;
 				SetConsoleTextAttribute(this->m_hConsole, 7);
 			};
-
-			/*
-			if(this->m_lpFileName == L"g2ext_dll_ingame.log") 
-			{ 
-				wchar_t xbuf[255];
-				swprintf(xbuf, 256, L"log: %s", msg);
-				//_core_ingame_c::GetInstance()->InsertConsoleLine(wcstostr(xbuf).c_str(), zCOLOR(180, 180, 180)); 
-			};
-			*/
 		} break;
 	case LOG_NONE_NTS:
 		{
@@ -170,15 +164,6 @@ void CLog::Write(LOG_LEVEL eLogLevel, const wchar_t* msg)
 			{
 				std::wcout << L"" << msg << std::endl;
 			};
-
-			/*
-			if(this->m_lpFileName == L"g2ext_dll_ingame.log") 
-			{ 
-				wchar_t xbuf[255];
-				swprintf(xbuf, 256, L"log: %s", msg);
-				//_core_ingame_c::GetInstance()->InsertConsoleLine(wcstostr(xbuf).c_str(), zCOLOR(180, 180, 180)); 
-			};
-			*/
 		} break;
 	case LOG_DEBUG:
 		{
@@ -193,15 +178,6 @@ void CLog::Write(LOG_LEVEL eLogLevel, const wchar_t* msg)
 				std::wcout << timebuf << msg << std::endl;
 				SetConsoleTextAttribute(this->m_hConsole, 7);
 			};
-
-			/*
-			if(this->m_lpFileName == L"g2ext_dll_ingame.log") 
-			{ 
-				wchar_t xbuf[255];
-				swprintf(xbuf, 256, L"log: %s", msg);
-				//_core_ingame_c::GetInstance()->InsertConsoleLine(wcstostr(xbuf).c_str(), zCOLOR(127, 0, 0)); 
-			};
-			*/
 		} break;
 	case LOG_INFO:
 		{
@@ -216,15 +192,6 @@ void CLog::Write(LOG_LEVEL eLogLevel, const wchar_t* msg)
 				std::wcout << timebuf << msg << std::endl;
 				SetConsoleTextAttribute(this->m_hConsole, 7);
 			};
-
-			/*
-			if(this->m_lpFileName == L"g2ext_dll_ingame.log") 
-			{ 
-				wchar_t xbuf[255];
-				swprintf(xbuf, 256, L"log: %s", msg);
-				_core_ingame_c::GetInstance()->InsertConsoleLine(wcstostr(xbuf).c_str(), zCOLOR(0, 127, 14)); 
-			};
-			*/
 		} break;
 	case LOG_IMPORTANT:
 		{
@@ -239,14 +206,6 @@ void CLog::Write(LOG_LEVEL eLogLevel, const wchar_t* msg)
 				std::wcout << timebuf << msg << std::endl;
 				SetConsoleTextAttribute(this->m_hConsole, 7);
 			};
-
-			/*
-			if(this->m_lpFileName == L"g2ext_dll_ingame.log") 
-			{ 
-				wchar_t xbuf[255];
-				swprintf(xbuf, 256, L"log: %s", msg);
-			};
-			*/
 		} break;
 	case LOG_WARNING:
 		{
@@ -261,14 +220,6 @@ void CLog::Write(LOG_LEVEL eLogLevel, const wchar_t* msg)
 				std::wcout << timebuf << msg << std::endl;
 				SetConsoleTextAttribute(this->m_hConsole, 7);
 			};
-
-			/*
-			if(this->m_lpFileName == L"g2ext_dll_ingame.log") 
-			{ 
-				wchar_t xbuf[255];
-				swprintf(xbuf, 256, L"warning: %s", msg);
-			};
-			*/
 		} break;
 	case LOG_ERROR:
 		{
@@ -288,14 +239,6 @@ void CLog::Write(LOG_LEVEL eLogLevel, const wchar_t* msg)
 				std::wcout << timebuf << msg << std::endl;
 				SetConsoleTextAttribute(this->m_hConsole, 7);
 			};
-
-			/*
-			if(this->m_lpFileName == L"g2ext_dll_ingame.log") 
-			{ 
-				wchar_t xbuf[255];
-				swprintf(xbuf, 256, L"error: %s", msg);
-			};
-			*/
 		} break;
 	case LOG_CRITICAL:
 		{
@@ -312,14 +255,6 @@ void CLog::Write(LOG_LEVEL eLogLevel, const wchar_t* msg)
 				std::wcout << timebuf << msg << std::endl;
 				SetConsoleTextAttribute(this->m_hConsole, 7);
 			};
-
-			/*
-			if(this->m_lpFileName == L"g2ext_dll_ingame.log") 
-			{ 
-				wchar_t xbuf[255];
-				swprintf(xbuf, 256, L"critical: %s", msg);
-			};
-			*/
 
 			this->Close();
 			exit(0);
@@ -383,7 +318,6 @@ void __stdcall CLog::zERROR_Report(zERROR_TYPE& eType, int& unk0, zSTRING*& zsMs
 	case zERROR_FATAL:		ll = LOG_CRITICAL; break;
 	default:				ll = LOG_NONE; break;
 	};
-	//CLog::GetInstance()->WriteF(ll, L"gothic: %S", zsMsg->ToChar());
 
 	CLog::GetInstance()->m_lstOut.push_back(std::make_pair<LOG_LEVEL, LPCWSTR>(ll, strtowcs(zsMsg->ToChar())));
 

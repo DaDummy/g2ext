@@ -444,6 +444,51 @@ DWORD __stdcall CStarter::SpacerThreadProc(void* dwParam)
 #ifdef G2EXT_STARTER_DEV
 	CStarter* pStarter = CStarter::GetInstance();
 
+	if(pStarter->m_pSelectedMod == NULL)
+		return 0;
+
+	pStarter->SetControlsEnabled(false);
+
+	HMODULE hDll = LoadLibraryA("g2ext.spacer.dll");
+
+	G2EXT_SYSTEM_INIT_FUNC Init = NULL;
+
+	if((Init = (G2EXT_SYSTEM_INIT_FUNC)GetProcAddress(hDll, "G2Ext_Init")) == NULL)
+	{
+		return 1;
+		pStarter->SetControlsEnabled(true);
+	};
+
+	PMODINFO pModInfo = new MODINFO();
+
+	//FIXME: cwcs(subwcs(...), ...) combo is a memoryleak
+	pModInfo->lpwDMP	= cwcs(subwcs(pStarter->m_pSelectedMod->wcFilesVDF.c_str(), wcslen(pStarter->m_pSelectedMod->wcFilesVDF.c_str())-4), L".mod");
+	pModInfo->lpwVDF	= pStarter->m_pSelectedMod->wcFilesVDF.c_str();
+	pModInfo->lpwDLL	= pStarter->m_pSelectedMod->wcG2ExtDLL.c_str();
+	pModInfo->lpwPlugins= pStarter->m_pSelectedMod->wcG2ExtPLUGINS.c_str();
+	pModInfo->lpwModIni = pStarter->m_pSelectedMod->wcIni.c_str();
+	pModInfo->lpwCMD	= pStarter->MakeCMD(L"Spacer2.exe -zmaxframerate:60", true);
+
+	ShowWindow(pStarter->m_hWnd, SW_SHOWMINIMIZED);
+
+	Init(pModInfo);
+
+	ShowWindow(pStarter->m_hWnd, SW_SHOWNORMAL);
+
+	FreeConsole(); // fix: hide G2Ext debug console
+
+	FreeLibrary(hDll);
+
+	delete [] pModInfo->lpwDMP;
+
+	G2EXT_DELETE(pModInfo);
+
+	pStarter->SetControlsEnabled(true);
+
+	return 0;
+	/*
+	CStarter* pStarter = CStarter::GetInstance();
+
 	PROCESS_INFORMATION	pi;
 	STARTUPINFO			si;
 	int					iStatus;
@@ -463,7 +508,7 @@ DWORD __stdcall CStarter::SpacerThreadProc(void* dwParam)
 	si.dwFlags		= STARTF_USESHOWWINDOW;
 	si.wShowWindow	= SW_SHOW;
 
-	if(CreateProcessW(NULL, pStarter->MakeCMD(L"Spacer2.exe -zmaxframerate:60", true), NULL, NULL, false, NULL, NULL, NULL, &si, &pi) == 0)
+	if(CreateProcessW(NULL, pStarter->MakeCMD(L"Spacer2.exe", true), NULL, NULL, false, NULL, NULL, NULL, &si, &pi) == 0)
 	{
 		ShowWindow(pStarter->m_hWnd, SW_SHOWNORMAL);
 		pStarter->SetControlsEnabled(true);
@@ -479,6 +524,7 @@ DWORD __stdcall CStarter::SpacerThreadProc(void* dwParam)
 
 	ShowWindow(pStarter->m_hWnd, SW_SHOWNORMAL);
 	pStarter->SetControlsEnabled(true);
+	*/
 #endif //G2EXT_STARTER_DEV
 	return 0;
 };

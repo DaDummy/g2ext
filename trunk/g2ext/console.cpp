@@ -26,11 +26,19 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "core.h"
 #include "stats.h"
+#ifdef _G2EXT_COMPILE_SPACER
+#include "api/spacer/ocgame.h"
+#include "api/spacer/zcview.h"
+#include "api/spacer/zcinput.h"
+#include "api/spacer/zcconsole.h"
+#include "api/spacer/ocworldtimer.h"
+#else // _G2EXT_COMPILE_SPACER
 #include "api/g2/ocgame.h"
 #include "api/g2/zcview.h"
 #include "api/g2/zcinput.h"
 #include "api/g2/zcconsole.h"
 #include "api/g2/ocworldtimer.h"
+#endif // _G2EXT_COMPILE_SPACER
 #include "common/version.h"
 #include "utils.h"
 

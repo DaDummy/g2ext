@@ -30,19 +30,19 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /////////////////////////////////////////////////////////////////////////////*/
 
-#ifndef __API_G2_ZCVOB_H__
-#define __API_G2_ZCVOB_H__
+#ifndef __API_SPACER_ZCVOB_H__
+#define __API_SPACER_ZCVOB_H__
 
 #ifndef __G2EXT_API_HEADER
 #define __G2EXT_API_HEADER
 #endif  //__G2EXT_API_HEADER
 
-#ifdef _G2EXT_COMPILE_SPACER
-#error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
+#ifndef _G2EXT_COMPILE_SPACER
+#error Cannot use spacer headers on non spacer dll (_G2EXT_COMPILE_SPACER not defined)
 #endif
 
-#include "api/g2/ztypes.h"
-#include "api/g2/macros.h"
+#include "api/spacer/ztypes.h"
+#include "api/spacer/macros.h"
 
 class zCWorld;
 class zCVisual;
@@ -92,394 +92,394 @@ public:
 	void*			m_poCollisionObject;       // 0x011C zCCollisionObject*
 
 public:
-	//.text:0061B910 ; public: float __thiscall zCVob::GetDistanceToVob(class zCVob &)
+	//.text:007A67A0 ; public: float __thiscall zCVob::GetDistanceToVob(class zCVob &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	float GetDistanceToVob(zCVob & pA)
 	{
-		XCALL(0x0061B910);
+		XCALL(0x007A67A0); // spacer
 	};
 
-	//.text:0061B970 ; public: float __thiscall zCVob::GetDistanceToVobApprox(class zCVob &)
+	//.text:007A6800 ; public: float __thiscall zCVob::GetDistanceToVobApprox(class zCVob &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	float GetDistanceToVobApprox(zCVob & pA)
 	{
-		XCALL(0x0061B970);
+		XCALL(0x007A6800); // spacer
 	};
 
-	//.text:0061B8C0 ; public: void __thiscall zCVob::GetPositionLocal(float pA &, float pA &, float pA &)const
+	//.text:007A6750 ; public: void __thiscall zCVob::GetPositionLocal(float pA &, float pA &, float pA &)const
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void GetPositionLocal(float & pA, float & pB, float & pC)
 	{
-		XCALL(0x0061B8C0);
+		XCALL(0x007A6750); // spacer
 	};
 
-	//.text:0061B890 ; public: void __thiscall zCVob::GetPositionWorld(float pA &, float pA &, float pA &)const
+	//.text:007A6720 ; public: void __thiscall zCVob::GetPositionWorld(float pA &, float pA &, float pA &)const
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void GetPositionWorld(float & pA, float & pB, float & pC)
 	{
-		XCALL(0x0061B890);
+		XCALL(0x007A6720); // spacer
 	};
 
-	//.text:0052DC90 ; public: class zVEC3 __thiscall zCVob::GetPositionWorld(void)const
+	//.text:004E72A0 ; public: class zVEC3 __thiscall zCVob::GetPositionWorld(void)const
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	zVEC3 GetPositionWorld(void)
 	{
-		XCALL(0x0052DC90);
+		XCALL(0x004E72A0); // spacer
 	};
 
-	//.text:006CFFD0 ; public: enum  zTVobType __thiscall zCVob::GetVobType(void)const
+	//.text:0053A940 ; public: enum  zTVobType __thiscall zCVob::GetVobType(void)const
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	zTVobType GetVobType(void)
 	{
-		XCALL(0x006CFFD0);
+		XCALL(0x0053A940); // spacer
 	};
 
-	//.text:0061B2E0 ; int __stdcall zCVob__Move(float pA, float pA, float pA)
+	//.text:007A6170 ; int __stdcall zCVob__Move(float pA, float pA, float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall Move(float pA, float pB, float pC)
+	int Move(float pA, float pB, float pC)
 	{
-		XCALL(0x0061B2E0);
+		XCALL(0x007A6170); // spacer
 	};
 
-	//.text:0061B3C0 ; int __stdcall zCVob__MoveLocal(float pA, float pA, float pA)
+	//.text:007A6250 ; int __stdcall zCVob__MoveLocal(float pA, float pA, float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall MoveLocal(float pA, float pB, float pC)
+	int MoveLocal(float pA, float pB, float pC)
 	{
-		XCALL(0x0061B3C0);
+		XCALL(0x007A6250); // spacer
 	};
 
-	//.text:0061B350 ; public: void __thiscall zCVob::MoveWorld(float pA, float pA, float pA)
+	//.text:007A61E0 ; public: void __thiscall zCVob::MoveWorld(float pA, float pA, float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void MoveWorld(float pA, float pB, float pC)
 	{
-		XCALL(0x0061B350);
+		XCALL(0x007A61E0); // spacer
 	};
 
-	//.text:0061C090 ; public: void __thiscall zCVob::ResetXZRotationsWorld(void)
+	//.text:007A6CB0 ; public: void __thiscall zCVob::ResetXZRotationsWorld(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void ResetXZRotationsWorld(void)
 	{
-		XCALL(0x0061C090);
+		XCALL(0x007A6CB0); // spacer
 	};
 
-	//.text:0061BE20 ; public: void __thiscall zCVob::ResetXZRotationsLocal(void)
+	//.text:007A6F20 ; public: void __thiscall zCVob::ResetXZRotationsLocal(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void ResetXZRotationsLocal(void)
 	{
-		XCALL(0x0061BE20);
+		XCALL(0x007A6F20); // spacer
 	};
 
-	//.text:0061B6B0 ; int __stdcall zCVob__RotateLocalX(float pA)
+	//.text:007A6540 ; int __stdcall zCVob__RotateLocalX(float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateLocalX(float pA)
+	int RotateLocalX(float pA)
 	{
-		XCALL(0x0061B6B0);
+		XCALL(0x007A6540); // spacer
 	};
 
-	//.text:0061B610 ; int __stdcall zCVob__RotateLocal(int, float pA)
+	//.text:007A64A0 ; int __stdcall zCVob__RotateLocal(int, float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateLocal(int pA, float pB)
+	int RotateLocal(zVEC3& pA, float pB)
 	{
-		XCALL(0x0061B610);
+		XCALL(0x007A64A0); // spacer
 	};
 
-	//.text:0061B720 ; int __stdcall zCVob__RotateLocalY(float pA)
+	//.text:007A65B0 ; int __stdcall zCVob__RotateLocalY(float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateLocalY(float pA)
+	int RotateLocalY(float pA)
 	{
-		XCALL(0x0061B720);
+		XCALL(0x007A65B0); // spacer
 	};
 
-	//.text:0061B790 ; int __stdcall zCVob__RotateLocalZ(float pA)
+	//.text:007A6620 ; int __stdcall zCVob__RotateLocalZ(float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateLocalZ(float pA)
+	int RotateLocalZ(float pA)
 	{
-		XCALL(0x0061B790);
+		XCALL(0x007A6620); // spacer
 	};
 
-	//.text:0061B520 ; int __stdcall zCVob__RotateWorld(int, float pA)
+	//.text:007A63B0 ; int __stdcall zCVob__RotateWorld(int, float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateWorld(int, float pA)
+	int RotateWorld(zVEC3& pA, float pB)
 	{
-		XCALL(0x0061B520);
+		XCALL(0x007A63B0); // spacer
 	};
 
-	//.text:0061B800 ; int __stdcall zCVob__RotateWorldX(float pA)
+	//.text:007A6690 ; int __stdcall zCVob__RotateWorldX(float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateWorldX(float pA)
+	int RotateWorldX(float pA)
 	{
-		XCALL(0x0061B800);
+		XCALL(0x007A6690); // spacer
 	};
 
-	//.text:0061B830 ; int __stdcall zCVob__RotateWorldY(float pA)
+	//.text:007A66C0 ; int __stdcall zCVob__RotateWorldY(float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateWorldY(float pA)
+	int RotateWorldY(float pA)
 	{
-		XCALL(0x0061B830);
+		XCALL(0x007A66C0); // spacer
 	};
 
-	//.text:0061B860 ; int __stdcall zCVob__RotateWorldZ(float pA)
+	//.text:007A66F0 ; int __stdcall zCVob__RotateWorldZ(float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateWorldZ(float pA)
+	int RotateWorldZ(float pA)
 	{
-		XCALL(0x0061B860);
+		XCALL(0x007A66F0); // spacer
 	};
 
-	//.text:006D0000 ; public: void __thiscall zCVob::SetCollDet(int)
+	//.text:0053A970 ; public: void __thiscall zCVob::SetCollDet(int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetCollDet(int enabled)
 	{
-		XCALL(0x0061B860);
+		XCALL(0x0053A970); // spacer
 	};
 
-	//.text:0061CF40 ; public: void __fastcall zCVob::SetCollDetDyn(int)
+	//.text:007A7DD0 ; public: void __fastcall zCVob::SetCollDetDyn(int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void __fastcall SetCollDetDyn(int enabled)
 	{
-		XCALL(0x0061B860);
+		XCALL(0x007A7DD0); // spacer
 	};
 
-	//.text:0061CE50 ; public: void __fastcall zCVob::SetCollDetStat(int)
+	//.text:007A7CE0 ; public: void __fastcall zCVob::SetCollDetStat(int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void __fastcall SetCollDetStat(int enabled)
 	{
-		XCALL(0x0061B860);
+		XCALL(0x007A7CE0); // spacer
 	};
 
-	//.text:0061BBD0 ; public: void __thiscall zCVob::SetTrafo(zMAT4 & pA)
+	//.text:007A6A60 ; public: void __thiscall zCVob::SetTrafo(zMAT4 & pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetTrafo(zMAT4 & pA)
 	{
-		XCALL(0x0061BBD0);
+		XCALL(0x007A6A60); // spacer
 	};
 
-	//.text:0061BC80 ; public: void __thiscall zCVob::SetTrafoObjToWorld(zMAT4 & pA)
+	//.text:007A6B10 ; public: void __thiscall zCVob::SetTrafoObjToWorld(zMAT4 & pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetTrafoObjToWorld(zMAT4 & pA)
 	{
-		XCALL(0x0061BC80);
+		XCALL(0x007A6B10); // spacer
 	};
 
-	//.text:0061B0C0 ; public: void __thiscall zCVob::SetNewTrafoObjToWorld(zMAT4 & pA)
+	//.text:007A5F50 ; public: void __thiscall zCVob::SetNewTrafoObjToWorld(zMAT4 & pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetNewTrafoObjToWorld(zMAT4 & pA)
 	{
-		XCALL(0x0061B0C0);
+		XCALL(0x007A5F50); // spacer
 	};
 
-	//.text:0061C280 ; int __stdcall zCVob__SetHeadingYWorld(float pA)
+	//.text:007A7110 ; int __stdcall zCVob__SetHeadingYWorld(float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void __stdcall SetHeadingYWorld(float pA)
+	void SetHeadingYWorld(zVEC3& pA)
 	{
-		XCALL(0x0061C280);
+		XCALL(0x007A7110); // spacer
 	};
 
-	//.text:0061C450 ; public: void __thiscall zCVob::SetHeadingYWorld(class zCVob *)
+	//.text:007A72E0 ; public: void __thiscall zCVob::SetHeadingYWorld(class zCVob *)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetHeadingYWorld(zCVob * pA)
 	{
-		XCALL(0x0061C450);
+		XCALL(0x007A72E0); // spacer
 	};
 
-	//.text:0061C1B0 ; public: void __thiscall zCVob::SetHeadingYLocal(zVEC3 & pA)
+	//.text:007A7040 ; public: void __thiscall zCVob::SetHeadingYLocal(zVEC3 & pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetHeadingYLocal(zVEC3 & pA)
 	{
-		XCALL(0x0061C1B0);
+		XCALL(0x007A7040); // spacer
 	};
 
-	//.text:0061C6B0 ; public: void __thiscall zCVob::SetHeadingWorld(zVEC3 & pA)
+	//.text:007A7540 ; public: void __thiscall zCVob::SetHeadingWorld(zVEC3 & pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetHeadingWorld(zVEC3 & pA)
 	{
-		XCALL(0x0061C6B0);
+		XCALL(0x007A7540); // spacer
 	};
 
-	//.text:0061C780 ; public: void __thiscall zCVob::SetHeadingWorld(class zCVob *)
+	//.text:007A7610 ; public: void __thiscall zCVob::SetHeadingWorld(class zCVob *)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetHeadingWorld(zCVob* pA)
 	{
-		XCALL(0x0061C780);
+		XCALL(0x007A7610); // spacer
 	};
 
-	//.text:0061C5E0 ; public: void __thiscall zCVob::SetHeadingLocal(zVEC3 & pA)
+	//.text:007A7470 ; public: void __thiscall zCVob::SetHeadingLocal(zVEC3 & pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetHeadingLocal(zVEC3 & pA)
 	{
-		XCALL(0x0061C5E0);
+		XCALL(0x007A7470); // spacer
 	};
 
-	//.text:0061CBC0 ; public: void __thiscall zCVob::SetHeadingAtWorld(zVEC3 & pA)
+	//.text:007A7A50 ; public: void __thiscall zCVob::SetHeadingAtWorld(zVEC3 & pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetHeadingAtWorld(zVEC3 & pA)
 	{
-		XCALL(0x0061CBC0);
+		XCALL(0x007A7A50); // spacer
 	};
 
-	//.text:0061C860 ; public: void __thiscall zCVob::SetHeadingAtLocal(zVEC3 & pA)
+	//.text:007A76F0 ; public: void __thiscall zCVob::SetHeadingAtLocal(zVEC3 & pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetHeadingAtLocal(zVEC3 & pA)
 	{
-		XCALL(0x0061C860);
+		XCALL(0x007A76F0); // spacer
 	};
 
-	//.text:004042B0 ; public: virtual int __thiscall zCVob::GetScriptInstance(class zSTRING * &, int &)
+	//.text:00486840 ; public: virtual int __thiscall zCVob::GetScriptInstance(class zSTRING * &, int &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	virtual int GetScriptInstance(zSTRING * & pA, int & pB)
 	{
-		XCALL(0x004042B0);
+		XCALL(0x00486840); // spacer
 	};
 
-	//.text:005FFDD0 ; public: void __thiscall zCVob::SetVobName(class zSTRING const &)
+	//.text:0078ACF0 ; public: void __thiscall zCVob::SetVobName(class zSTRING const &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetVobName(const zSTRING & pA)
 	{
-		XCALL(0x005FFDD0);
+		XCALL(0x0078ACF0); // spacer
 	};
 
-	//.text:005FE950 ; public: class zSTRING const & __thiscall zCVob::GetVobPresetName(void)const
+	//.text:007896E0 ; public: class zSTRING const & __thiscall zCVob::GetVobPresetName(void)const
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	zSTRING & GetVobPresetName(void)
 	{
-		XCALL(0x005FE950);
+		XCALL(0x007896E0); // spacer
 	};
 
-	//.text:00616B20 ; public: class zCVisual * __thiscall zCVob::GetVisual(void)const
+	//.text:007A1AE0 ; public: class zCVisual * __thiscall zCVob::GetVisual(void)const
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	zCVisual* GetVisual(void)
 	{
-		XCALL(0x00616B20);
+		XCALL(0x007A1AE0); // spacer
 	};
 
-	//.text:006CFFE0 ; public: void __thiscall zCVob::SetDrawBBox3D(int)
+	//.text:0053A950 ; public: void __thiscall zCVob::SetDrawBBox3D(int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetDrawBBox3D(int pA)
 	{
-		XCALL(0x006CFFE0);
+		XCALL(0x0053A950); // spacer
 	};
 
-	//.text:006742A0 ; public: class zCWorld * __thiscall zCVob::GetHomeWorld(void)const
+	//.text:004E7290 ; public: class zCWorld * __thiscall zCVob::GetHomeWorld(void)const
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	zCWorld* GetHomeWorld(void)
 	{
-		XCALL(0x006742A0);
+		XCALL(0x004E7290);
 	};
 
-	//.text:006024F0 ; public: virtual void __thiscall zCVob::SetVisual(class zCVisual *)
+	//.text:0078D660 ; public: virtual void __thiscall zCVob::SetVisual(class zCVisual *)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetVisual(zCVisual* pA)
 	{
-		XCALL(0x006024F0);
+		XCALL(0x0078D660);
 	};
 
-	//.text:00602680 ; public: virtual void __thiscall zCVob::SetVisual(class zSTRING const &)
+	//.text:0078D7F0 ; public: virtual void __thiscall zCVob::SetVisual(class zSTRING const &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetVisual(const zSTRING & pA)
 	{
-		XCALL(0x00602680);
+		XCALL(0x0078D7F0);
 	};
 
-	//.text:0061BB70 ; public: void __thiscall zCVob::SetPositionWorld(class zVEC3 const &)
+	//.text:007A6A00 ; public: void __thiscall zCVob::SetPositionWorld(class zVEC3 const &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetPositionWorld(const zVEC3 & pA)
 	{
-		XCALL(0x0061BB70);
+		XCALL(0x007A6A00);
 	};
 
-	//.text:0061D890 ; public: int __thiscall zCVob::DetectCollision(class zMAT4 *)
+	//.text:007A8720 ; public: int __thiscall zCVob::DetectCollision(class zMAT4 *)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int DetectCollision(zMAT4 * pA)
 	{
-		XCALL(0x0061D890);
+		XCALL(0x007A8720);
 	};
 };
 
-#endif  //__G2EXT_API_HEADER
+#undef __G2EXT_API_HEADER
 
-#endif  //__API_G2_ZCVOB_H__
+#endif  //__API_SPACER_ZCVOB_H__

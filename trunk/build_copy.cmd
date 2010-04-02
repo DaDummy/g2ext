@@ -24,6 +24,7 @@ mkdir build\examples\bin\debug
 mkdir build\examples\bin\release
 mkdir build\api
 mkdir build\api\g2
+mkdir build\api\spacer
 mkdir build\common
 mkdir build\_work
 
@@ -75,6 +76,7 @@ copy examples\externals_example\*.ini		build\examples\bin\release\
 copy temp\docs\g2ext.chm 		build\docs\
 copy api\*.* 				build\api\
 copy api\g2\*.* 			build\api\g2\
+copy api\spacer\*.* 			build\api\spacer\
 copy common\*.* 			build\common\
 
 copy temp\*.vdf				build\data\

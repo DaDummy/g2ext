@@ -29,9 +29,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "splash.h"
 #include "utils.h"
 
-#include "api/g2/zcinput.h"
+#ifdef _G2EXT_COMPILE_SPACER
+//#include "api/spacer/zcinput.h"
+#include "api/spacer/ocnpc.h"
+#include "api/spacer/zcparser.h"
+#else //_G2EXT_COMPILE_SPACER
+//#include "api/g2/zcinput.h"
 #include "api/g2/ocnpc.h"
 #include "api/g2/zcparser.h"
+#endif //_G2EXT_COMPILE_SPACER
 
 #include "common/version.h"
 
@@ -185,6 +191,9 @@ void CCoreIngame::AttachCallbackHooks(void)
 {
 	G2EXT_LOG_NONE(L"Attaching callback hooks.");
 
+#ifdef _G2EXT_COMPILE_SPACER
+
+#else // _G2EXT_COMPILE_SPACER
 	this->CreateHook(L"G2EXT_CALLBACK_PAUSE", (void*)0x006C8AD0, &CCoreIngame::OnPause);									// -- bound on oCGame::Pause(int) -- 0x006C8AD0
 	this->CreateHook(L"G2EXT_CALLBACK_UNPAUSE", (void*)0x006C8D50, &CCoreIngame::OnUnPause);								// -- bound on oCGame::Unpause(void)-- 0x006C8D50
 	this->CreateHook(L"G2EXT_CALLBACK_OPEN_LOADSCREEN", (void*)0x006C2690, &CCoreIngame::OnOpenLoadscreen);					// -- bound on oCGame::OpenLoadscreen(bool, class zSTRING) -- 0x006C2690
@@ -203,9 +212,11 @@ void CCoreIngame::AttachCallbackHooks(void)
 
 	this->CreateHook(L"G2EXT_CONSOLE_REGISTER", (void*)0x00782AE0, &CConsole::ConsoleRegister, false, 2);
 	this->CreateHook(L"G2EXT_CONSOLE_REGISTER1", (void*)0x007829C0, &CConsole::ConsoleRegister1, false, 3);
-
+#endif // _G2EXT_COMPILE_SPACER
 	G2EXT_LOG_NONE(L"Attaching hacks.");
+#ifdef _G2EXT_COMPILE_SPACER
 
+#else // _G2EXT_COMPILE_SPACER
 	if((G2EXT_PARAM_NO_G2EXT_CONSOLE & this->m_pModInfo->dwFlags) != G2EXT_PARAM_NO_G2EXT_CONSOLE)
 	{
 		this->EraseSecuredMem((void*)0x0047EC65, 5, 0x90);		// -- HACK: Suppress marvin mode
@@ -230,6 +241,7 @@ void CCoreIngame::AttachCallbackHooks(void)
 
 	// -- Set new window caption
 	*((char**)0x0089D9AC) = G2EXT_VERSIONA;
+#endif // _G2EXT_COMPILE_SPACER
 
 	G2EXT_LOG_NONE(L"Registering internal callbacks.");
 

@@ -135,8 +135,13 @@ HRESULT CCoreOutgame::Run(void)
 
 	if ((inj_basic_init->Add((ptr_t)inj_adr[0], ((size_t)inj_adr[1] - (size_t)inj_adr[0]))) == G2EXT_INVALID_OFFSET)
 		G2EXT_LOG_CRITICAL(L"INJECTION #E-0-1");
+#ifdef _G2EXT_COMPILE_SPACER
+	if ((inj_strings_offset[0] = inj_basic_strings->Add(L"g2ext.spacer.dll")) == G2EXT_INVALID_OFFSET)
+		G2EXT_LOG_CRITICAL(L"INJECTION #E-0-2");
+#else // _G2EXT_COMPILE_SPACER
 	if ((inj_strings_offset[0] = inj_basic_strings->Add(L"g2ext.dll")) == G2EXT_INVALID_OFFSET)
 		G2EXT_LOG_CRITICAL(L"INJECTION #E-0-2");
+#endif // _G2EXT_COMPILE_SPACER
 	if ((inj_strings_offset[1] = inj_basic_strings->Add(L"G2Ext_Run")) == G2EXT_INVALID_OFFSET)
 		G2EXT_LOG_CRITICAL(L"INJECTION #E-0-3");
 	if ((inj_strings_offset[2] = inj_basic_strings->Add((ptr_t)this->m_pModInfo->lpwDLL, (wcslen(this->m_pModInfo->lpwDLL) + 1) * sizeof(wchar_t))) == G2EXT_INVALID_OFFSET)
@@ -297,10 +302,17 @@ bool CCoreOutgame::LoadModDll(LPCWSTR lpwFileName)
 		G2EXT_LOGF_CRITICAL(L"Version mismatch! G2Ext: %i.%i Mod: %i.%i", G2EXT_MAJOR_VERSION, G2EXT_MINOR_VERSION, nVersionMajor, nVersionMinor);
 	};
 
+#ifdef _G2EXT_COMPILE_SPACER
 	if(extDllType != G2EXT_DLL_MOD)
 	{
 		G2EXT_LOGF_CRITICAL(L"Incompatible mod type!");
 	};
+#else // _G2EXT_COMPILE_SPACER
+	if(extDllType != G2EXT_DLL_SPACER)
+	{
+		G2EXT_LOGF_CRITICAL(L"Incompatible mod type!");
+	};
+#endif // _G2EXT_COMPILE_SPACER
 
 	G2EXT_LOG_NONE(L"Version check passed.");
 
