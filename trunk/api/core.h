@@ -140,6 +140,7 @@ typedef enum
 #ifndef G2EXT_REGISTERS_DEFINED
 #define G2EXT_REGISTERS_DEFINED
 
+/** Insert description */
 typedef struct _REGISTERS
 {
 	int*	EIP;
@@ -153,6 +154,7 @@ typedef struct _REGISTERS
 			EAX;
 } REGISTERS;
 
+/** Insert description */
 typedef enum _REGISTER
 {
 	G2EXT_REG_EAX = 0,

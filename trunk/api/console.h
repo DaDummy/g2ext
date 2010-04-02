@@ -36,9 +36,9 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 #include "api/interface.h"
 #ifdef _G2EXT_COMPILE_SPACER
 #include "api/spacer/ztypes.h"
-#else
+#else //_G2EXT_COMPILE_SPACER
 #include "api/g2/ztypes.h"
-#endif 
+#endif //_G2EXT_COMPILE_SPACER
 
 /** Insert description. */
 G2EXT_BEGIN_INTERFACE_DECLARATION(IConsole)

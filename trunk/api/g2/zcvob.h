@@ -480,6 +480,6 @@ public:
 	};
 };
 
-#endif  //__G2EXT_API_HEADER
+#undef  __G2EXT_API_HEADER
 
 #endif  //__API_G2_ZCVOB_H__

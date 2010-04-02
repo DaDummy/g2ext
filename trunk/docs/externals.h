@@ -64,4 +64,31 @@
  * func int ex_flt(var int a, var int b);
  * @endcode
  *
+ * @section ext_daedalus_array Arrays
+ *
+ * @code
+ * // Creates an array. Returns the array instance. -1 in case the array creation failed.
+ * func int iadim(var int size, var int dimensions);
+ * @endcode
+ *
+ * @code
+ * // Resizes an array. Returns false in case the action failed.
+ * func int iaredim(var int instance, var int size);
+ * @endcode
+ *
+ * @code
+ * // Destroys array. Always returns 0.
+ * func int iafree(var int instance);
+ * @endcode
+ *
+ * @code
+ * // Returns data from array.
+ * func int iaget(var int instance, var int idx);
+ * @endcode
+ *
+ * @code
+ * // Sets data into array. Returns true if successful.
+ * func int iaget(var int instance, var int idx, var int data);
+ * @endcode
+ *
  */

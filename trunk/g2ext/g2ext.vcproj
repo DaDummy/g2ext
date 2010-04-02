@@ -566,6 +566,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\api\spacer\ocgame.h"
+						>
+					</File>
+					<File
 						RelativePath="..\api\spacer\ocitem.h"
 						>
 					</File>
@@ -587,6 +591,14 @@
 					</File>
 					<File
 						RelativePath="..\api\spacer\zbsptree.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\zcconsole.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\zcinput.h"
 						>
 					</File>
 					<File

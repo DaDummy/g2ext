@@ -78,37 +78,89 @@ struct zVEC2
 	};
 
 	// -- constructors
+	/** Insert description. 
+	*/
 	zVEC2();
+
+	/** Insert description. 
+	*/
 	zVEC2( float _x, float _y );
+
+	/** Insert description. 
+	*/
 	zVEC2( const float* pf );
+
+	/** Insert description. 
+	*/
 	zVEC2( const zVEC2& v );
 
 	// -- functions
+	/** Insert description. 
+	*/
 	void Clear();
+
+	/** Insert description. 
+	*/
 	void Set( float _x, float _y );
 
 	// -- casts
+	/** Insert description. 
+	*/
 	operator float* ();
+
+	/** Insert description. 
+	*/
 	operator const float* ();
 
 	// -- assignment operators
+	/** Insert description. 
+	*/
 	zVEC2& operator += ( const zVEC2 & v );
+
+	/** Insert description. 
+	*/
 	zVEC2& operator -= ( const zVEC2 & v );
+
+	/** Insert description. 
+	*/
 	zVEC2& operator *= ( float f );
+
+	/** Insert description. 
+	*/
 	zVEC2& operator /= ( float f );
 
 	// -- unary operators
+	/** Insert description. 
+	*/
 	zVEC2  operator + () const;
+
+	/** Insert description. 
+	*/
 	zVEC2  operator - () const;
 
 	// -- binary operators
+	/** Insert description. 
+	*/
 	zVEC2  operator + ( const zVEC2& v ) const;
+
+	/** Insert description. 
+	*/
 	zVEC2  operator - ( const zVEC2& v ) const;
+
+	/** Insert description. 
+	*/
 	zVEC2  operator * ( float f ) const;
+
+	/** Insert description. 
+	*/
 	zVEC2  operator / ( float f ) const;
 
 	// -- logical operators
+	/** Insert description. 
+	*/
 	bool operator == ( const zVEC2& v ) const;
+	/** Insert description. 
+	*/
 	bool operator != ( const zVEC2& v ) const;
 };
 
@@ -125,37 +177,89 @@ struct zVEC3
 	};
 
 	// -- constructors
+	/** Insert description. 
+	*/
 	zVEC3();
+
+	/** Insert description. 
+	*/
 	zVEC3( float _x, float _y, float _z );
+
+	/** Insert description. 
+	*/
 	zVEC3( const float* pf );
+
+	/** Insert description. 
+	*/
 	zVEC3( const zVEC3& v );
 
 	// -- functions
+	/** Insert description. 
+	*/
 	inline void Clear();
+
+	/** Insert description. 
+	*/
 	inline void Set( float _x, float _y, float _z );
 
 	// -- casts
+	/** Insert description. 
+	*/
 	operator float* ();
+
+	/** Insert description. 
+	*/
 	operator const float* ();
 
 	// -- assignment operators
+	/** Insert description. 
+	*/
 	zVEC3& operator += ( const zVEC3 & v );
+
+	/** Insert description. 
+	*/
 	zVEC3& operator -= ( const zVEC3 & v );
+
+	/** Insert description. 
+	*/
 	zVEC3& operator *= ( float f );
+
+	/** Insert description. 
+	*/
 	zVEC3& operator /= ( float f );
 
 	// -- unary operators
+	/** Insert description. 
+	*/
 	zVEC3  operator + () const;
+
+	/** Insert description. 
+	*/
 	zVEC3  operator - () const;
 
 	// -- binary operators
+	/** Insert description. 
+	*/
 	zVEC3  operator + ( const zVEC3& v ) const;
+
+	/** Insert description. 
+	*/
 	zVEC3  operator - ( const zVEC3& v ) const;
+
+	/** Insert description. 
+	*/
 	zVEC3  operator * ( float f ) const;
+
+	/** Insert description. 
+	*/
 	zVEC3  operator / ( float f ) const;
 
 	// -- logical operators
+	/** Insert description. 
+	*/
 	bool operator == ( const zVEC3& v ) const;
+	/** Insert description. 
+	*/
 	bool operator != ( const zVEC3& v ) const;
 };
 
@@ -172,37 +276,89 @@ struct zVEC4
 	};
 
 	// -- constructors
+	/** Insert description. 
+	*/
 	zVEC4();
+
+	/** Insert description. 
+	*/
 	zVEC4( float _x, float _y, float _z, float _w );
+
+	/** Insert description. 
+	*/
 	zVEC4( const float* pf );
+
+	/** Insert description. 
+	*/
 	zVEC4( const zVEC4& v );
 
 	// -- functions
+	/** Insert description. 
+	*/
 	inline void Clear();
+
+	/** Insert description. 
+	*/
 	inline void Set( float _x, float _y, float _z, float _w );
 
 	// -- casts
+	/** Insert description. 
+	*/
 	operator float* ();
+
+	/** Insert description. 
+	*/
 	operator const float* ();
 
 	// -- assignment operators
+	/** Insert description. 
+	*/
 	zVEC4& operator += ( const zVEC4 & v );
+
+	/** Insert description. 
+	*/
 	zVEC4& operator -= ( const zVEC4 & v );
+
+	/** Insert description. 
+	*/
 	zVEC4& operator *= ( float f );
+
+	/** Insert description. 
+	*/
 	zVEC4& operator /= ( float f );
 
 	// -- unary operators
+	/** Insert description. 
+	*/
 	zVEC4  operator + () const;
+
+	/** Insert description. 
+	*/
 	zVEC4  operator - () const;
 
 	// -- binary operators
+	/** Insert description. 
+	*/
 	zVEC4  operator + ( const zVEC4& v ) const;
+
+	/** Insert description. 
+	*/
 	zVEC4  operator - ( const zVEC4& v ) const;
+
+	/** Insert description. 
+	*/
 	zVEC4  operator * ( float f ) const;
+
+	/** Insert description. 
+	*/
 	zVEC4  operator / ( float f ) const;
 
 	// -- logical operators
+	/** Insert description. 
+	*/
 	bool operator == ( const zVEC4& v ) const;
+	/** Insert description. 
+	*/
 	bool operator != ( const zVEC4& v ) const;
 };
 
@@ -218,38 +374,85 @@ struct zMAT3
 		float m[3][4];
 	};
 
+	/** Insert description. 
+	*/
 	zMAT3() {};
 
+	/** Insert description. 
+	*/
 	zMAT3( const zMAT3 & _m );
 
+	/** Insert description. 
+	*/
 	zMAT3(float f11, float f12, float f13, float f14,
 		float f21, float f22, float f23, float f24,
 		float f31, float f32, float f33, float f34);
 
 	//  -- assignment operators
+	/** Insert description. 
+	*/
 	zMAT3& operator *= ( const zMAT3 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT3& operator /= ( const zMAT3 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT3& operator += ( const zMAT3 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT3& operator -= ( const zMAT3 & _m );
 
+	/** Insert description. 
+	*/
 	zMAT3& operator *= ( float f );
+	/** Insert description. 
+	*/
 	zMAT3& operator /= ( float f );
 
 	// -- unary operators
+	/** Insert description. 
+	*/
 	zMAT3  operator + () const;
+
+	/** Insert description. 
+	*/
 	zMAT3  operator - () const;
 
 	// -- binary operators
+	/** Insert description. 
+	*/
 	zMAT3 operator * ( const zMAT3 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT3 operator / ( const zMAT3 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT3 operator + ( const zMAT3 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT3 operator - ( const zMAT3 & _m );
 
+	/** Insert description. 
+	*/
 	zMAT3 operator * ( float f );
+
+	/** Insert description. 
+	*/
 	zMAT3 operator / ( float f );
 
 	// -- logical operators
+	/** Insert description. 
+	*/
 	bool operator == ( const zMAT3 & _m ) const;
+
+	/** Insert description. 
+	*/
 	bool operator != ( const zMAT3 & _m ) const;
 };
 
@@ -266,37 +469,86 @@ struct zMAT4
 		float m[4][4];
 	};
 
+	/** Insert description. 
+	*/
 	zMAT4() {};
+
+	/** Insert description. 
+	*/
 	zMAT4( const zMAT4 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT4( float f11, float f12, float f13, float f14,
 		float f21, float f22, float f23, float f24,
 		float f31, float f32, float f33, float f34,
 		float f41, float f42, float f43, float f44 );
 
 	//  -- assignment operators
+	/** Insert description. 
+	*/
 	zMAT4& operator *= ( const zMAT4 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT4& operator /= ( const zMAT4 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT4& operator += ( const zMAT4 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT4& operator -= ( const zMAT4 & _m );
 
+	/** Insert description. 
+	*/
 	zMAT4& operator *= ( float f );
+
+	/** Insert description. 
+	*/
 	zMAT4& operator /= ( float f );
 
 	// -- unary operators
+	/** Insert description. 
+	*/
 	zMAT4  operator + () const;
+	/** Insert description. 
+	*/
 	zMAT4  operator - () const;
 
 	// -- binary operators
+	/** Insert description. 
+	*/
 	zMAT4 operator * ( const zMAT4 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT4 operator / ( const zMAT4 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT4 operator + ( const zMAT4 & _m );
+
+	/** Insert description. 
+	*/
 	zMAT4 operator - ( const zMAT4 & _m );
 
+	/** Insert description. 
+	*/
 	zMAT4 operator * ( float f );
+
+	/** Insert description. 
+	*/
 	zMAT4 operator / ( float f );
 
 	// -- logical operators
+	/** Insert description. 
+	*/
 	bool operator == ( const zMAT4 & _m ) const;
+
+	/** Insert description. 
+	*/
 	bool operator != ( const zMAT4 & _m ) const;
 };
 
@@ -345,6 +597,8 @@ private:
 	};	
 
 public:
+	/** Insert description. 
+	*/
 	zCArray()
 	{
 		this->m_array		= NULL;
@@ -352,24 +606,31 @@ public:
 		this->m_numInArray	= 0;
 	};
 
-	// -- {dtor}
+	/** Insert description. 
+	*/
 	~zCArray()
 	{
 		this->Clear();
 	};
 
+	/** Insert description. 
+	*/
 	const T& operator [] (const unsigned int pos) const
 	{
 		if((int)pos <= this->m_numInArray)
 			return this->m_array[pos];
 	};
 
+	/** Insert description. 
+	*/
 	T& operator [] (const unsigned int pos)
 	{
 		if((int)pos <= this->m_numInArray)
 			return this->m_array[pos];
 	};
 
+	/** Insert description. 
+	*/
 	void Clear()
 	{
 		this->m_numAlloc	= 0;
@@ -417,17 +678,23 @@ public:
 		this->m_array[this->m_numInArray++] = in;
 	};
 
+	/** Insert description. 
+	*/
 	const T& GetItem(const unsigned int pos)
 	{
 		if((pos =< this->m_numInArray) && (pos =< this->m_numAlloc))
 			return this->m_array[pos];
 	};
 
+	/** Insert description. 
+	*/
 	unsigned int GetSize(void)
 	{
 		return (unsigned int)this->m_numInArray;
 	};
 
+	/** Insert description. 
+	*/
 	int Search(const T& item)
 	{
 		for (size_t i = 0; i < GetSize(); i++)
@@ -439,6 +706,8 @@ public:
 		return -1;
 	};
 
+	/** Insert description. 
+	*/
 	bool IsInList(const T& item)
 	{
 		for (size_t i = 0; i < GetSize(); i++)
@@ -461,23 +730,31 @@ protected:
 	T*  data;
 	zCList<T>* next;
 public:
+	/** Insert description. 
+	*/
 	zCList()
 	{
 		this->data = NULL;
 		this->next = NULL;		
 	};
 
+	/** Insert description. 
+	*/
 	zCList(T* p)
 	{
 		this->data = p;
 		this->next = NULL;
 	};
 
+	/** Insert description. 
+	*/
 	~zCList()
 	{
 		G2EXT_DELETE(this->next);
 	};
 
+	/** Insert description. 
+	*/
 	inline bool IsInList(T* p) 
 	{
 		if(this->data == p)
@@ -493,6 +770,8 @@ public:
 		return next->IsInList(p);
 	};
 
+	/** Insert description. 
+	*/
 	inline void Insert(T* p)
 	{
 		if(!next)
@@ -505,6 +784,8 @@ public:
 		};
 	};
 
+	/** Insert description. 
+	*/
 	inline const T* Get(UINT idx)
 	{
 		zCList<T>* temp = this;
@@ -519,10 +800,16 @@ public:
 		return NULL;
 	};
 
+	/** Insert description. 
+	*/
 	inline zCList<T>* GetNext() { return this->next; };
 
+	/** Insert description. 
+	*/
 	inline T* GetData() { return this->data; };
 
+	/** Insert description. 
+	*/
 	inline UINT GetSize()
 	{
 		UINT i = 0;
@@ -536,6 +823,8 @@ public:
 		return i;
 	};
 
+	/** Insert description. 
+	*/
 	inline void SetData(T* p)
 	{
 		this->data = p;
@@ -579,23 +868,31 @@ private:
 		};
 	};
 public:
+	/** Insert description. 
+	*/
 	zCListSort()
 	{
 		this->data = NULL;
 		this->next = NULL;		
 	};
 
+	/** Insert description. 
+	*/
 	zCListSort(T* p)
 	{
 		this->data = p;
 		this->next = NULL;
 	};
 
+	/** Insert description. 
+	*/
 	~zCListSort()
 	{
 		G2EXT_DELETE(this->next);
 	};
 
+	/** Insert description. 
+	*/
 	inline bool IsInList(T* p) 
 	{
 		if(this->data == p)
@@ -611,11 +908,15 @@ public:
 		return next->IsInList(p);
 	};
 
+	/** Insert description. 
+	*/
 	inline void Insert(T* p)
 	{
 		next->_Insert(p, this->compare);
 	};
 
+	/** Insert description. 
+	*/
 	inline const T* Get(UINT idx)
 	{
 		zCListSort<T>* temp = this;
@@ -630,10 +931,16 @@ public:
 		return NULL;
 	};
 
+	/** Insert description. 
+	*/
 	inline zCListSort<T>* GetNext() { return this->next; };
 
+	/** Insert description. 
+	*/
 	inline T* GetData() { return this->data; };
 
+	/** Insert description. 
+	*/
 	inline UINT GetSize()
 	{
 		UINT i = 0;
@@ -647,11 +954,15 @@ public:
 		return i;
 	};
 
+	/** Insert description. 
+	*/
 	inline void SetData(T* p)
 	{
 		this->data = p;
 	};
 
+	/** Insert description. 
+	*/
 	inline void SetCompareFunction(int(*cmp)(T*, T*))
 	{
 		this->compare = cmp;
@@ -689,24 +1000,67 @@ public:
 	};
 
 	// -- constructors
+
+	/** Insert description. 
+	*/
 	zCOLOR();
+
+	/** Insert description. 
+	*/
 	zCOLOR(zBYTE _r, zBYTE _g, zBYTE _b); // RGB
+
+	/** Insert description. 
+	*/
 	zCOLOR(zBYTE _r, zBYTE _g, zBYTE _b, zBYTE _a); // RGBA
+
+	/** Insert description. 
+	*/
 	zCOLOR(zDWORD _color); // BGRA
 
 	// -- functions
+
+	/** Insert description. 
+	*/
 	void Clear();
+
+	/** Insert description. 
+	*/
 	void SetRGBA(BYTE _r, BYTE _g, BYTE _b, BYTE _a);
+
+	/** Insert description. 
+	*/
 	void SetBGRA(BYTE _b, BYTE _g, BYTE _r, BYTE _a);
 
+	/** Insert description. 
+	*/
 	void SetR(BYTE _c);
+
+	/** Insert description. 
+	*/
 	void SetG(BYTE _c);
+
+	/** Insert description. 
+	*/
 	void SetB(BYTE _c);
+
+	/** Insert description. 
+	*/
 	void SetA(BYTE _c);
 
+	/** Insert description. 
+	*/
 	BYTE GetR(void);
+
+	/** Insert description. 
+	*/
 	BYTE GetG(void);
+
+	/** Insert description. 
+	*/
 	BYTE GetB(void);
+
+	/** Insert description. 
+	*/
 	BYTE GetA(void);
 };
 

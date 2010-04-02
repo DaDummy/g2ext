@@ -66,6 +66,7 @@ enum zTWld_RenderMode
 	zWLD_RENDER_MODE_LIGHTMAPS  
 };
 
+/** Insert description */
 class zCBspTree
 {
 	zCBspNode*				actNodePtr;
@@ -104,7 +105,6 @@ class zCBspTree
 	zTFrameCtr 				masterFrameCtr;
 	zCPolygon** 			actPolyPtr;
 	int 					compiled;
-
 };
 
 #undef  __G2EXT_API_HEADER

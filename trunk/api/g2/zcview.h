@@ -482,6 +482,7 @@ public:
 	inline static zCView* GetScreen() { return *(zCView**)0x00AB6468; };
 };
 
+/** Insert description */
 class zCViewProgressBar
 {
 private:

@@ -111,6 +111,7 @@ enum oCNpc_WeaponMode
 	NPC_WEAPON_MAX  = 8
 };
 
+/** Insert description */
 class oCNewsMemory 
 {
 protected:
@@ -119,6 +120,7 @@ public:
 	zCList <oCNews> iknow;
 };
 
+/** Insert description */
 struct TNpcAIState 
 {
 	int     index;                                      // 0x05A4 int
@@ -134,6 +136,7 @@ struct TNpcAIState
 	zBOOL   isRtnState;                                 // 0x05DC zBOOL
 };
 
+/** Insert description */
 struct oCNpc_States 
 {
 public:
@@ -161,6 +164,7 @@ public:
 	int			rntChangeCount;                                      // 0x0664 int
 };
 
+/** Insert description */
 struct oSDamageDescriptor
 {
 	int				dwFieldsValid;
@@ -205,6 +209,7 @@ struct oSDamageDescriptor
 	oCVisualFX*		pVisualFX;
 };
 
+/** Insert description */
 class oTRobustTrace 
 {
 protected:
@@ -230,6 +235,7 @@ public:
 	float			failurePossibility;                                    // 0x055C zREAL
 };
 
+/** Insert description */
 class oCMagFrontier 
 {
 public:
