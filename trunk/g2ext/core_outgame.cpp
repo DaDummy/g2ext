@@ -188,8 +188,13 @@ HRESULT CCoreOutgame::Run(void)
 	if (!inj_basic_int_shared->SnrPTR(inj_int_shared_offset[0] + offsetof(MODINFO, lpwCMD), 0x11111103, inj_basic_strings->GetDest() + inj_strings_offset[5], NULL))
 		G2EXT_LOG_CRITICAL(L"INJECTION #E-2-6");
 
+#ifdef _G2EXT_COMPILE_SPACER
+	if (!this->CreateJumpInjection("inj_basic_init_jmp", 0x0087025C, 8, inj_basic_init->GetDest()))
+		this->m_pLog->Write(LOG_ERROR, L"INJECTION #E-3-1 spacer");
+#else //_G2EXT_COMPILE_SPACER
 	if (!this->CreateJumpInjection("inj_basic_init_jmp", 0x00502DEC, 8, inj_basic_init->GetDest()))
 		this->m_pLog->Write(LOG_ERROR, L"INJECTION #E-3-1");
+#endif //_G2EXT_COMPILE_SPACER
 
 	G2EXT_LOG_DEBUG(L"Code prepared.");
 
@@ -274,12 +279,18 @@ bool CCoreOutgame::LoadModDll(LPCWSTR lpwFileName)
 
 	G2EXT_LOG_NONE(L"Loading mod-dll...");
 
-	// DaDummy: Why did we explicitly use the ASCII version of LoadLibrary and
-	// converted the unicode library name back to ASCII if we just could do this?
+	_wchdir(L"spacer");
+
 	if((this->m_pModHandle = LoadLibrary(lpwFileName)) == NULL)
 	{
+		_wchdir(L"..");
+
 		G2EXT_LOGF_WARNING(L"'%s' couldn't be loaded!", lpwFileName);
 		return false;
+	}
+	else
+	{
+		_wchdir(L"..");
 	};
 
 	if((this->ModCheckVersion = reinterpret_cast<G2EXT_MOD_VERSIONCHK_FUNC>(GetProcAddress(this->m_pModHandle, "G2Ext_ModVersion"))) == NULL)
@@ -289,7 +300,11 @@ bool CCoreOutgame::LoadModDll(LPCWSTR lpwFileName)
 
 	int				nVersionMajor = 0;
 	int				nVersionMinor = 0;
+#ifdef _G2EXT_COMPILE_SPACER
+	G2EXT_DLL_TYPE	extDllType	  = G2EXT_DLL_SPACER;
+#else // _G2EXT_COMPILE_SPACER
 	G2EXT_DLL_TYPE	extDllType	  = G2EXT_DLL_MOD;
+#endif // _G2EXT_COMPILE_SPACER
 
 	this->ModCheckVersion(nVersionMajor, nVersionMinor, extDllType);
 
@@ -303,12 +318,12 @@ bool CCoreOutgame::LoadModDll(LPCWSTR lpwFileName)
 	};
 
 #ifdef _G2EXT_COMPILE_SPACER
-	if(extDllType != G2EXT_DLL_MOD)
+	if(extDllType != G2EXT_DLL_SPACER)
 	{
 		G2EXT_LOGF_CRITICAL(L"Incompatible mod type!");
 	};
 #else // _G2EXT_COMPILE_SPACER
-	if(extDllType != G2EXT_DLL_SPACER)
+	if(extDllType != G2EXT_DLL_MOD)
 	{
 		G2EXT_LOGF_CRITICAL(L"Incompatible mod type!");
 	};

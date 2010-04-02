@@ -192,7 +192,24 @@ void CCoreIngame::AttachCallbackHooks(void)
 	G2EXT_LOG_NONE(L"Attaching callback hooks.");
 
 #ifdef _G2EXT_COMPILE_SPACER
+	this->CreateHook(L"G2EXT_CALLBACK_PAUSE", (void*)0x00533280, &CCoreIngame::OnPause);									// -- bound on oCGame::Pause(int) -- 0x00533280
+	this->CreateHook(L"G2EXT_CALLBACK_UNPAUSE", (void*)0x00533500, &CCoreIngame::OnUnPause);								// -- bound on oCGame::Unpause(void)-- 0x00533500
+	this->CreateHook(L"G2EXT_CALLBACK_OPEN_LOADSCREEN", (void*)0x0052D300, &CCoreIngame::OnOpenLoadscreen);					// -- bound on oCGame::OpenLoadscreen(bool, class zSTRING) -- 0x0052D300
+	this->CreateHook(L"G2EXT_CALLBACK_OPEN_SAVESCREEN", (void*)0x0052D2C0, &CCoreIngame::OnOpenSavescreen);					// -- bound on oCGame::OpenSavescreen(bool) -- 0x0052D2C0
+	this->CreateHook(L"G2EXT_CALLBACK_CLOSE_LOADSCREEN", (void*)0x0052D350, &CCoreIngame::OnCloseLoadscreen);				// -- bound on oCGame::CloseLoadscreen(void) -- 0x0052D350
+	this->CreateHook(L"G2EXT_CALLBACK_CLOSE_SAVESCREEN", (void*)0x0052D2F0, &CCoreIngame::OnCloseSavescreen);				// -- bound on oCGame::CloseSavescreen(void) -- 0x0052D2F0
+	this->CreateHook(L"G2EXT_CALLBACK_ENTER_WORLD", (void*)0x00533E10, &CCoreIngame::OnIngame);								// -- bound on oCGame::EnterWorld(class oCNpc *, int, class zSTRING const &) -- 0x00533E10
+	this->CreateHook(L"G2EXT_CALLBACK_RENDER", (void*)0x004B0850, &CCoreIngame::OnRender);									// -- bound on void __cdecl oCarsten_PerFrame() -- 0x004B0850
+	this->CreateHook(L"G2EXT_CALLBACK_REGISTER_EXTERNALS", (void*)0x0053F110, &CCoreIngame::OnRegisterExternals);			// -- bound on oCGame::DefineExternals_Ulfi(class zCParser *) -- 0x0053F110
+	//this->CreateHook(L"G2EXT_CALLBACK_REGISTER_MENU_EXTERNALS", (void*)0x0042C1D0, &CCoreIngame::OnRegisterMenuExternals);	// -- bound on DefineMenuScriptFunctions() -- 0x0042C1D0
+	//this->CreateHook(L"G2EXT_CALLBACK_REGISTER_CLASSES", (void*)0x0075E4D0, &CCoreIngame::OnRegisterExternalClass);			// -- bound on oCNpc::InitStatics(void) -- 0x0075E4D0
+	this->CreateHook(L"G2EXT_CALLBACK_INIT_HUD", (void*)0x0052C0D0, &CCoreIngame::OnInitHUD);								// -- bound on oCGame::Init(void) -- 0x0052C0D0
+	this->CreateHook(L"G2EXT_CALLBACK_INPUT", (void*)0x00555D90, &CCoreIngame::OnInput, false, 1);							// -- bound on oCGame::HandleEvent(int) -- 0x00555D90
+	this->CreateHook(L"G2EXT_CALLBACK_DONE", (void*)0x00489740, &CCoreIngame::OnExit);										// -- bound on CGameManager::Done(void) -- 0x00489740
+	this->CreateHook(L"G2EXT_CALLBACK_LOAD_WORLD", (void*)0x00533860, &CCoreIngame::OnLoadWorld);							// -- bound on oCGame::LoadWorld(int, class zSTRING const &) -- 0x00533860
 
+	this->CreateHook(L"G2EXT_CONSOLE_REGISTER", (void*)0x007EF410, &CConsole::ConsoleRegister, false, 2);
+	this->CreateHook(L"G2EXT_CONSOLE_REGISTER1", (void*)0x007EF2F0, &CConsole::ConsoleRegister1, false, 3);
 #else // _G2EXT_COMPILE_SPACER
 	this->CreateHook(L"G2EXT_CALLBACK_PAUSE", (void*)0x006C8AD0, &CCoreIngame::OnPause);									// -- bound on oCGame::Pause(int) -- 0x006C8AD0
 	this->CreateHook(L"G2EXT_CALLBACK_UNPAUSE", (void*)0x006C8D50, &CCoreIngame::OnUnPause);								// -- bound on oCGame::Unpause(void)-- 0x006C8D50
@@ -215,7 +232,9 @@ void CCoreIngame::AttachCallbackHooks(void)
 #endif // _G2EXT_COMPILE_SPACER
 	G2EXT_LOG_NONE(L"Attaching hacks.");
 #ifdef _G2EXT_COMPILE_SPACER
+	this->ReplaceFunction(L"G2EXT_REPLACE_SPLASH", (void*)0x0048A460, &SplashThreadProc); // -- HACK: Replace Splash Screen
 
+	*((char**)0x00986A3C) = "Spacer2 (G2Ext)";
 #else // _G2EXT_COMPILE_SPACER
 	if((G2EXT_PARAM_NO_G2EXT_CONSOLE & this->m_pModInfo->dwFlags) != G2EXT_PARAM_NO_G2EXT_CONSOLE)
 	{

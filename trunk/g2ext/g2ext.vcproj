@@ -809,10 +809,6 @@
 					>
 				</File>
 				<File
-					RelativePath="..\docs\history.h"
-					>
-				</File>
-				<File
 					RelativePath="..\docs\license.h"
 					>
 				</File>
