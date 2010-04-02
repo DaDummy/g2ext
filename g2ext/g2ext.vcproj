@@ -566,7 +566,63 @@
 						>
 					</File>
 					<File
+						RelativePath="..\api\spacer\ocitem.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\ocnpc.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\ocnpcinventory.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\ocvob.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\ocworldtimer.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\zbsptree.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\zcinputcallback.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\zcobject.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\zcpar_symbol.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\zcparser.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\zcsession.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\zctimer.h"
+						>
+					</File>
+					<File
 						RelativePath="..\api\spacer\zcview.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\zcvob.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\spacer\zcworld.h"
 						>
 					</File>
 					<File

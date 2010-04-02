@@ -30,18 +30,18 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /////////////////////////////////////////////////////////////////////////////*/
 
-#ifndef __API_G2_OCWORLDTIMER_H__
-#define __API_G2_OCWORLDTIMER_H__
+#ifndef __API_SPACER_OCWORLDTIMER_H__
+#define __API_SPACER_OCWORLDTIMER_H__
 
 #ifndef __G2EXT_API_HEADER
 #define __G2EXT_API_HEADER
 #endif  //__G2EXT_API_HEADER
 
-#ifdef _G2EXT_COMPILE_SPACER
-#error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
+#ifndef _G2EXT_COMPILE_SPACER
+#error Cannot use spacer headers on non spacer dll (_G2EXT_COMPILE_SPACER not defined)
 #endif
 
-#include "api/g2/ztypes.h"
+#include "api/spacer/ztypes.h"
 
 /** Insert description. */
 class oCWorldTimer
@@ -49,133 +49,133 @@ class oCWorldTimer
 private:
 	char m_data[8];
 public:
-	//.text:00780DD0 ; public: int __thiscall oCWorldTimer::GetDay(void)
+	//.text:005DA3B0 ; public: int __thiscall oCWorldTimer::GetDay(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int GetDay(void)
 	{
-		XCALL(0x00780DD0)
+		XCALL(0x005DA3B0) // spacer
 	};
 
-	//.text:00780E80 ; public: float __thiscall oCWorldTimer::GetFullTime(void)
+	//.text:005DA460 ; public: float __thiscall oCWorldTimer::GetFullTime(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	float GetFullTime(void)
 	{
-		XCALL(0x00780E80)
+		XCALL(0x005DA460) // spacer
 	};
 
-	//.text:00780DF0 ; public: void __thiscall oCWorldTimer::GetTime(int &, int &)
+	//.text:005DA3D0 ; public: void __thiscall oCWorldTimer::GetTime(int &, int &)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void GetTime(int & p1, int & p2)
 	{
-		XCALL(0x00780DF0)
+		XCALL(0x005DA3D0) // spacer
 	};
 
-	//.text:00780EC0 ; public: class zSTRING __thiscall oCWorldTimer::GetTimeString(void)
+	//.text:005DA4A0 ; public: class zSTRING __thiscall oCWorldTimer::GetTimeString(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	zSTRING GetTimeString(void)
 	{
-		XCALL(0x00780EC0)
+		XCALL(0x005DA4A0) // spacer
 	};
 
-	//.text:00781280 ; public: int __thiscall oCWorldTimer::IsDay(void)
+	//.text:005DA9C0 ; public: int __thiscall oCWorldTimer::IsDay(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int IsDay(void)
 	{
-		XCALL(0x00781280)
+		XCALL(0x005DA9C0) // spacer
 	};
 
-	//.text:00781110 ; public: int __thiscall oCWorldTimer::IsLater(int, int)
+	//.text:005DA850 ; public: int __thiscall oCWorldTimer::IsLater(int, int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int IsLater(int p1, int p2)
 	{
-		XCALL(0x00781110)
+		XCALL(0x005DA850) // spacer
 	};
 
-	//.text:00781150 ; public: int __thiscall oCWorldTimer::IsLaterEqual(int, int)
+	//.text:005DA890 ; public: int __thiscall oCWorldTimer::IsLaterEqual(int, int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int IsLaterEqual(int p1, int p2)
 	{
-		XCALL(0x00781150)
+		XCALL(0x005DA890) // spacer
 	};
 
-	//.text:00781300 ; public: int __thiscall oCWorldTimer::IsNight(void)
+	//.text:005DAA40 ; public: int __thiscall oCWorldTimer::IsNight(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int IsNight(void)
 	{
-		XCALL(0x00781300)
+		XCALL(0x005DAA40) // spacer
 	};
 
-	//.text:00781190 ; public: int __thiscall oCWorldTimer::IsTimeBetween(int, int, int, int)
+	//.text:005DA8D0 ; public: int __thiscall oCWorldTimer::IsTimeBetween(int, int, int, int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int IsTimeBetween(int p1, int p2, int p3, int p4)
 	{
-		XCALL(0x00781190)
+		XCALL(0x005DA8D0) // spacer
 	};
 
-	//.text:00780DE0 ; public: void __thiscall oCWorldTimer::SetDay(int)
+	//.text:005DA3C0 ; public: void __thiscall oCWorldTimer::SetDay(int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetDay(int p1)
 	{
-		XCALL(0x00780DE0)
+		XCALL(0x005DA3C0) // spacer
 	};
 
-	//.text:00780E90 ; public: void __thiscall oCWorldTimer::SetFullTime(float)
+	//.text:005DA470 ; public: void __thiscall oCWorldTimer::SetFullTime(float)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetFullTime(float p1)
 	{
-		XCALL(0x00780E90)
+		XCALL(0x005DA470) // spacer
 	};
 
-	//.text:00780E40 ; public: void __thiscall oCWorldTimer::SetTime(int, int)
+	//.text:005DA420 ; public: void __thiscall oCWorldTimer::SetTime(int, int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void SetTime(int p1, int p2)
 	{
-		XCALL(0x00780E40)
+		XCALL(0x005DA420) // spacer
 	};
 
-	//.text:00780D80 ; public: void __thiscall oCWorldTimer::Timer(void)
+	//.text:005DA360 ; public: void __thiscall oCWorldTimer::Timer(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	void Timer(void)
 	{
-		XCALL(0x00780D80)
+		XCALL(0x005DA360) // spacer
 	};
 
-	//.text:00780D60 ; public: __thiscall oCWorldTimer::oCWorldTimer(void)
+	//.text:005DA340 ; public: __thiscall oCWorldTimer::oCWorldTimer(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	oCWorldTimer(void)
 	{
-		XCALL(0x00780D60)
+		XCALL(0x005DA340) // spacer
 	};
 };
 
 #undef __G2EXT_API_HEADER
 
-#endif // __API_G2_OCWORLDTIMER_H__
+#endif // __API_SPACER_OCWORLDTIMER_H__

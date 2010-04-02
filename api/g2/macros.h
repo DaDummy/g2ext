@@ -37,6 +37,10 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 #define __G2EXT_API_HEADER
 #endif  //__G2EXT_API_HEADER
 
+#ifdef _G2EXT_COMPILE_SPACER
+#error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
+#endif
+
 #pragma warning(disable:4731) // -- suppress C4731:"frame pointer register 'ebp' modified by inline assembly code"
 
 // -- call macro from GothicX (thx, Zerxes!)

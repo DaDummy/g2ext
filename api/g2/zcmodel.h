@@ -23,6 +23,10 @@
 #include "api/g2/ztypes.h"
 #include "api/g2/macros.h"
 
+#ifdef _G2EXT_COMPILE_SPACER
+#error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
+#endif
+
 /** Insert description. */
 class zCModel
 {

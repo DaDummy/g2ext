@@ -34,7 +34,11 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 #define __API_G2EXT_CONSOLE_H__
 
 #include "api/interface.h"
+#ifdef _G2EXT_COMPILE_SPACER
+#include "api/spacer/ztypes.h"
+#else
 #include "api/g2/ztypes.h"
+#endif 
 
 /** Insert description. */
 G2EXT_BEGIN_INTERFACE_DECLARATION(IConsole)

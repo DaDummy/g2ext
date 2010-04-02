@@ -30,24 +30,24 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /////////////////////////////////////////////////////////////////////////////*/
 
-#ifndef __API_G2_OCNPC_H__
-#define __API_G2_OCNPC_H__
+#ifndef __API_SPACER_OCNPC_H__
+#define __API_SPACER_OCNPC_H__
 
 #ifndef __G2EXT_API_HEADER
 #define __G2EXT_API_HEADER
 #endif  //__G2EXT_API_HEADER
 
-#ifdef _G2EXT_COMPILE_SPACER
-#error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
+#ifndef _G2EXT_COMPILE_SPACER
+#error Cannot use spacer headers on non spacer dll (_G2EXT_COMPILE_SPACER not defined)
 #endif
 
-#include "api/g2/ztypes.h"
-#include "api/g2/zstring.h"
+#include "api/spacer/ztypes.h"
+#include "api/spacer/zstring.h"
 
-#include "api/g2/zcobject.h"
-#include "api/g2/ocvob.h"
-#include "api/g2/ocitem.h"
-#include "api/g2/ocnpcinventory.h"
+#include "api/spacer/zcobject.h"
+#include "api/spacer/ocvob.h"
+#include "api/spacer/ocitem.h"
+#include "api/spacer/ocnpcinventory.h"
 
 class oCAskBox;
 class oCInfo;
@@ -388,26 +388,26 @@ public:
 	zCPlayerGroup*  playerGroup;                                      // 0x0A00 zCPlayerGroup*
 
 public:
-	//.text:00736720 ; public: void __thiscall oCNpc::CompleteHeal(void)
+	//.text:005905D0 ; public: void __thiscall oCNpc::CompleteHeal(void)
 	/** This method heals the NPC completely.
 	* @usable Ingame only
 	*/
 	void CompleteHeal(void)
 	{
-		XCALL(0x00736720)
+		XCALL(0x005905D0)
 	};
 
-	//.text:00736760 ; public: virtual void __thiscall oCNpc:::DoDie(oCNpc*)
+	//.text:00590610 ; public: virtual void __thiscall oCNpc:::DoDie(oCNpc*)
 	/** This method kills a NPC.
 	* @param Murderer Murderer of the victim (NULL determines, that there is no murderer)
 	* @usable Ingame only	
 	*/
 	void DoDie(oCNpc* Murderer = NULL) 
 	{ 
-		XCALL(0x00736760) 
+		XCALL(0x00590610) 
 	};
 
-	//.text:0072FF20 ; public: int __thiscall oCNpc::GetAttribute(int)
+	//.text:00589D90 ; public: int __thiscall oCNpc::GetAttribute(int)
 	/** This method returns the value of a selected attribute. 
 	* @param Index Attribute array index
 	* @returns Value of selected attribute
@@ -415,20 +415,20 @@ public:
 	*/
 	int GetAttribute(zINT Index)
 	{
-		XCALL(0x0072FF20);
+		XCALL(0x00589D90);
 	};
 
-	//.text:0072FAB0 ; public: int __thiscall oCNpc::GetAttitude(class oCNpc *)
+	//.text:00589920 ; public: int __thiscall oCNpc::GetAttitude(class oCNpc *)
 	/** This method returns the attitude towards another NPC
 	* @returns NPC attitude towards "other" NPC
 	* @usable Ingame only
 	*/
 	oCNpc_Attitude GetAttitude(oCNpc* other)
 	{
-		XCALL(0x0072FAB0);
+		XCALL(0x00589920);
 	};
 
-	//.text:00749180 ; public: class oCItem * __thiscall oCNpc::GetFromInv(int, int)
+	//.text:005A3030 ; public: class oCItem * __thiscall oCNpc::GetFromInv(int, int)
 	/** This method retrieves an Item from the NPCs inventory.
 	* @param p1 Unknown
 	* @param p2 Unknown
@@ -436,107 +436,107 @@ public:
 	*/
 	oCItem* GetFromInv(zINT p1, zINT p2)
 	{
-		XCALL(0x00749180);
+		XCALL(0x005A3030);
 	};
 
-	//.text:00730750 ; public: int __thiscall oCNpc::GetGuild(void)
+	//.text:0058A5C0 ; public: int __thiscall oCNpc::GetGuild(void)
 	/** This method returns the guild of the NPC. 
 	* @returns Current guild's ID
 	* @usable Ingame only
 	*/
 	zINT GetGuild(void)
 	{
-		XCALL(0x00730750)
+		XCALL(0x0058A5C0)
 	};
 
-	//.text:0072F690 ; public: class zSTRING __thiscall oCNpc::GetGuildName(void)
+	//.text:00589500 ; public: class zSTRING __thiscall oCNpc::GetGuildName(void)
 	/** This method returns the guild name of the NPC.
 	* @returns Current guild's name
 	* @usable Ingame only
 	*/
 	zSTRING GetGuildName(void)
 	{
-		XCALL(0x0072F690)
+		XCALL(0x00589500)
 	};
 
-	//.text:0072E380 ; public: virtual int __thiscall oCNpc::GetInstance(void)
+	//.text:00588100 ; public: virtual int __thiscall oCNpc::GetInstance(void)
 	/** This method returns the internal instance ID of the NPC (important to spawn other NPCs of this type per oCObjectFactory).
 	* @usable Ingame only
 	*/
 	zINT GetInstance(void)
 	{
-		XCALL(0x0072E380)
+		XCALL(0x00588100)
 	};
 
-	//.text:00739A30 ; public: int __thiscall oCNpc::GetNextWeaponMode(int, int, int)
+	//.text:005938E0 ; public: int __thiscall oCNpc::GetNextWeaponMode(int, int, int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
 	int GetNextWeaponMode(int, int, int)
 	{
-		XCALL(0x00739A30)
+		XCALL(0x005938E0)
 	};
 
-	//.text:00736740 ; public: int __thiscall oCNpc::IsDead(void)
+	//.text:005905F0 ; public: int __thiscall oCNpc::IsDead(void)
 	/** This method returns whether the NPC is dead or not.
 	* @returns Whether NPC is dead or not.
 	* @usable Ingame only
 	*/
 	zINT IsDead(void)
 	{
-		XCALL(0x00736740)
+		XCALL(0x005905F0)
 	};
 
-	//.text:00736750 ; public: int __thiscall oCNpc::IsUnconscious(void)
+	//.text:005905F0 ; public: int __thiscall oCNpc::IsUnconscious(void)
 	/** This method returns whether the NPC is unconscious or not.
 	* @returns Whether NPC is dead or not.
 	* @usable Ingame only
 	*/
 	zINT IsUnconscious(void)
 	{
-		XCALL(0x00736750)
+		XCALL(0x005905F0)
 	};
 
-	//.text:00762250 ; public: void __thiscall oCNpc::OpenInventory(int)
+	//.text:005BC370 ; public: void __thiscall oCNpc::OpenInventory(int)
 	/** This method opens the players inventory.
 	* @param p1 Unknown
 	* @usable Ingame only
 	*/
-	void OpenScreen_Status(zINT p1)
+	void OpenInventory(zINT p1)
 	{
-		XCALL(0x00762250);
+		XCALL(0x005BC370);
 	};
 
-	//.text:0073D8D0 ; public: void __thiscall oCNpc::OpenScreen_Map(int)
+	//.text:00597780 ; public: void __thiscall oCNpc::OpenScreen_Map(int)
 	/** This method opens the map screen.
 	* @param p1 Unknown
 	* @usable Ingame only
 	*/
 	void OpenScreen_Map(zINT p1)
 	{
-		XCALL(0x0073D8D0);
+		XCALL(0x00597780); // 
 	};
 
-	//.text:0073D980 ; public: void __thiscall oCNpc::OpenScreen_Status(void)
+	//.text:00597830 ; public: void __thiscall oCNpc::OpenScreen_Status(void)
 	/** This method opens the status screen.
 	* @usable Ingame only
 	*/
 	void OpenScreen_Status(void)
 	{
-		XCALL(0x0073D980)
+		XCALL(0x00597830)
 	};
 
-	//.text:007380B0 ; public: void __thiscall oCNpc::SetMovLock(int)
+	//.text:00591F60 ; public: void __thiscall oCNpc::SetMovLock(int)
 	/** Insert description. 
 	* @param enabled Determines whether NPC is move locked or not.
 	* @usable Ingame only
 	*/
 	void SetMovLock(zINT enabled)
 	{
-		XCALL(0x007380B0);
+		XCALL(0x00591F60);
 	};
 
-	//.text:0072FFF0 ; public: void __thiscall oCNpc::SetAttribute(int, int)
+	//.text:00589E60 ; public: void __thiscall oCNpc::SetAttribute(int, int)
 	/** This method sets the value of a selected attribute.
 	* @param Index Attribute index.
 	* @param Value The value... what else?
@@ -544,57 +544,57 @@ public:
 	*/
 	void SetAttribute(zINT Index, zINT Value)
 	{
-		XCALL(0x0072FFF0);
+		XCALL(0x00589E60);
 	};
 
-	//.text:00730760 ; public: void __thiscall oCNpc::SetGuild(int)
+	//.text:0058A5D0 ; public: void __thiscall oCNpc::SetGuild(int)
 	/** This method sets the NPCs guild.
-	 * @param GuildId Id of the guild
-	 * @usable Ingame only
-	 */
+	* @param GuildId Id of the guild
+	* @usable Ingame only
+	*/
 	void SetGuild(zINT GuildId)
 	{
-		XCALL(0x00730760);
+		XCALL(0x0058A5D0);
 	};
 
-	//.text:00738C40 ; public: int __thiscall oCNpc::GetWeaponMode(void)
+	//.text:00592AF0 ; public: int __thiscall oCNpc::GetWeaponMode(void)
 	/** Gets the current NPCs weapon mode (mainly intended for hero)
-	 * @returns Current weapon mode
-	 * @usable Ingame only
-	 */
+	* @returns Current weapon mode
+	* @usable Ingame only
+	*/
 	oCNpc_WeaponMode GetWeaponMode()
 	{
-		XCALL(0x00738C40);
+		XCALL(0x00592AF0);
 	};
 
-	//.text:00738C60 ; public: void __thiscall oCNpc::SetWeaponMode2(class zSTRING const &)
+	//.text:00592B10 ; public: void __thiscall oCNpc::SetWeaponMode2(class zSTRING const &)
 	/** Sets the current NPCs weapon mode (seemingly intended for daedalus - use SetWeaponMode instead if possible)
-	 * @param wm Weapon mode to set
-	 * @usable Ingame only
-	 */
+	* @param wm Weapon mode to set
+	* @usable Ingame only
+	*/
 	void SetWeaponMode2(const zSTRING& wm)
 	{
-		XCALL(0x00738C60);
+		XCALL(0x00592B10);
 	};
 
-	//.text:00738E80 ; public: virtual void __thiscall oCNpc::SetWeaponMode2(int)
+	//.text:00592D30 ; public: virtual void __thiscall oCNpc::SetWeaponMode2(int)
 	/** Sets the current NPCs weapon mode (seemingly intended for daedalus - use SetWeaponMode instead if possible)
-	 * @param wm Weapon mode to set
-	 * @usable Ingame only
-	 */
+	* @param wm Weapon mode to set
+	* @usable Ingame only
+	*/
 	void SetWeaponMode2(oCNpc_WeaponMode wm)
 	{
-		XCALL(0x00738E80);
+		XCALL(0x00592D30);
 	};
 
-	//.text:00739940 ; public: virtual void __thiscall oCNpc::SetWeaponMode(int)
+	//.text:005937F0 ; public: virtual void __thiscall oCNpc::SetWeaponMode(int)
 	/** Sets the current NPCs weapon mode (mainly intended for hero)
-	 * @param wm Weapon mode to set
-	 * @usable Ingame only
-	 */
+	* @param wm Weapon mode to set
+	* @usable Ingame only
+	*/
 	void SetWeaponMode(oCNpc_WeaponMode wm)
 	{
-		XCALL(0x00739940);
+		XCALL(0x005937F0);
 	};
 
 	/** This member function returns the focus Vob.
@@ -603,7 +603,7 @@ public:
 	*/
 	zCVob* GetFocusVob(void)
 	{
-		XCALL(0x00732BB0);
+		XCALL(0x0058CA20);
 	};
 
 	/** This member function returns the focus Npc.
@@ -612,7 +612,7 @@ public:
 	*/
 	oCNpc* GetFocusNpc(void)
 	{
-		XCALL(0x00732BF0);
+		XCALL(0x0058CA60);
 	};
 
 	/** This member function returns the current angle.
@@ -705,7 +705,7 @@ public:
 	* @usable Ingame only
 	*/
 	zINT GetLearningPoints(void) { return this->learn_points; };
-	
+
 	/** Insert description. 
 	* @usable Ingame only
 	*/
@@ -715,7 +715,7 @@ public:
 	* @usable Ingame only
 	*/
 	zINT GetHealth(void) { return this->attribute[NPC_ATR_HITPOINTS]; };
-	
+
 	/** Insert description. 
 	* @usable Ingame only
 	*/
@@ -725,7 +725,7 @@ public:
 	* @usable Ingame only
 	*/
 	zINT GetMaxHealth(void) { return this->attribute[NPC_ATR_HITPOINTS_MAX]; };
-	
+
 	/** Insert description. 
 	* @usable Ingame only
 	*/
@@ -735,7 +735,7 @@ public:
 	* @usable Ingame only
 	*/
 	zINT GetMana(void) { return this->attribute[NPC_ATR_MANA]; };
-	
+
 	/** Insert description. 
 	* @usable Ingame only
 	*/
@@ -745,7 +745,7 @@ public:
 	* @usable Ingame only
 	*/
 	zINT GetMaxMana(void) { return this->attribute[NPC_ATR_MANA_MAX]; };
-	
+
 	/** Insert description. 
 	* @usable Ingame only
 	*/
@@ -755,7 +755,7 @@ public:
 	* @usable Ingame only
 	*/
 	zINT GetStrength(void) { return this->attribute[NPC_ATR_STRENGTH]; };
-	
+
 	/** Insert description. 
 	* @usable Ingame only
 	*/
@@ -765,7 +765,7 @@ public:
 	* @usable Ingame only
 	*/
 	zINT GetDexterity(void) { return this->attribute[NPC_ATR_DEXTERITY]; };
-	
+
 	/** Insert description. 
 	* @usable Ingame only
 	*/
@@ -784,9 +784,9 @@ public:
 	/** This method returns the current oCNpc::Hero instance
 	* @usable Ingame only
 	*/
-	inline static oCNpc* GetHero() { return *(oCNpc**)0x00AB2684; };
+	inline static oCNpc* GetHero() { return *(oCNpc**)0x009A81D8; };
 };
 
 #undef __G2EXT_API_HEADER
 
-#endif // __API_G2_OCNPC_H__
+#endif // __API_SPACER_OCNPC_H__

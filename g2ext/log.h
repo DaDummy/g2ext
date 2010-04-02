@@ -28,7 +28,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "common/osheader.h"
 
 #include "api/log.h"
+#ifdef _G2EXT_COMPILE_SPACER
+#include "api/spacer/ztypes.h"
+#else //_G2EXT_COMPILE_SPACER
 #include "api/g2/ztypes.h"
+#endif //_G2EXT_COMPILE_SPACER
 #include "mtutils.h"
 #include "singleton.h"
 #include <hash_map>

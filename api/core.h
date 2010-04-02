@@ -36,7 +36,6 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 #include "common/osheader.h"
 
 #include "api/interface.h"
-#include "api/core.h"
 
 #include <vector>
 #include <hash_map>

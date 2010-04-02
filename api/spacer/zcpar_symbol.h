@@ -30,37 +30,68 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /////////////////////////////////////////////////////////////////////////////*/
 
-#ifndef __ZTIMER_H_INCLUDED__
-#define __ZTIMER_H_INCLUDED__
+#ifndef __API_SPACER_ZCPAR_SYMBOL_H__
+#define __API_SPACER_ZCPAR_SYMBOL_H__
 
 #ifndef __G2EXT_API_HEADER
 #define __G2EXT_API_HEADER
 #endif  //__G2EXT_API_HEADER
 
-#ifdef _G2EXT_COMPILE_SPACER
-#error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
+#ifndef _G2EXT_COMPILE_SPACER
+#error Cannot use spacer headers on non spacer dll (_G2EXT_COMPILE_SPACER not defined)
 #endif
 
-#include "api/g2/ztypes.h"
-#include "api/g2/macros.h"
+#include "api/spacer/ztypes.h"
+#include "api/spacer/macros.h"
 
 /** Insert description. */
-class zCTimer
+class zCPar_Symbol
 {
 public:
-	//.text:006370B0 ; public: void __thiscall zCTimer::SetMotionFactor(float)
-	void SetMotionFactor(float p1)
+	//.text:0080F850 ; public: int __thiscall zCPar_Symbol::GetOffset(void)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void* GetOffset()
 	{
-		XCALL(0x006370B0);
+		XCALL(0x0080F850); // spacer
 	};
 
-	//.data:0099B3D4 ; class zCTimer ztimer
-	static zCTimer* GetTimer()
+	//.text:007A1DC0 ; public: void * __thiscall zCPar_Symbol::GetInstanceAdr(void)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void* GetInstanceAdr()
 	{
-		return (zCTimer*)0x0099B3D4;
+		XCALL(0x0080E6E0); // spacer
 	};
+
+public:
+	zSTRING			name;
+	zCPar_Symbol*	next;
+
+	union
+	{
+		void*		data_ptr;
+		int*		data_pint;
+		float*		data_pfloat;
+		zSTRING*	data_pstring;
+		int			data_int;
+		float		data_float;
+	} content;
+
+	int offset;
+
+	int bitfield; 
+	int filenr; 
+	int line;
+	int line_anz;
+	int pos_beg;
+	int pos_anz;
+
+	zCPar_Symbol* parent;
 };
 
 #undef __G2EXT_API_HEADER
 
-#endif  //__ZTIMER_H_INCLUDED__
+#endif //__API_SPACER_ZCPAR_SYMBOL_H__

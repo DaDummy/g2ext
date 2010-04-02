@@ -30,90 +30,88 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /////////////////////////////////////////////////////////////////////////////*/
 
-#ifndef __OCVIEWPROGRESSBAR_H_INCLUDED__
-#define __OCVIEWPROGRESSBAR_H_INCLUDED__
+#ifndef __API_SPACER_INPUTCALLBACK_H__
+#define __API_SPACER_INPUTCALLBACK_H__
 
 #ifndef __G2EXT_API_HEADER
 #define __G2EXT_API_HEADER
 #endif  //__G2EXT_API_HEADER
 
-#ifdef _G2EXT_COMPILE_SPACER
-#error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
+#ifndef _G2EXT_COMPILE_SPACER
+#error Cannot use spacer headers on non spacer dll (_G2EXT_COMPILE_SPACER not defined)
 #endif
 
-#include "api/g2/ztypes.h"
-#include "api/g2/macros.h"
+#include "api/spacer/ztypes.h"
+#include "api/spacer/ztypes.h"
 
 /** Insert description. */
-class oCViewProgressBar : public zCView
+class zCInputCallback
 {
-private:
-	char _data[0x200];
 public:
-	//.text:0046F300 ; public: void __thiscall zCViewProgressBar::Draw(void)
+	//.text:00811D10 ; public: __thiscall zCInputCallback::zCInputCallback(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void Draw(void)
+	zCInputCallback::zCInputCallback(void)
 	{
-		XCALL(0x0046F300);
+		XCALL(0x00811D10); // spacer
 	};
 
-	//.text:0046F190 ; public: void __thiscall zCViewProgressBar::HandleChange(void)
+	//.text:00811E80 ; public: int __thiscall zCInputCallback::GetEnableHandleEvent(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void HandleChange(void)
+	int zCInputCallback::GetEnableHandleEvent(void)
 	{
-		XCALL(0x0046F190);
+		XCALL(0x00811E80); // spacer
 	};
 
-	//.text:0046ED40 ; public: void __thiscall zCViewProgressBar::Init(void)
+	//.text:0041F8A0 ; public: virtual int __thiscall zCInputCallback::HandleEvent(int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void Init(void)
+	virtual int zCInputCallback::HandleEvent(int key)
 	{
-		XCALL(0x0046ED40);
+		XCALL(0x0041F8A0); // spacer
 	};
 
-	//.text:0046F400 ; public: void __thiscall zCViewProgressBar::ResetRange(void)
+	//.text:00811E00 ; public: void __thiscall zCInputCallback::SetEnableHandleEvent(int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void ResetRange(void)
+	void zCInputCallback::SetEnableHandleEvent(int pA)
 	{
-		XCALL(0x0046ED40);
+		XCALL(0x00811E00); // spacer
 	};
 
-	//.text:0046EEC0 ; public: void __thiscall zCViewProgressBar::SetPercent(int, class zSTRING)
+	//.text:00811D90 ; public: void __thiscall zCInputCallback::SetHandleEventTop(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void ResetRange(int pA, zSTRING & pB)
+	void zCInputCallback::SetHandleEventTop(void)
 	{
-		XCALL(0x0046EEC0);
+		XCALL(0x00811D90); // spacer
 	};
 
-	//.text:0046F340 ; public: void __thiscall zCViewProgressBar::SetRange(int, int)
+	//.text:00811EE0 ; public: static void __cdecl zCInputCallback::GetInput(void)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void ResetRange(int pA, int pB)
+	static void zCInputCallback::GetInput(void)
 	{
-		XCALL(0x0046F340);
+		XCALL(0x00811EE0);
 	};
-	
-	//.text:0046E9D0 ; public: __thiscall zCViewProgressBar::zCViewProgressBar(int, int, int, int, enum  zTviewID)
+
+	//.text:00811EB0 ; public: static int __cdecl zCInputCallback::DoEvents(int)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	oCViewProgressBar(int x1, int y1, int x2, int y2, zTviewID ItemID = VIEW_ITEM)
+	static int zCInputCallback::DoEvents(int pA)
 	{
-		XCALL(0x0046E9D0);
+		XCALL(0x00811EB0);
 	};
 };
 
 #undef __G2EXT_API_HEADER
 
-#endif  //__OCVIEWPROGRESSBAR_H_INCLUDED__
+#endif  //__API_SPACER_INPUTCALLBACK_H__

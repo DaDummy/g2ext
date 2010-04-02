@@ -27,7 +27,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "common/osheader.h"
 
+#ifdef _G2EXT_COMPILE_SPACER
+#include "api/spacer/zcparser.h"
+#else //_G2EXT_COMPILE_SPACER
 #include "api/g2/zcparser.h"
+#endif //_G2EXT_COMPILE_SPACER
 
 #include <vector>
 #include <map>

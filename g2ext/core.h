@@ -28,9 +28,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "api/core.h"
 #include "singleton.h"
 
+#ifdef _G2EXT_COMPILE_SPACER
+#include "api/spacer/zCVob.h"
+#include "api/spacer/oCNpc.h"
+#include "api/spacer/oCItem.h"
+#else //_G2EXT_COMPILE_SPACER
 #include "api/g2/zCVob.h"
 #include "api/g2/oCNpc.h"
 #include "api/g2/oCItem.h"
+#endif //_G2EXT_COMPILE_SPACER
 
 #include "common/version.h"
 

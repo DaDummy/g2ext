@@ -30,37 +30,37 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /////////////////////////////////////////////////////////////////////////////*/
 
-#ifndef __ZTIMER_H_INCLUDED__
-#define __ZTIMER_H_INCLUDED__
+#ifndef __API_SPACER_ZTIMER_H__
+#define __API_SPACER_ZTIMER_H__
 
 #ifndef __G2EXT_API_HEADER
 #define __G2EXT_API_HEADER
 #endif  //__G2EXT_API_HEADER
 
-#ifdef _G2EXT_COMPILE_SPACER
-#error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
+#ifndef _G2EXT_COMPILE_SPACER
+#error Cannot use spacer headers on non spacer dll (_G2EXT_COMPILE_SPACER not defined)
 #endif
 
-#include "api/g2/ztypes.h"
-#include "api/g2/macros.h"
+#include "api/spacer/ztypes.h"
+#include "api/spacer/macros.h"
 
 /** Insert description. */
 class zCTimer
 {
 public:
-	//.text:006370B0 ; public: void __thiscall zCTimer::SetMotionFactor(float)
+	//.text:007C1E10 ; public: void __thiscall zCTimer::SetMotionFactor(float)
 	void SetMotionFactor(float p1)
 	{
-		XCALL(0x006370B0);
+		XCALL(0x007C1E10);
 	};
 
 	//.data:0099B3D4 ; class zCTimer ztimer
 	static zCTimer* GetTimer()
 	{
-		return (zCTimer*)0x0099B3D4;
+		return (zCTimer*)0x00B18DF8;
 	};
 };
 
 #undef __G2EXT_API_HEADER
 
-#endif  //__ZTIMER_H_INCLUDED__
+#endif  //__API_SPACER_ZTIMER_H__
