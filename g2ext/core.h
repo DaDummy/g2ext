@@ -194,6 +194,20 @@ typedef struct _PLUGIN
 			return E_FAIL;
 		};
 
+#ifdef _G2EXT_COMPILE_SPACER
+		if(extDllType != G2EXT_DLL_SPACER_PLUGIN)
+		{
+			G2EXT_LOG_WARNING(L"Non Spacer plugin!");
+			return E_FAIL;
+		};
+#else //_G2EXT_COMPILE_SPACER
+		if(extDllType != G2EXT_DLL_PLUGIN)
+		{
+			G2EXT_LOG_WARNING(L"Non Gothic plugin!");
+			return E_FAIL;
+		};
+#endif //_G2EXT_COMPILE_SPACER
+
 		if((this->PluginInit = reinterpret_cast<G2EXT_PLUGIN_INIT_FUNC>(GetProcAddress(this->hModule, "G2Ext_PluginInit"))) == NULL)
 		{
 			G2EXT_LOG_WARNING(L"G2Ext_PluginInit not found!");

@@ -298,7 +298,11 @@ void CLog::Divider(void)
 
 void CLog::zERROR_Hijack(void)
 {
+#ifdef _G2EXT_COMPILE_SPACER
+	CCoreIngame::GetInstance()->CreateHook(L"G2EXT_ZERROR_HIJACK", (void*)0x00606E90, &CLog::zERROR_Report, false, 8);
+#else
 	CCoreIngame::GetInstance()->CreateHook(L"G2EXT_ZERROR_HIJACK", (void*)0x0044C8D0, &CLog::zERROR_Report, false, 8);
+#endif
 	this->m_pCritical = new CCriticalSection();
 	CreateThread(NULL, NULL, CLog::zERROR_Thread, NULL, NULL, NULL);
 };
