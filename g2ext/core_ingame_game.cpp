@@ -27,7 +27,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "stats.h"
 #include "utils.h"
 
+#ifdef _G2EXT_COMPILE_SPACER
+#include "api/spacer/zcinput.h"
+#else //_G2EXT_COMPILE_SPACER
 #include "api/g2/zcinput.h"
+#endif //_G2EXT_COMPILE_SPACER
 
 CCoreIngame* pCore = CCoreIngame::GetInstance();
 

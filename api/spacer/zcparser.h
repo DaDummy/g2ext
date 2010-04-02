@@ -41,10 +41,10 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 #error Cannot use spacer headers on non spacer dll (_G2EXT_COMPILE_SPACER not defined)
 #endif
 
-#include "api/g2/ztypes.h"
-#include "api/g2/macros.h"
+#include "api/spacer/ztypes.h"
+#include "api/spacer/macros.h"
 
-#include "api/g2/zcpar_symbol.h"
+#include "api/spacer/zcpar_symbol.h"
 
 #pragma warning(disable:4731) // -- suppress C4731:"frame pointer register 'ebp' modified by inline assembly code"
 

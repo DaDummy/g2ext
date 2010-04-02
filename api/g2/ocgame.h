@@ -79,7 +79,7 @@ enum oTGameDialogView
 	GAME_VIEW_MAX
 };
 
-	
+/** Insert description */
 typedef struct 
 {
 	zSTRING     objName;

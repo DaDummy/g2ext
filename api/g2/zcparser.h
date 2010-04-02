@@ -30,8 +30,8 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /////////////////////////////////////////////////////////////////////////////*/
 
-#ifndef __API_SPACER_ZCPARSER_H__
-#define __API_SPACER_ZCPARSER_H__
+#ifndef __API_G2_ZCPARSER_H__
+#define __API_G2_ZCPARSER_H__
 
 #ifndef __G2EXT_API_HEADER
 #define __G2EXT_API_HEADER
@@ -41,10 +41,10 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 #error Cannot use gothic headers on spacer dll (_G2EXT_COMPILE_SPACER defined)
 #endif
 
-#include "api/spacer/ztypes.h"
-#include "api/spacer/macros.h"
+#include "api/g2/ztypes.h"
+#include "api/g2/macros.h"
 
-#include "api/spacer/zcpar_symbol.h"
+#include "api/g2/zcpar_symbol.h"
 
 #pragma warning(disable:4731) // -- suppress C4731:"frame pointer register 'ebp' modified by inline assembly code"
 
@@ -53,6 +53,7 @@ class zCPar_TreeNode;
 class zCViewProgressBar;
 class zCView;
 
+/** Insert description */
 typedef struct 
 {
 	zCPar_Symbol*	preAllocatedSymbols;
@@ -534,5 +535,5 @@ public:
 
 #undef __G2EXT_API_HEADER
 
-#endif // __API_SPACER_ZCPARSER_H__
+#endif // __API_G2_ZCPARSER_H__
 

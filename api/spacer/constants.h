@@ -43,7 +43,7 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 // engine constants from constants.d
 
-#include "api/g2/ztypes.h"
+#include "api/spacer/ztypes.h"
 
 // NPC FLAGS
 const zINT ATR_HITPOINTS			=  0;

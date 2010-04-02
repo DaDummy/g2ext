@@ -30,11 +30,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "utils.h"
 
 #ifdef _G2EXT_COMPILE_SPACER
-//#include "api/spacer/zcinput.h"
+#include "api/spacer/zcinput.h"
 #include "api/spacer/ocnpc.h"
 #include "api/spacer/zcparser.h"
 #else //_G2EXT_COMPILE_SPACER
-//#include "api/g2/zcinput.h"
+#include "api/g2/zcinput.h"
 #include "api/g2/ocnpc.h"
 #include "api/g2/zcparser.h"
 #endif //_G2EXT_COMPILE_SPACER

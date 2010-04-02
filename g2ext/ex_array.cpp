@@ -39,7 +39,7 @@ int externals::iadim(void)
 		vector<uint32_t> dimensions(count);
 
 		for (int i = 0; i < count; i++)
-			p->GetParameter((int)dimensions[i]);
+			p->GetParameter((int&)dimensions[i]);
 
 		p->SetReturn(ex_int_array::create(dimensions));
 	}
@@ -69,7 +69,7 @@ int externals::iaredim(void)
 	vector<uint32_t> dimensions(arr->getDimensionCount());
 
 	for (size_t i = 0; i < arr->getDimensionCount(); i++)
-		p->GetParameter((int)dimensions[i]);
+		p->GetParameter((int&)dimensions[i]);
 
 	p->SetReturn(arr->redim(dimensions));
 
@@ -107,7 +107,7 @@ int externals::iaget(void)
 	vector<uint32_t> coords(arr->getDimensionCount());
 
 	for (size_t i = 0; i < arr->getDimensionCount(); i++)
-		p->GetParameter((int)coords[i]);
+		p->GetParameter((int&)coords[i]);
 
 	p->SetReturn(arr->getElement(coords));
 
@@ -132,7 +132,7 @@ int externals::iaset(void)
 	vector<uint32_t> coords(arr->getDimensionCount());
 
 	for (size_t i = 0; i < arr->getDimensionCount(); i++)
-		p->GetParameter((int)coords[i]);
+		p->GetParameter((int&)coords[i]);
 
 	int val = 0;
 
