@@ -318,16 +318,16 @@ public: // internal
 	static void __stdcall	GothicOnOpenLoadscreen(void);
 	static void __stdcall	GothicOnCloseLoadscreen(void);
 public: // internal
-	CCoreIngame();
-	~CCoreIngame();
+	virtual ~CCoreIngame();
 
-	__forceinline bool		GetFlag(DWORD dwFlag)	{ return ((this->m_pModInfo->dwFlags & dwFlag) == dwFlag) ? true : false; };
+	__forceinline bool		IsFlagSet(DWORD dwFlag)	{ return ((this->m_pModInfo->dwFlags & dwFlag) == dwFlag) ? true : false; };
 	__forceinline void		SetFlag(DWORD dwFlag)	{ this->m_pModInfo->dwFlags |= dwFlag; };
 	__forceinline void		UnSetFlag(DWORD dwFlag) { this->m_pModInfo->dwFlags = this->m_pModInfo->dwFlags & ~dwFlag; };
 	void					Init(PMODINFO pModInfo);
 	void					Release(void);
 	void					PrepareForReload(void);
 	void					Reload(void);
+	PMODINFO				GetModInfo(void)		{ return this->m_pModInfo; };
 public: // callbacks
 
 	//////////////////////////////////////////////////////////////////////////
@@ -372,12 +372,12 @@ private: // mod funcs
 	G2EXT_MOD_PREPARE_FUNC		ModPrepare;
 	G2EXT_MOD_VERSIONCHK_FUNC	ModCheckVersion;
 public: // interface
-	ILog*					GetLog(void) { return NULL; };
+	ILog*					GetLog(void) { return (ILog*)this->m_pLog; };
 	void					GetCmdLine(LPWSTR& lpwCMD, size_t& szLen) { lpwCMD = (LPWSTR)this->m_lpwCMD; szLen = wcslen(this->m_lpwCMD); };
 	void					SetCmdLine(LPCWSTR lpwCMD) { this->m_lpwCMD = lpwCMD; };
-	HANDLE					GetProcessHandle(void) { return NULL; };
+	HANDLE					GetProcessHandle(void) { return this->m_hProcess; };
 	HANDLE					GetMainThreadHandle(void) { return NULL; };
-	HMODULE					GetModModuleHandle(void) { return NULL; };
+	HMODULE					GetModModuleHandle(void) { return this->m_pModHandle; };
 public: // internal
 	HRESULT					Init(PMODINFO pModInfo);
 	void					Release(void);

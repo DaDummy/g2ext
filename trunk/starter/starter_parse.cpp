@@ -61,6 +61,7 @@ void CStarter::SearchAndParseMods(void)
 			pMod->wcSettingsZEN		= pIni->GetValue(L"SETTINGS", L"ZEN", L"NewWorld/NewWorld.zen");
 			pMod->wcG2ExtDLL		= pIni->GetValue(L"G2EXT", L"DLL", L"");
 			pMod->wcG2ExtPLUGINS	= pIni->GetValue(L"G2EXT", L"PLUGINS", L"");
+			pMod->wcG2ExtSpacerDLL	= pIni->GetValue(L"G2EXT_SPACER", L"DLL", L"");
 
 			this->m_vMods.push_back(pMod);
 

@@ -85,7 +85,11 @@ HRESULT CCoreOutgame::Run(void)
 {
 	PROCESS_INFORMATION	pi;
 	STARTUPINFO			si;
+#ifdef _G2EXT_COMPILE_SPACER
+	bool				bHasModDll = this->LoadModDll(this->m_pModInfo->lpwSpacerDLL);
+#else
 	bool				bHasModDll = this->LoadModDll(this->m_pModInfo->lpwDLL);
+#endif
 
 	//////////////////////////////////////////////////////////////////////////
 
@@ -152,6 +156,8 @@ HRESULT CCoreOutgame::Run(void)
 		G2EXT_LOG_CRITICAL(L"INJECTION #E-0-6");
 	if ((inj_strings_offset[5] = inj_basic_strings->Add((ptr_t)this->m_pModInfo->lpwCMD, (wcslen(this->m_pModInfo->lpwCMD) + 1) * sizeof(wchar_t))) == G2EXT_INVALID_OFFSET)
 		G2EXT_LOG_CRITICAL(L"INJECTION #E-0-7");
+	if ((inj_strings_offset[6] = inj_basic_strings->Add((ptr_t)this->m_pModInfo->lpwSpacerDLL, (wcslen(this->m_pModInfo->lpwSpacerDLL) + 1) * sizeof(wchar_t))) == G2EXT_INVALID_OFFSET)
+		G2EXT_LOG_CRITICAL(L"INJECTION #E-0-8");
 
 	//////////////////////////////////////////////////////////////////////////
 
@@ -161,6 +167,7 @@ HRESULT CCoreOutgame::Run(void)
 	tmp_mi.lpwModIni	= (LPCWSTR)	0x11111101;
 	tmp_mi.lpwPlugins	= (LPCWSTR)	0x11111102;
 	tmp_mi.lpwCMD		= (LPCWSTR)	0x11111103;
+	tmp_mi.lpwSpacerDLL	= (LPCWSTR)	0x11111104;
 	tmp_mi.lpIntShared	= (void*)	0x111111F0;
 	tmp_mi.lpModShared	= (void*)	0x111111F1;
 	tmp_mi.dwFlags		= this->m_pModInfo->dwFlags;
@@ -187,10 +194,12 @@ HRESULT CCoreOutgame::Run(void)
 		G2EXT_LOG_CRITICAL(L"INJECTION #E-2-5");
 	if (!inj_basic_int_shared->SnrPTR(inj_int_shared_offset[0] + offsetof(MODINFO, lpwCMD), 0x11111103, inj_basic_strings->GetDest() + inj_strings_offset[5], NULL))
 		G2EXT_LOG_CRITICAL(L"INJECTION #E-2-6");
+	if (!inj_basic_int_shared->SnrPTR(inj_int_shared_offset[0] + offsetof(MODINFO, lpwSpacerDLL), 0x11111104, inj_basic_strings->GetDest() + inj_strings_offset[6], NULL))
+		G2EXT_LOG_CRITICAL(L"INJECTION #E-2-7");
 
 #ifdef _G2EXT_COMPILE_SPACER
 	if (!this->CreateJumpInjection("inj_basic_init_jmp", 0x0087025C, 8, inj_basic_init->GetDest()))
-		this->m_pLog->Write(LOG_ERROR, L"INJECTION #E-3-1 spacer");
+		this->m_pLog->Write(LOG_ERROR, L"INJECTION #E-3-1");
 #else //_G2EXT_COMPILE_SPACER
 	if (!this->CreateJumpInjection("inj_basic_init_jmp", 0x00502DEC, 8, inj_basic_init->GetDest()))
 		this->m_pLog->Write(LOG_ERROR, L"INJECTION #E-3-1");
@@ -205,6 +214,8 @@ HRESULT CCoreOutgame::Run(void)
 		G2EXT_LOG_NONE(L"Calling G2Ext_ModPrepare function...");
 		this->ModPrepare(this);
 	};
+
+	FreeLibrary(this->m_pModHandle);
 
 	//////////////////////////////////////////////////////////////////////////
 
@@ -279,18 +290,10 @@ bool CCoreOutgame::LoadModDll(LPCWSTR lpwFileName)
 
 	G2EXT_LOG_NONE(L"Loading mod-dll...");
 
-	_wchdir(L"spacer");
-
 	if((this->m_pModHandle = LoadLibrary(lpwFileName)) == NULL)
 	{
-		_wchdir(L"..");
-
 		G2EXT_LOGF_WARNING(L"'%s' couldn't be loaded!", lpwFileName);
 		return false;
-	}
-	else
-	{
-		_wchdir(L"..");
 	};
 
 	if((this->ModCheckVersion = reinterpret_cast<G2EXT_MOD_VERSIONCHK_FUNC>(GetProcAddress(this->m_pModHandle, "G2Ext_ModVersion"))) == NULL)
@@ -319,15 +322,12 @@ bool CCoreOutgame::LoadModDll(LPCWSTR lpwFileName)
 
 #ifdef _G2EXT_COMPILE_SPACER
 	if(extDllType != G2EXT_DLL_SPACER)
-	{
-		G2EXT_LOGF_CRITICAL(L"Incompatible mod type!");
-	};
 #else // _G2EXT_COMPILE_SPACER
 	if(extDllType != G2EXT_DLL_MOD)
+#endif // _G2EXT_COMPILE_SPACER
 	{
 		G2EXT_LOGF_CRITICAL(L"Incompatible mod type!");
 	};
-#endif // _G2EXT_COMPILE_SPACER
 
 	G2EXT_LOG_NONE(L"Version check passed.");
 

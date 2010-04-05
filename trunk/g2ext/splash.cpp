@@ -92,6 +92,9 @@ DWORD __stdcall SplashThreadProc(void* param)
 			DrawText(hBitmapDC, G2EXT_VERSIONW, -1, &rect, DT_NOCLIP);
 		};
 
+		SetRect(&rect, 10, 178, 100, 100);
+		DrawText(hBitmapDC, L"Debug build", -1, &rect, DT_NOCLIP);
+
 		UpdateWindow(hDlg);	
 	};
 

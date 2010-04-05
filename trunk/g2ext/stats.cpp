@@ -155,11 +155,17 @@ void CStatistics::Tick(void)
 			sprintf_s(xbuf6, 25, "polys: %d",		this->m_dwPolys);
 			sprintf_s(xbuf7, 25, "tris: %d",		this->m_dwTris);
 			if(this->m_dwFPS <= 23)
+			{
 				this->m_pScreen->SetFontColor(zCOLOR(255, 0, 0, 255));
-			else if(this->m_dwFPS <= 60)
+			}
+			else if(this->m_dwFPS <= 30)
+			{
 				this->m_pScreen->SetFontColor(zCOLOR(255, 180, 0, 255));
-			else if(this->m_dwFPS > 61)
+			}
+			else if(this->m_dwFPS > 31)
+			{
 				this->m_pScreen->SetFontColor(zCOLOR(0, 255, 0, 255));
+			};
 			this->m_pScreen->Print(VIEW_VXMAX - (this->m_pScreen->FontSize(zSTRING(xbuf0)) + 100), this->m_pScreen->FontY(),   zSTRING(xbuf0));
 			this->m_pScreen->SetFontColor(zCOLOR(255, 255, 255, 255));
 			this->m_pScreen->Print(VIEW_VXMAX - (this->m_pScreen->FontSize(zSTRING(xbuf1)) + 100), this->m_pScreen->FontY()*2, zSTRING(xbuf1));
@@ -167,11 +173,17 @@ void CStatistics::Tick(void)
 			this->m_pScreen->Print(VIEW_VXMAX - (this->m_pScreen->FontSize(zSTRING(xbuf3)) + 100), this->m_pScreen->FontY()*4, zSTRING(xbuf3));
 			this->m_pScreen->Print(VIEW_VXMAX - (this->m_pScreen->FontSize(zSTRING(xbuf4)) + 100), this->m_pScreen->FontY()*5, zSTRING(xbuf4));
 			if(stats.nAlphaPolys > 3800)
+			{
 				this->m_pScreen->SetFontColor(zCOLOR(255, 0, 0, 255));
+			}
 			else if(stats.nAlphaPolys > 2000)
+			{
 				this->m_pScreen->SetFontColor(zCOLOR(255, 180, 0, 255));
+			}
 			else if(stats.nAlphaPolys < 1700)
+			{
 				this->m_pScreen->SetFontColor(zCOLOR(0, 255, 0, 255));
+			};
 			this->m_pScreen->Print(VIEW_VXMAX - (this->m_pScreen->FontSize(zSTRING(xbuf5)) + 100), this->m_pScreen->FontY()*7, zSTRING(xbuf5));
 			this->m_pScreen->SetFontColor(zCOLOR(255, 255, 255, 255));
 			this->m_pScreen->Print(VIEW_VXMAX - (this->m_pScreen->FontSize(zSTRING(xbuf6)) + 100), this->m_pScreen->FontY()*8, zSTRING(xbuf6));
@@ -195,10 +207,14 @@ void CStatistics::Tick(void)
 		if(this->m_tElapsedTime > 10)
 		{
 			if(this->m_dwFPS < this->m_dwMinFPS)
+			{
 				this->m_dwMinFPS = this->m_dwFPS;
+			};
 
 			if(this->m_dwFPS > this->m_dwMaxFPS)
+			{
 				this->m_dwMaxFPS = this->m_dwFPS;
+			};
 
 			this->m_dwAvgFPS = (unsigned int)(this->m_dwFrames / this->m_tElapsedTime);
 		};

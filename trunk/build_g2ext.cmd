@@ -23,3 +23,5 @@ msbuild libg2extutils.sln /t:Rebuild /p:Configuration=Debug
 msbuild libg2extutils.sln /t:Rebuild /p:Configuration=Release
 msbuild g2ext.sln /t:Rebuild /p:Configuration=Debug
 msbuild g2ext.sln /t:Rebuild /p:Configuration=Release
+"msbuild g2ext.sln /t:Rebuild /p:Configuration=Debug (spacer)"
+"msbuild g2ext.sln /t:Rebuild /p:Configuration=Release (spacer)"

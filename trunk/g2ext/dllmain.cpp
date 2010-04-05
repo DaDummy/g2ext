@@ -31,6 +31,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define GOTHIC2_EXE L"Gothic2.exe"
 #define GOTHIC2_EXE_CRC 0x2BCD7E30
+#define SPACER2_EXE L"Spacer2.exe"
+#define SPACER2_EXE_CRC 0xB1B45718
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -44,10 +46,33 @@ HRESULT __stdcall G2Ext_Init(PMODINFO pModInfo) // outgame -- exported per expor
 
 	if(pModInfo)
 	{
-		bool bDebug = (bool)((G2EXT_PARAM_DEBUG & pModInfo->dwFlags) == G2EXT_PARAM_DEBUG);
+#ifndef _G2EXT_COMPILE_SPACER
+		if((pModInfo->dwFlags & G2EXT_PARAM_SPACER) == G2EXT_PARAM_SPACER)
+		{
+			MessageBox(NULL, L"G2EXT_PARAM_SPACER set!", L"G2Ext_Init", MB_ICONERROR | MB_OK);
+			exit(0);
+		};
+#else
+		if((pModInfo->dwFlags & G2EXT_PARAM_SPACER) != G2EXT_PARAM_SPACER)
+		{
+			MessageBox(NULL, L"G2EXT_PARAM_SPACER not set!", L"G2Ext_Init", MB_ICONERROR | MB_OK);
+			exit(0);
+		};
+#endif
+
+		if(std::wstring(pModInfo->lpwCMD).find(L"--xdebug", 0) != std::wstring::npos)
+		{
+			pModInfo->dwFlags |= G2EXT_PARAM_DEBUG;
+			bDebug = true;
+		};
+	}
+	else
+	{
+		MessageBox(NULL, L"pModInfo == NULL", L"G2Ext_Init", MB_ICONERROR | MB_OK);
+		exit(0);
 	};
 
-	CLog::GetInstance()->Open(L"g2ext_outgame.log", true);
+	CLog::GetInstance()->Open(L"g2ext_outgame.log", bDebug);
 
 	new CExceptionHandler();
 
@@ -65,6 +90,20 @@ HRESULT __stdcall G2Ext_Init(PMODINFO pModInfo) // outgame -- exported per expor
 		return E_FAIL;
 	};
 
+#ifdef _G2EXT_COMPILE_SPACER
+	// -- check Gothic2.exe
+	if(!FileExists(SPACER2_EXE))
+	{
+		G2EXT_LOG_ERROR(L"Gothic2.exe not found!");
+		return E_FAIL;
+	};
+
+	if(FileCRC32(SPACER2_EXE) != SPACER2_EXE_CRC)
+	{
+		G2EXT_LOG_ERROR(L"Verification failed! Please use Spacer II v2.6a (mdk update)!\nhttp://worldofgothic.de/dl/download_99.htm");
+		return E_FAIL;
+	};
+#else //_G2EXT_COMPILE_SPACER
 	// -- check Gothic2.exe
 	if(!FileExists(GOTHIC2_EXE))
 	{
@@ -72,19 +111,27 @@ HRESULT __stdcall G2Ext_Init(PMODINFO pModInfo) // outgame -- exported per expor
 		return E_FAIL;
 	};
 
-	if(FileCRC32(GOTHIC2_EXE) != 0x2BCD7E30)
+	if(FileCRC32(GOTHIC2_EXE) != GOTHIC2_EXE_CRC)
 	{
-		G2EXT_LOG_ERROR(L"Verification failed! Please use Gothic II TNotR v2.6_fix (report version)!\nhttp://www.worldofgothic.de/dl/index.php?go=downloads&release_id=278");
+		G2EXT_LOG_ERROR(L"Verification failed! Please use Gothic II TNotR v2.6_fix (report version)!\nhttp://worldofgothic.de/dl/download_278.htm");
 		return E_FAIL;
 	};
+#endif //_G2EXT_COMPILE_SPACER
 
 	// -- run Gothic II
 	wsModINI	= pModInfo->lpwModIni;
 
+#ifdef _G2EXT_COMPILE_SPACER
 	if(pModInfo->lpwCMD == NULL)
 	{
 		pModInfo->lpwCMD = L"Gothic2.exe";
 	};
+#else //_G2EXT_COMPILE_SPACER
+	if(pModInfo->lpwCMD == NULL)
+	{
+		pModInfo->lpwCMD = L"Spacer2.exe";
+	};
+#endif //_G2EXT_COMPILE_SPACER
 
 	if(wsModINI.find(L" ") == std::wstring::npos)
 	{
@@ -153,14 +200,9 @@ HRESULT __stdcall G2Ext_Init(PMODINFO pModInfo) // outgame -- exported per expor
 
 HRESULT __stdcall G2Ext_Run(PMODINFO pModInfo) // ingame -- exported per exports.def
 {
-	bool				bDebug = false;
+	bool bDebug = (bool)((G2EXT_PARAM_DEBUG & pModInfo->dwFlags) == G2EXT_PARAM_DEBUG);
 
-	if(pModInfo)
-	{
-		bool bDebug = (bool)((G2EXT_PARAM_DEBUG & pModInfo->dwFlags) == G2EXT_PARAM_DEBUG);
-	};
-
-	CLog::GetInstance()->Open(L"g2ext_ingame.log", true);//bDebug);
+	CLog::GetInstance()->Open(L"g2ext_ingame.log", bDebug);
 
 	if((pModInfo->szSize != sizeof(MODINFO)) || pModInfo->lpwModIni == L"" || pModInfo->lpwDLL == L"")
 	{
@@ -169,13 +211,6 @@ HRESULT __stdcall G2Ext_Run(PMODINFO pModInfo) // ingame -- exported per exports
 	};
 
 	new CExceptionHandler();
-
-	// -- check for "debug" param
-	if(std::wstring(pModInfo->lpwCMD).find(L"--xdebug", 0) != std::wstring::npos)
-	{
-		pModInfo->dwFlags |= G2EXT_PARAM_DEBUG;
-		//G2EXT_LOG_DEBUG(L"FLAG: G2EXT_PARAM_DEBUG");
-	};
 
 	// -- check for "instant start" param
 	if(std::wstring(pModInfo->lpwCMD).find(L"--xnomenu", 0) != std::wstring::npos)
@@ -196,6 +231,20 @@ HRESULT __stdcall G2Ext_Run(PMODINFO pModInfo) // ingame -- exported per exports
 	{
 		pModInfo->dwFlags |= G2EXT_PARAM_NO_G2EXT_CONSOLE;
 		//G2EXT_LOG_DEBUG(L"FLAG: G2EXT_PARAM_NO_G2EXT_CONSOLE");
+	};
+
+	// -- check for "no console" param
+	if(std::wstring(pModInfo->lpwCMD).find(L"--xnoconsole", 0) != std::wstring::npos)
+	{
+		pModInfo->dwFlags |= G2EXT_PARAM_NO_CONSOLE;
+		//G2EXT_LOG_DEBUG(L"FLAG: G2EXT_PARAM_NO_CONSOLE");
+	};
+
+	// -- check for "show fps" param
+	if(std::wstring(pModInfo->lpwCMD).find(L"--xfps", 0) != std::wstring::npos)
+	{
+		pModInfo->dwFlags |= G2EXT_PARAM_SHOW_FPS;
+		//G2EXT_LOG_DEBUG(L"FLAG: G2EXT_PARAM_SHOW_FPS");
 	};
 
 	CCoreIngame::GetInstance()->Init(pModInfo);

@@ -24,6 +24,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #define  WIN32_LEAN_AND_MEAN
 #include <windows.h>
+#include <eh.h>
 #include "BugTrap.h"
 #include "exceptionhandler.h"
 #include "log.h"
@@ -31,6 +32,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 CExceptionHandler::CExceptionHandler()
 {
 	BT_ReadVersionInfo(GetModuleHandle(NULL));
+	BT_SetTerminate();
 	BT_SetDialogMessage(BTDM_INTRO1, L"G2Ext has crashed and must be terminated.");
 	BT_SetFlags(BTF_DETAILEDMODE | BTF_INTERCEPTSUEF | BTF_SHOWADVANCEDUI);
 	BT_SetSupportURL(L"http://g2ext.paindevs.com/");
