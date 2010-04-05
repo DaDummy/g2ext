@@ -344,7 +344,7 @@ LRESULT __stdcall CStarter::WindowProc(HWND hWnd, UINT uMsg, WPARAM wParam, LPAR
 			pStarter->LaunchTool(L"_work\\tools\\zSpy\\zSpy.exe");
 			break;
 		case ID_ABOUT:
-			MessageBox(0, L"G2Ext © 2009, 2010 by Paindevs and Patrick Vogel\nDeveloped by Christoffer Anselm and Patrick Vogel", L"About G2Ext...", MB_APPLMODAL);
+			MessageBox(0, L"G2Ext © 2009, 2010 by Paindevs and Patrick Vogel\nDeveloped by Christoffer Anselm and Patrick Vogel\n\nhttp://g2ext.googlecode.com", L"About G2Ext...", MB_APPLMODAL);
 			break;
 
 #endif //G2EXT_STARTER_DEV
@@ -413,12 +413,13 @@ DWORD __stdcall CStarter::GothicThreadProc(void* dwParam)
 	PMODINFO pModInfo = new MODINFO();
 
 	//FIXME: cwcs(subwcs(...), ...) combo is a memoryleak
-	pModInfo->lpwDMP	= cwcs(subwcs(pStarter->m_pSelectedMod->wcFilesVDF.c_str(), wcslen(pStarter->m_pSelectedMod->wcFilesVDF.c_str())-4), L".mod");
-	pModInfo->lpwVDF	= pStarter->m_pSelectedMod->wcFilesVDF.c_str();
-	pModInfo->lpwDLL	= pStarter->m_pSelectedMod->wcG2ExtDLL.c_str();
-	pModInfo->lpwPlugins= pStarter->m_pSelectedMod->wcG2ExtPLUGINS.c_str();
-	pModInfo->lpwModIni = pStarter->m_pSelectedMod->wcIni.c_str();
-	pModInfo->lpwCMD	= pStarter->MakeCMD(L"Gothic2.exe", true);
+	pModInfo->lpwDMP		= cwcs(subwcs(pStarter->m_pSelectedMod->wcFilesVDF.c_str(), wcslen(pStarter->m_pSelectedMod->wcFilesVDF.c_str())-4), L".mod");
+	pModInfo->lpwVDF		= pStarter->m_pSelectedMod->wcFilesVDF.c_str();
+	pModInfo->lpwDLL		= pStarter->m_pSelectedMod->wcG2ExtDLL.c_str();
+	pModInfo->lpwSpacerDLL	= L"";
+	pModInfo->lpwPlugins	= pStarter->m_pSelectedMod->wcG2ExtPLUGINS.c_str();
+	pModInfo->lpwModIni		= pStarter->m_pSelectedMod->wcIni.c_str();
+	pModInfo->lpwCMD		= pStarter->MakeCMD(L"Gothic2.exe", true);
 
 	ShowWindow(pStarter->m_hWnd, SW_SHOWMINIMIZED);
 
@@ -430,7 +431,8 @@ DWORD __stdcall CStarter::GothicThreadProc(void* dwParam)
 
 	FreeLibrary(hDll);
 
-	delete [] pModInfo->lpwDMP;
+	//delete [] pModInfo->lpwDMP;	// causes failed assertion crash in debug compile mode...
+									// seems, like we have to find another workaround for that cwcs/subwcs memory leak here :/
 
 	G2EXT_DELETE(pModInfo);
 
@@ -444,87 +446,90 @@ DWORD __stdcall CStarter::SpacerThreadProc(void* dwParam)
 #ifdef G2EXT_STARTER_DEV
 	CStarter* pStarter = CStarter::GetInstance();
 
-	if(pStarter->m_pSelectedMod == NULL)
-		return 0;
-
-	pStarter->SetControlsEnabled(false);
-
-	HMODULE hDll = LoadLibraryA("g2ext.spacer.dll");
-
-	G2EXT_SYSTEM_INIT_FUNC Init = NULL;
-
-	if((Init = (G2EXT_SYSTEM_INIT_FUNC)GetProcAddress(hDll, "G2Ext_Init")) == NULL)
+	if(!pStarter->m_pSelectedMod->wcG2ExtSpacerDLL.empty())
 	{
-		return 1;
+		if(pStarter->m_pSelectedMod == NULL)
+			return 0;
+
+		pStarter->SetControlsEnabled(false);
+
+		HMODULE hDll = LoadLibraryA("g2ext.spacer.dll");
+
+		G2EXT_SYSTEM_INIT_FUNC Init = NULL;
+
+		if((Init = (G2EXT_SYSTEM_INIT_FUNC)GetProcAddress(hDll, "G2Ext_Init")) == NULL)
+		{
+			return 1;
+			pStarter->SetControlsEnabled(true);
+		};
+
+		PMODINFO pModInfo = new MODINFO();
+
+		//FIXME: cwcs(subwcs(...), ...) combo is a memoryleak
+		pModInfo->lpwDMP		= cwcs(subwcs(pStarter->m_pSelectedMod->wcFilesVDF.c_str(), wcslen(pStarter->m_pSelectedMod->wcFilesVDF.c_str())-4), L".mod");
+		pModInfo->lpwVDF		= pStarter->m_pSelectedMod->wcFilesVDF.c_str();
+		pModInfo->lpwDLL		= pStarter->m_pSelectedMod->wcG2ExtDLL.c_str();
+		pModInfo->lpwSpacerDLL	= pStarter->m_pSelectedMod->wcG2ExtSpacerDLL.c_str();
+		pModInfo->lpwPlugins	= pStarter->m_pSelectedMod->wcG2ExtPLUGINS.c_str();
+		pModInfo->lpwModIni		= pStarter->m_pSelectedMod->wcIni.c_str();
+		pModInfo->lpwCMD		= pStarter->MakeCMD(L"Spacer2.exe -zmaxframerate:60", true);
+		pModInfo->dwFlags		|= G2EXT_PARAM_SPACER;
+
+		ShowWindow(pStarter->m_hWnd, SW_SHOWMINIMIZED);
+
+		Init(pModInfo);
+
+		ShowWindow(pStarter->m_hWnd, SW_SHOWNORMAL);
+
+		FreeConsole(); // fix: hide G2Ext debug console
+
+		FreeLibrary(hDll);
+
+		//delete [] pModInfo->lpwDMP;	// causes failed assertion crash in debug compile mode...
+										// seems, like we have to find another workaround for that cwcs/subwcs memory leak here :/
+
+		G2EXT_DELETE(pModInfo);
+
 		pStarter->SetControlsEnabled(true);
-	};
-
-	PMODINFO pModInfo = new MODINFO();
-
-	//FIXME: cwcs(subwcs(...), ...) combo is a memoryleak
-	pModInfo->lpwDMP	= cwcs(subwcs(pStarter->m_pSelectedMod->wcFilesVDF.c_str(), wcslen(pStarter->m_pSelectedMod->wcFilesVDF.c_str())-4), L".mod");
-	pModInfo->lpwVDF	= pStarter->m_pSelectedMod->wcFilesVDF.c_str();
-	pModInfo->lpwDLL	= pStarter->m_pSelectedMod->wcG2ExtDLL.c_str();
-	pModInfo->lpwPlugins= pStarter->m_pSelectedMod->wcG2ExtPLUGINS.c_str();
-	pModInfo->lpwModIni = pStarter->m_pSelectedMod->wcIni.c_str();
-	pModInfo->lpwCMD	= pStarter->MakeCMD(L"Spacer2.exe -zmaxframerate:60", true);
-
-	ShowWindow(pStarter->m_hWnd, SW_SHOWMINIMIZED);
-
-	Init(pModInfo);
-
-	ShowWindow(pStarter->m_hWnd, SW_SHOWNORMAL);
-
-	FreeConsole(); // fix: hide G2Ext debug console
-
-	FreeLibrary(hDll);
-
-	delete [] pModInfo->lpwDMP;
-
-	G2EXT_DELETE(pModInfo);
-
-	pStarter->SetControlsEnabled(true);
-
-	return 0;
-	/*
-	CStarter* pStarter = CStarter::GetInstance();
-
-	PROCESS_INFORMATION	pi;
-	STARTUPINFO			si;
-	int					iStatus;
-
-	pStarter->SetControlsEnabled(false);
-
-	if(!FileExists(L"spacer2.exe"))
+	}
+	else
 	{
-		MessageBox(0, L"Spacer2.exe not found!", L"G2Ext", MB_OK | MB_ICONERROR);
-		pStarter->SetControlsEnabled(true);
-		return 0;
-	};
+		PROCESS_INFORMATION	pi;
+		STARTUPINFO			si;
+		int					iStatus;
 
-	ZeroMemory(&si, sizeof(STARTUPINFO));
+		pStarter->SetControlsEnabled(false);
 
-	si.cb			= sizeof(STARTUPINFO);
-	si.dwFlags		= STARTF_USESHOWWINDOW;
-	si.wShowWindow	= SW_SHOW;
+		if(!FileExists(L"spacer2.exe"))
+		{
+			MessageBox(0, L"Spacer2.exe not found!", L"G2Ext", MB_OK | MB_ICONERROR);
+			pStarter->SetControlsEnabled(true);
+			return 0;
+		};
 
-	if(CreateProcessW(NULL, pStarter->MakeCMD(L"Spacer2.exe", true), NULL, NULL, false, NULL, NULL, NULL, &si, &pi) == 0)
-	{
+		ZeroMemory(&si, sizeof(STARTUPINFO));
+
+		si.cb			= sizeof(STARTUPINFO);
+		si.dwFlags		= STARTF_USESHOWWINDOW;
+		si.wShowWindow	= SW_SHOW;
+
+		if(CreateProcessW(NULL, pStarter->MakeCMD(L"Spacer2.exe -zmaxframerate:60", true), NULL, NULL, false, NULL, NULL, NULL, &si, &pi) == 0)
+		{
+			ShowWindow(pStarter->m_hWnd, SW_SHOWNORMAL);
+			pStarter->SetControlsEnabled(true);
+			return 0;
+		};
+
+		ShowWindow(pStarter->m_hWnd, SW_SHOWMINIMIZED);
+
+		while ((GetExitCodeProcess(pi.hProcess, (LPDWORD)&iStatus) != false) && iStatus == STILL_ACTIVE)
+		{
+			Sleep(500);
+		};
+
 		ShowWindow(pStarter->m_hWnd, SW_SHOWNORMAL);
 		pStarter->SetControlsEnabled(true);
-		return 0;
 	};
-
-	ShowWindow(pStarter->m_hWnd, SW_SHOWMINIMIZED);
-
-	while ((GetExitCodeProcess(pi.hProcess, (LPDWORD)&iStatus) != false) && iStatus == STILL_ACTIVE)
-	{
-		Sleep(500);
-	};
-
-	ShowWindow(pStarter->m_hWnd, SW_SHOWNORMAL);
-	pStarter->SetControlsEnabled(true);
-	*/
 #endif //G2EXT_STARTER_DEV
 	return 0;
 };

@@ -41,7 +41,7 @@ void __stdcall CCoreIngame::GothicOnInput(UINT& uKey)
 {
 	static bool bFPSWasVisible = false;
 
-	if((G2EXT_PARAM_NO_G2EXT_CONSOLE & CCoreIngame::GetInstance()->m_pModInfo->dwFlags) != G2EXT_PARAM_NO_G2EXT_CONSOLE)
+	if(CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_G2EXT_CONSOLE) && !CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_CONSOLE))
 	{
 		if(uKey == KEY_GRAVE)
 		{
@@ -87,7 +87,7 @@ void __stdcall CCoreIngame::GothicOnRender(void)
 {
 	pCore->m_pStatistics->Tick();
 
-	if((G2EXT_PARAM_NO_G2EXT_CONSOLE & CCoreIngame::GetInstance()->m_pModInfo->dwFlags) != G2EXT_PARAM_NO_G2EXT_CONSOLE)
+	if(CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_G2EXT_CONSOLE) && !CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_CONSOLE))
 	{
 		pCore->m_pConsole->Tick();
 	};
@@ -98,7 +98,10 @@ void __stdcall CCoreIngame::GothicOnDone(void)
 	pCore->m_bInGame = false;
 	pCore->m_pStatistics->Stop();
 
-	pCore->m_pConsole->Hide();
+	if(!CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_CONSOLE))
+	{
+		pCore->m_pConsole->Hide();
+	};
 
 	pCore->Release();
 
@@ -128,8 +131,11 @@ void __stdcall CCoreIngame::GothicOnIngame(void)
 
 		G2EXT_LOG_DEBUG(L"Initializing console...")
 
-		pCore->m_pConsole->Init();
-		pCore->m_pConsole->Hide();
+		if(!CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_CONSOLE))
+		{
+			pCore->m_pConsole->Init();
+			pCore->m_pConsole->Hide();
+		};
 
 		pCore->m_bIsFirstRun = false;
 	}
@@ -139,7 +145,10 @@ void __stdcall CCoreIngame::GothicOnIngame(void)
 		pCore->m_pStatistics->Start();
 	};
 
-	pCore->m_pStatistics->Show();
+	if(CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_DEBUG) || CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_SHOW_FPS))
+	{
+		pCore->m_pStatistics->Show();
+	};
 };
 
 void __stdcall CCoreIngame::GothicOnLoadWorld(void)

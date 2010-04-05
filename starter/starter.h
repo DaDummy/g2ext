@@ -35,7 +35,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include <map>
 #include <string>
 
-using namespace std;
+//using namespace std; // NEVER FUCKING USE "using namespace" IN HEADERS!1!!
 
 #ifndef G2EXT_MOD_DEFINED
 #define G2EXT_MOD_DEFINED
@@ -43,23 +43,24 @@ using namespace std;
 /** internal use only */
 typedef struct _MOD 
 {
-	size_t		szSize;
+	size_t			szSize;
 
-	wstring		wcIni;
-	wstring		wcInfoTitle;
-	wstring		wcInfoVersion;
-	wstring		wcInfoAuthors;
-	wstring		wcInfoWebpage;
-	wstring		wcInfoDescription;
-	wstring		wcInfoIcon;
+	std::wstring	wcIni;
+	std::wstring	wcInfoTitle;
+	std::wstring	wcInfoVersion;
+	std::wstring	wcInfoAuthors;
+	std::wstring	wcInfoWebpage;
+	std::wstring	wcInfoDescription;
+	std::wstring	wcInfoIcon;
 
-	wstring		wcFilesVDF;
+	std::wstring	wcFilesVDF;
 
-	wstring		wcSettingsPlayer;
-	wstring		wcSettingsZEN;
+	std::wstring	wcSettingsPlayer;
+	std::wstring	wcSettingsZEN;
 
-	wstring		wcG2ExtDLL;
-	wstring		wcG2ExtPLUGINS;
+	std::wstring	wcG2ExtDLL;
+	std::wstring	wcG2ExtSpacerDLL;
+	std::wstring	wcG2ExtPLUGINS;
 
 	_MOD()
 	{

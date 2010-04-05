@@ -65,9 +65,9 @@ typedef enum
 	G2EXT_PARAM_NO_START_MENU				= 0x00000004,
 	G2EXT_PARAM_DEBUG						= 0x00000008,
 	G2EXT_PARAM_NO_G2EXT_CONSOLE			= 0x00000010,
-	G2EXT_PARAM_RESERVED06					= 0x00000020, // reserved
-	G2EXT_PARAM_RESERVED07					= 0x00000040, // reserved
-	G2EXT_PARAM_RESERVED08					= 0x00000080, // reserved
+	G2EXT_PARAM_NO_CONSOLE					= 0x00000020,
+	G2EXT_PARAM_SPACER						= 0x00000040,
+	G2EXT_PARAM_SHOW_FPS					= 0x00000080,
 	G2EXT_PARAM_RESERVED09					= 0x00000100, // reserved
 	G2EXT_PARAM_RESERVED10					= 0x00000200, // reserved
 	G2EXT_PARAM_RESERVED11					= 0x00000400, // reserved
@@ -189,6 +189,7 @@ typedef struct _MODINFO
 	DWORD		dwFlags;
 	void*		lpIntShared; // -- internal
 	void*		lpModShared; // -- internal
+	LPCWSTR		lpwSpacerDLL;
 
 	_MODINFO()
 	{
