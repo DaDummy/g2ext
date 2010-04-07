@@ -35,6 +35,7 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 // That interface stuff does not work with varargs(WriteF(...)) and the workaround isn't ready yet
 //#include "api/interface.h"
+#include "common/osheader.h"
 
 #ifndef LOG_LEVEL_DEFINED
 #define LOG_LEVEL_DEFINED
