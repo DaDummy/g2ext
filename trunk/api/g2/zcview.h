@@ -56,6 +56,14 @@ enum zTviewID
 };	
 
 /** Insert description. */
+enum zTViewFX
+{
+	VIEW_FX_NONE,
+	VIEW_FX_ZOOM,
+	VIEW_FX_MAX	
+};
+
+/** Insert description. */
 enum zTRnd_AlphaBlendFunc;
 
 /** zCView base class. */
@@ -111,7 +119,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int Create(int pA, int pB, int pC, float pD, int pE)
+	void Create(zSTRING& background, zTViewFX fx0, zTViewFX fx1, float unk0, int unk1)
 	{
 		XCALL(0x007A6810);
 	};
@@ -123,6 +131,60 @@ public:
 	void DrawItems(void)
 	{
 		XCALL(0x007A6750);
+	};
+
+	//.text:007A8D40 ; int __stdcall zCView__Dialog(int, int, int, float, int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void Dialog(int x, int y, zSTRING& text, float time, zCOLOR* color)
+	{
+		XCALL(0x007A8D40);
+	};
+
+	//.text:007A8E10 ; int __stdcall zCView__DialogCX(int, int, float, int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void DialogCX(int y, zSTRING& text, float time, zCOLOR* color)
+	{
+		XCALL(0x007A8E10);
+	};
+
+	//.text:007A8F60 ; int __stdcall zCView__DialogCXY(int, float, int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void DialogCXY(zSTRING& text, float time, zCOLOR* color)
+	{
+		XCALL(0x007A8F60);
+	};
+
+	//.text:007A8E70 ; int __stdcall zCView__DialogCY(int, int, float, int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void DialogCY(int x, zSTRING& text, float time, zCOLOR* color)
+	{
+		XCALL(0x007A8E70);
+	};
+
+	//.text:007A8FB0 ; int __stdcall zCView__DialogMessage(int, int, float, int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void DialogMessage(zSTRING& headline, zSTRING& text, float time, zCOLOR* color)
+	{
+		XCALL(0x007A8FB0);
+	};
+
+	//.text:007A9240 ; int __stdcall zCView__DialogMessageCXY(int, int, float, int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void DialogMessageCXY(zSTRING& headline, zSTRING& text, float time, zCOLOR* color)
+	{
+		XCALL(0x007A9240);
 	};
 
 	//.text:007A9A10 ; public: int __thiscall zCView::FontSize(class zSTRING &)
@@ -259,6 +321,15 @@ public:
 	{
 		XCALL(0x007A7810);
 	};
+
+	//.text:007ABF70 ; public: virtual void __thiscall zCView::Line(int, int, int, int, struct zCOLOR const &)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void Line(int x, int y, int x1, int y1, const zCOLOR& col)
+	{
+		XCALL(0x007ABF70);
+	};
 	
 	//.text:007A76E0 ; public: void __thiscall zCView::Move(int, int)
 	/** Insert description. 
@@ -330,6 +401,69 @@ public:
 	void PrintMessageCXY(const zSTRING & pA, const zSTRING & pB, float pC, zCOLOR & pD)
 	{
 		XCALL(0x007A8450);
+	};
+
+	//.text:007AA8D0 ; public: void __thiscall zCView::Printwin(class zSTRING const &)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void PrintWin(const zSTRING & text)
+	{
+		XCALL(0x007AA8D0)
+	};
+
+	//.text:007A7D20 ; int __stdcall zCView__PrintTimed(int, int, int, float, int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void PrintTimed(int x, int y, const zSTRING & text, float time, zCOLOR* color)
+	{
+		XCALL(0x007A7D20)
+	};
+
+	//.text:007A7DB0 ; int __stdcall zCView__PrintTimedCX(int, int, float, int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void PrintTimedCX(int y, const zSTRING & text, float time, zCOLOR* color)
+	{
+		XCALL(0x007A7DB0)
+	};
+
+	//.text:007A7F00 ; int __stdcall zCView__PrintTimedCY(int, int, float, int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void PrintTimedCY(int x, const zSTRING & text, float time, zCOLOR* color)
+	{
+		XCALL(0x007A7F00)
+	};
+
+	//.text:007A7FC0 ; int __stdcall zCView__PrintTimedCXY(int, float, int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void PrintTimedCXY(const zSTRING & text, float time, zCOLOR* color)
+	{
+		XCALL(0x007A7FC0)
+	};
+
+	//.text:007A8140 ; public: void __thiscall zCView::PrintMessage(class zSTRING const &, class zSTRING const &, float, struct zCOLOR &)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void PrintMessage(const zSTRING& headline, const zSTRING& text, float time, zCOLOR& color)
+	{
+		XCALL(0x007A8140)
+	};
+
+	//.text:007A8450 ; public: void __thiscall zCView::PrintMessageCXY(class zSTRING const &, class zSTRING const &, float, struct zCOLOR &)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void PrintMessageCXY(const zSTRING& headline, const zSTRING& text, float time, zCOLOR& color)
+	{
+		XCALL(0x007A8450)
 	};
 
 	//.text:007ABD10 ; public: void __thiscall zCView::RemoveItem(class zCView *)

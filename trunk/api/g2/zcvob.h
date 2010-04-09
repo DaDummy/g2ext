@@ -150,7 +150,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall Move(float pA, float pB, float pC)
+	void Move(float x, float y, float z)
 	{
 		XCALL(0x0061B2E0);
 	};
@@ -159,7 +159,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall MoveLocal(float pA, float pB, float pC)
+	void MoveLocal(float x, float y, float z)
 	{
 		XCALL(0x0061B3C0);
 	};
@@ -168,7 +168,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void MoveWorld(float pA, float pB, float pC)
+	void MoveWorld(float x, float y, float z)
 	{
 		XCALL(0x0061B350);
 	};
@@ -191,29 +191,29 @@ public:
 		XCALL(0x0061BE20);
 	};
 
-	//.text:0061B6B0 ; int __stdcall zCVob__RotateLocalX(float pA)
-	/** Insert description. 
-	* @usable Ingame only
-	*/
-	int __stdcall RotateLocalX(float pA)
-	{
-		XCALL(0x0061B6B0);
-	};
-
 	//.text:0061B610 ; int __stdcall zCVob__RotateLocal(int, float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateLocal(int pA, float pB)
+	void RotateLocal(const zVEC3& axis, float amount)
 	{
 		XCALL(0x0061B610);
+	};
+
+	//.text:0061B6B0 ; int __stdcall zCVob__RotateLocalX(float pA)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void RotateLocalX(const zVEC3& amount)
+	{
+		XCALL(0x0061B6B0);
 	};
 
 	//.text:0061B720 ; int __stdcall zCVob__RotateLocalY(float pA)
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateLocalY(float pA)
+	void RotateLocalY(const zVEC3& amount)
 	{
 		XCALL(0x0061B720);
 	};
@@ -222,7 +222,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateLocalZ(float pA)
+	void RotateLocalZ(const zVEC3& amount)
 	{
 		XCALL(0x0061B790);
 	};
@@ -231,7 +231,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateWorld(int, float pA)
+	void RotateWorld(const zVEC3& axis, float amount)
 	{
 		XCALL(0x0061B520);
 	};
@@ -240,7 +240,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateWorldX(float pA)
+	void RotateWorldX(float amount)
 	{
 		XCALL(0x0061B800);
 	};
@@ -249,7 +249,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateWorldY(float pA)
+	void RotateWorldY(float amount)
 	{
 		XCALL(0x0061B830);
 	};
@@ -258,7 +258,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int __stdcall RotateWorldZ(float pA)
+	void RotateWorldZ(float amount)
 	{
 		XCALL(0x0061B860);
 	};
@@ -294,7 +294,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void SetTrafo(zMAT4 & pA)
+	void SetTrafo(zMAT4& mat)
 	{
 		XCALL(0x0061BBD0);
 	};
@@ -303,7 +303,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void SetTrafoObjToWorld(zMAT4 & pA)
+	void SetTrafoObjToWorld(zMAT4& mat)
 	{
 		XCALL(0x0061BC80);
 	};
@@ -312,7 +312,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void SetNewTrafoObjToWorld(zMAT4 & pA)
+	void SetNewTrafoObjToWorld(zMAT4& mat)
 	{
 		XCALL(0x0061B0C0);
 	};
@@ -321,7 +321,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void __stdcall SetHeadingYWorld(float pA)
+	void SetHeadingYWorld(zCVob* target)
 	{
 		XCALL(0x0061C280);
 	};
@@ -330,7 +330,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void SetHeadingYWorld(zCVob * pA)
+	void SetHeadingYWorld(zCVob* target)
 	{
 		XCALL(0x0061C450);
 	};
@@ -339,7 +339,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void SetHeadingYLocal(zVEC3 & pA)
+	void SetHeadingYLocal(const zVEC3& target)
 	{
 		XCALL(0x0061C1B0);
 	};
@@ -348,7 +348,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void SetHeadingWorld(zVEC3 & pA)
+	void SetHeadingWorld(const zVEC3& target)
 	{
 		XCALL(0x0061C6B0);
 	};
@@ -357,7 +357,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void SetHeadingWorld(zCVob* pA)
+	void SetHeadingWorld(zCVob* target)
 	{
 		XCALL(0x0061C780);
 	};
@@ -366,7 +366,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void SetHeadingLocal(zVEC3 & pA)
+	void SetHeadingLocal(const zVEC3& target)
 	{
 		XCALL(0x0061C5E0);
 	};
@@ -375,7 +375,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void SetHeadingAtWorld(zVEC3 & pA)
+	void SetHeadingAtWorld(const zVEC3& target)
 	{
 		XCALL(0x0061CBC0);
 	};
@@ -384,7 +384,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void SetHeadingAtLocal(zVEC3 & pA)
+	void SetHeadingAtLocal(const zVEC3& target)
 	{
 		XCALL(0x0061C860);
 	};
@@ -474,7 +474,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	int DetectCollision(zMAT4 * pA)
+	int DetectCollision(zMAT4* mat)
 	{
 		XCALL(0x0061D890);
 	};
