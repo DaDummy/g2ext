@@ -243,12 +243,11 @@ private:
 	bool					m_bInLoadScreen;
 	bool					m_bIsFirstRun;
 	bool					m_bIsPaused;
-	/*
-	hmItem					m_hmItems;
-	hmNpc					m_hmNpcs;
+	vItem					m_vItems;
+	vNpc					m_vNpcs;
 	vVob					m_vVobs;
 	vVob					m_vMobs;
-	*/
+	zCVob*					m_pLevelStartpoint;
 private: // mod
 	PMODINFO				m_pModInfo;
 	HMODULE					m_pModHandle;
@@ -299,12 +298,12 @@ public: // interface
 	IConsole*				GetConsole(void)	{ return reinterpret_cast<IConsole*>(this->m_pConsole);			};
 	IStatistics*			GetStatistics(void)	{ return reinterpret_cast<IStatistics*>(this->m_pStatistics);	};
 
-	/*
-	vVob*					GetVobList(void)	{ return &this->m_hm_vobs;	};
-	vVob*					GetMobList(void)	{ return &this->m_hm_mobs;	};
-	hmItem*					GetItemList(void)	{ return &this->m_hm_items; };
-	hmNpc*					GetNpcList(void)	{ return &this->m_hm_npcs;	};
-	*/
+	void					SetWindowCaption(LPCSTR lpcCaption);
+
+	vVob*					GetVobList(void)	{ return &this->m_vVobs;	};
+	vVob*					GetMobList(void)	{ return &this->m_vMobs;	};
+	vItem*					GetItemList(void)	{ return &this->m_vItems;	};
+	vNpc*					GetNpcList(void)	{ return &this->m_vNpcs;	};
 public: // internal
 	void					CheckForBannedKey(UINT& uKey);
 	void					CallCallback(G2EXT_CALLBACKTYPE cbType, UINT uKey = 0);

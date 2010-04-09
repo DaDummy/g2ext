@@ -51,9 +51,13 @@ class zCVisual;
 enum zTVobType 
 {	
 	VOB_TYPE_VOB,
-	VOB_TYPE_MOB	= 128,
-	VOB_TYPE_ITEM	= 129,
-	VOB_TYPE_NPC	= 130
+	VOB_TYPE_LIGHT		= 1,
+	VOB_TYPE_SOUND		= 2,
+	VOB_TYPE_STARTPOINT = 6,
+	VOB_TYPE_WAYPOINT	= 7,
+	VOB_TYPE_MOB		= 128,
+	VOB_TYPE_ITEM		= 129,
+	VOB_TYPE_NPC		= 130
 };
 
 /** Insert description. */
@@ -321,7 +325,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void SetHeadingYWorld(zCVob* target)
+	void SetHeadingYWorld(const zVEC3& target)
 	{
 		XCALL(0x0061C280);
 	};
