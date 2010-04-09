@@ -156,22 +156,16 @@ private:
     int 				initial_hour;                                    
     int 				initial_minute;                                 
 
-    //zCArray<zCVob*>           debugInstances;
-        zCVob** debugInstances_array;   //zCVob**
-        int debugInstances_numAlloc;    //int
-        int debugInstances_numInArray;  //int
+    zCArray<zCVob*>           debugInstances;
 
     int 				debugChannels;      
     int 				debugAllInstances;
 
 	int 				oldRoutineDay;
     
-    //zCListSort<TObjectRoutine>    objRoutineList;
-		int objRoutineList_compareFunc;           //int (*Compare)(TObjectRoutine *ele1,TObjectRoutine *ele2);
-		int objRoutineList_data;                  //TObjectRoutine*
-		int objRoutineList_next;                  //zCListSort<TObjectRoutine>*
+    zCListSort<TObjectRoutine>    objRoutineList;
         
-    int currentObjectRoutine;                   //zCListSort<TObjectRoutine>*
+    zCListSort<TObjectRoutine>* currentObjectRoutine;
     
     zCViewProgressBar* 	progressBar;
 

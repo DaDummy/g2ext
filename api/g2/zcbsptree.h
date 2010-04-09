@@ -54,16 +54,18 @@ class zCBspBase;
 class zCMesh;
 class zCPolygon;
 
-enum zTBspTreeMode      
+enum zTBspTreeMode    
 {   
 	zBSP_MODE_INDOOR, 
-	zBSP_MODE_OUTDOOR 
+	zBSP_MODE_OUTDOOR, 
+	zBSP_MODE_FORCEINT	= 0x7FFFFFFF
 };
 
-enum zTWld_RenderMode 
+enum zTWld_RenderMode
 { 
 	zWLD_RENDER_MODE_VERT_LIGHT,        
-	zWLD_RENDER_MODE_LIGHTMAPS  
+	zWLD_RENDER_MODE_LIGHTMAPS,
+	zWLD_RENDER_MODE_FORCEINT	= 0x7FFFFFFF
 };
 
 /** Insert description */
