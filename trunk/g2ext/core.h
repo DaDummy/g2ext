@@ -243,10 +243,10 @@ private:
 	bool					m_bInLoadScreen;
 	bool					m_bIsFirstRun;
 	bool					m_bIsPaused;
-	vItem					m_vItems;
-	vNpc					m_vNpcs;
-	vVob					m_vVobs;
-	vVob					m_vMobs;
+	lstItem					m_lstItems;
+	lstNpc					m_lstNpcs;
+	lstVob					m_lstVobs;
+	lstVob					m_lstMobs;
 	zCVob*					m_pLevelStartpoint;
 private: // mod
 	PMODINFO				m_pModInfo;
@@ -300,10 +300,19 @@ public: // interface
 
 	void					SetWindowCaption(LPCSTR lpcCaption);
 
-	vVob*					GetVobList(void)	{ return &this->m_vVobs;	};
-	vVob*					GetMobList(void)	{ return &this->m_vMobs;	};
-	vItem*					GetItemList(void)	{ return &this->m_vItems;	};
-	vNpc*					GetNpcList(void)	{ return &this->m_vNpcs;	};
+	lstVob*					GetVobList(void)	{ return &this->m_lstVobs;	};
+	lstVob*					GetMobList(void)	{ return &this->m_lstMobs;	};
+	lstItem*				GetItemList(void)	{ return &this->m_lstItems;	};
+	lstNpc*					GetNpcList(void)	{ return &this->m_lstNpcs;	};
+
+	void					ClearVobList(void);
+	void					ClearMobList(void);
+	void					ClearItemList(void);
+	void					ClearNpcList(void);
+
+	void					ProcessVobList(void);
+	void					ProcessItemList(void);
+	void					ProcessNpcList(void);
 public: // internal
 	void					CheckForBannedKey(UINT& uKey);
 	void					CallCallback(G2EXT_CALLBACKTYPE cbType, UINT uKey = 0);

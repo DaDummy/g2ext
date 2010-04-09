@@ -31,12 +31,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "api/spacer/zcinput.h"
 #include "api/spacer/zcworld.h"
 #include "api/spacer/ocgame.h"
+#include "api/spacer/ocitem.h"
+#include "api/spacer/ocnpc.h"
 #else //_G2EXT_COMPILE_SPACER
 #include "api/g2/zcinput.h"
 #include "api/g2/zcworld.h"
 #include "api/g2/ocgame.h"
 #include "api/g2/ocitem.h"
-#include "api/g2/ocnpc.h"
 #include "api/g2/ocnpc.h"
 #endif //_G2EXT_COMPILE_SPACER
 
@@ -130,60 +131,17 @@ void __stdcall CCoreIngame::GothicOnIngame(void)
 	pCore->m_bInGame = true;
 
 	//////////////////////////////////////////////////////////////////////////
-	UINT uListSize = 0;
 
-	//Clear all lists
-	pCore->m_vVobs.clear();
-	pCore->m_vMobs.clear();
-	pCore->m_vNpcs.clear();
-	pCore->m_vItems.clear();
+	G2EXT_LOG_DEBUG(L"Processing lists...")
 
-	//Process voblist
-	zCListSort<zCVob>* pVobList = oCGame::GetGame()->GetWorld()->GetVobList();
-	if((uListSize = pVobList->GetSize()) != 0)
-	{
-		G2EXT_LOGF_DEBUG(L"Processing VOB list. [%d entrys]", uListSize)
+	pCore->ClearVobList();
+	pCore->ClearMobList();
+	pCore->ClearItemList();
+	pCore->ClearNpcList();
 
-		for(UINT i = 0; i < uListSize; i++)
-		{
-			zCVob* v = (zCVob*)pVobList->Get(i);
-			pCore->m_vVobs.push_back(v);
-
-			if(v->GetVobType() == VOB_TYPE_MOB)
-			{
-				pCore->m_vMobs.push_back(v);
-			};
-
-			if(v->GetVobType() == VOB_TYPE_STARTPOINT)
-			{
-				pCore->m_pLevelStartpoint = v;
-			};
-		};
-	};
-
-	//Process NPC list
-	zCListSort<oCNpc>* pNpcList = oCGame::GetGame()->GetWorld()->GetNpcList();
-	if((uListSize = pNpcList->GetSize()) != 0)
-	{
-		G2EXT_LOGF_DEBUG(L"Processing NPC list. [%d entrys]", uListSize)
-
-		for(UINT i = 0; i < uListSize; i++)
-		{
-			pCore->m_vNpcs.push_back((oCNpc*)pNpcList->Get(i));
-		};
-	};
-
-	//Process Item list
-	zCListSort<oCItem>* pItemList = oCGame::GetGame()->GetWorld()->GetItemList();
-	if((uListSize = pItemList->GetSize()) != 0)
-	{
-		G2EXT_LOGF_DEBUG(L"Processing item list. [%d entrys]", uListSize)
-
-		for(UINT i = 0; i < uListSize; i++)
-		{
-			pCore->m_vItems.push_back((oCItem*)pItemList->Get(i));
-		};
-	};
+	pCore->ProcessVobList();
+	pCore->ProcessItemList();
+	pCore->ProcessNpcList();
 
 	//////////////////////////////////////////////////////////////////////////
 

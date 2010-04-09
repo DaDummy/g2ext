@@ -31,12 +31,18 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #ifdef _G2EXT_COMPILE_SPACER
 #include "api/spacer/zcinput.h"
-#include "api/spacer/ocnpc.h"
 #include "api/spacer/zcparser.h"
+#include "api/spacer/zcworld.h"
+#include "api/spacer/ocgame.h"
+#include "api/spacer/ocitem.h"
+#include "api/spacer/ocnpc.h"
 #else //_G2EXT_COMPILE_SPACER
 #include "api/g2/zcinput.h"
-#include "api/g2/ocnpc.h"
 #include "api/g2/zcparser.h"
+#include "api/g2/zcworld.h"
+#include "api/g2/ocgame.h"
+#include "api/g2/ocitem.h"
+#include "api/g2/ocnpc.h"
 #endif //_G2EXT_COMPILE_SPACER
 
 #include "common/version.h"
@@ -78,7 +84,7 @@ void CCoreIngame::Init(PMODINFO pModInfo)
 #ifndef _G2EXT_COMPILE_SPACER
 	if(this->IsFlagSet(G2EXT_PARAM_DEBUG))
 	{
-		CLog::GetInstance()->zERROR_Hijack();
+		//CLog::GetInstance()->zERROR_Hijack();
 	};
 #endif
 
@@ -287,3 +293,89 @@ void CCoreIngame::AttachCallbackHooks(void)
 };	
 
 //////////////////////////////////////////////////////////////////////////
+
+void CCoreIngame::ClearVobList(void)
+{
+	this->m_lstVobs.clear();
+};
+
+void CCoreIngame::ClearMobList(void)
+{
+	this->m_lstMobs.clear();
+};
+
+void CCoreIngame::ClearItemList(void)
+{
+	this->m_lstItems.clear();
+};
+
+void CCoreIngame::ClearNpcList(void)
+{
+	this->m_lstNpcs.clear();
+};
+
+void CCoreIngame::ProcessVobList(void)
+{
+	UINT uListSize = 0;
+
+	zCListSort<zCVob>* pVobList = oCGame::GetGame()->GetWorld()->GetVobList();
+	if(pVobList != NULL)
+	{
+		if((uListSize = pVobList->GetSize()) != 0)
+		{
+			G2EXT_LOGF_DEBUG(L"Processing VOB list. [%d entrys]", uListSize)
+
+			for(UINT i = 0; i < uListSize; i++)
+			{
+				zCVob* v = (zCVob*)pVobList->Get(i);
+				this->m_lstVobs.push_back(v);
+
+				if(v->GetVobType() == VOB_TYPE_MOB)
+				{
+					this->m_lstMobs.push_back(v);
+				};
+
+				if(v->GetVobType() == VOB_TYPE_STARTPOINT)
+				{
+					this->m_pLevelStartpoint = v;
+				};
+			};
+		};
+	};
+};
+
+void CCoreIngame::ProcessItemList(void)
+{
+	UINT uListSize = 0;
+	zCListSort<oCItem>* pItemList = oCGame::GetGame()->GetWorld()->GetItemList();
+	if(pItemList != NULL)
+	{
+		if((uListSize = pItemList->GetSize()) != 0)
+		{
+			G2EXT_LOGF_DEBUG(L"Processing item list. [%d entrys]", uListSize)
+
+			for(UINT i = 0; i < uListSize; i++)
+			{
+				this->m_lstItems.push_back((oCItem*)pItemList->Get(i));
+			};
+		};
+	};
+};
+
+void CCoreIngame::ProcessNpcList(void)
+{
+	UINT uListSize = 0;
+	zCListSort<oCNpc>* pNpcList = oCGame::GetGame()->GetWorld()->GetNpcList();
+	if(pNpcList != NULL)
+	{
+		if((uListSize = pNpcList->GetSize()) != 0)
+		{
+			G2EXT_LOGF_DEBUG(L"Processing NPC list. [%d entrys]", uListSize)
+
+			for(UINT i = 0; i < uListSize; i++)
+			{
+				this->m_lstNpcs.push_back((oCNpc*)pNpcList->Get(i));
+			};
+		};
+	};
+};

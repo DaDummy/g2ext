@@ -812,6 +812,7 @@ public:
 	*/
 	inline UINT GetSize()
 	{
+		zCList<T>* temp = this;
 		UINT i = 0;
 
 		while((temp = temp->next) != NULL)
@@ -950,7 +951,7 @@ public:
 	*/
 	inline UINT GetSize()
 	{
-		zCListSort<T>* temp = NULL;
+		zCListSort<T>* temp = this;
 		UINT i = 0;
 
 		while((temp = temp->next) != NULL)

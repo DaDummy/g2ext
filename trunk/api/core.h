@@ -226,10 +226,10 @@ typedef HRESULT (__stdcall *G2EXT_PLUGIN_VERSIONCHK_FUNC)	(int&, int&, G2EXT_DLL
 #define G2EXT_PLUGIN_PREPARE_FUNC_NAME	"G2Ext_PluginPrepare"
 
 typedef stdext::hash_map<UINT, UINT>	hmKey;
-typedef std::vector<oCItem*>			vItem;
-typedef std::vector<oCNpc*>				vNpc;
-typedef std::vector<zCVob*>				vVob;
-typedef std::vector<zCVob*>				vMob;
+typedef std::list<oCItem*>				lstItem;
+typedef std::list<oCNpc*>				lstNpc;
+typedef std::list<zCVob*>				lstVob;
+typedef std::list<zCVob*>				lstMob;
 
 //////////////////////////////////////////////////////////////////////////
 
@@ -605,6 +605,24 @@ G2EXT_BEGIN_INTERFACE_DECLARATION(ICoreIngame)
 	* @usable	Ingame only
 	*/
 	virtual IStatistics* GetStatistics(void) = NULL;
+
+	// API addition 10th April of 2010
+
+	virtual void		SetWindowCaption(LPCSTR lpcCaption) = NULL;
+
+	virtual lstVob*		GetVobList(void) = NULL;
+	virtual lstVob*		GetMobList(void) = NULL;
+	virtual lstItem*	GetItemList(void) = NULL;
+	virtual lstNpc*		GetNpcList(void) = NULL;
+
+	virtual void		ClearVobList(void) = NULL;
+	virtual void		ClearMobList(void) = NULL;
+	virtual void		ClearItemList(void) = NULL;
+	virtual void		ClearNpcList(void) = NULL;
+
+	virtual void		ProcessVobList(void) = NULL;
+	virtual void		ProcessItemList(void) = NULL;
+	virtual void		ProcessNpcList(void) = NULL;
 } G2EXT_END_INTERFACE_DECLARATION(ICoreIngame);
 
 //////////////////////////////////////////////////////////////////////////

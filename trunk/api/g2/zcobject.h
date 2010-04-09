@@ -49,6 +49,8 @@ class zCArchiver;
 /** ZenGin object base class. */
 class zCObject
 {
+private:
+	int		_vtbl;
 protected:
 	int		refCtr;
 	int		hashIndex;
