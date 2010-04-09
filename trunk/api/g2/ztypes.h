@@ -870,6 +870,13 @@ private:
 public:
 	/** Insert description. 
 	*/
+	T& operator [](int idx)
+	{
+		return *this->Get(idx);
+	};
+public:
+	/** Insert description. 
+	*/
 	zCListSort()
 	{
 		this->data = NULL;
@@ -943,11 +950,11 @@ public:
 	*/
 	inline UINT GetSize()
 	{
+		zCListSort<T>* temp = NULL;
 		UINT i = 0;
 
 		while((temp = temp->next) != NULL)
 		{
-			if(i == idx) return temp->data;
 			i++;
 		};
 

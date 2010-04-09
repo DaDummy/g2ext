@@ -219,6 +219,54 @@ public:
 	{
 		XCALL(0x007806C0);
 	};
+
+	/** Insert description.
+	* @usable Ingame only.
+	*/
+	zCListSort<zCVob>* GetVobList(void)
+	{
+		return this->voblist;
+	};
+
+	/** Insert description.
+	* @usable Ingame only.
+	*/
+	zCListSort<oCNpc>* GetNpcList(void)
+	{
+		return this->voblist_npcs;
+	};
+
+	/** Insert description.
+	* @usable Ingame only.
+	*/
+	zCListSort<oCItem>* GetItemList(void)
+	{
+		return this->voblist_items;
+	};
+
+	/** Insert description.
+	* @usable Ingame only.
+	*/
+	zCSkyControler* GetIndoorSkyController(void)
+	{
+		return this->skyControlerIndoor;
+	};
+
+	/** Insert description.
+	* @usable Ingame only.
+	*/
+	zCSkyControler* GetOutdoorSkyController(void)
+	{
+		return this->skyControlerOutdoor;
+	};
+
+	/** Insert description.
+	* @usable Ingame only.
+	*/
+	zCSkyControler* GetActiveSkyController(void)
+	{
+		return this->activeSkyControler;
+	};
 };
 
 #undef __G2EXT_API_HEADER

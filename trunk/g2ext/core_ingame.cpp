@@ -85,8 +85,10 @@ void CCoreIngame::Init(PMODINFO pModInfo)
 	this->AttachCallbackHooks();
 
 #ifdef _G2EXT_COMPILE_SPACER
+	this->SetWindowCaption("Spacer (G2Ext)");
 	this->LoadModDll(this->m_pModInfo->lpwSpacerDLL);
 #else
+	this->SetWindowCaption(G2EXT_VERSIONA);
 	this->LoadModDll(this->m_pModInfo->lpwDLL);
 #endif
 
@@ -193,6 +195,15 @@ void CCoreIngame::SetSplashScreen(HBITMAP hBitmap, bool bShowVersion)
 	this->m_hSplashBitmap = hBitmap;
 };
 
+void CCoreIngame::SetWindowCaption(LPCSTR lpcCaption)
+{
+#ifdef _G2EXT_COMPILE_SPACER
+	*((char**)0x00986A3C) = (char*)lpcCaption;
+#else //_G2EXT_COMPILE_SPACER
+	*((char**)0x0089D9AC) = (char*)lpcCaption;
+#endif //_G2EXT_COMPILE_SPACER
+};
+
 //////////////////////////////////////////////////////////////////////////
 
 void CCoreIngame::AttachCallbackHooks(void)
@@ -241,8 +252,6 @@ void CCoreIngame::AttachCallbackHooks(void)
 	G2EXT_LOG_NONE(L"Attaching hacks.");
 #ifdef _G2EXT_COMPILE_SPACER
 	//this->ReplaceFunction(L"G2EXT_REPLACE_SPLASH", (void*)0x0048A460, &SplashThreadProc); // -- HACK: Replace Splash Screen
-
-	*((char**)0x00986A3C) = "Spacer2 (G2Ext)";
 #else // _G2EXT_COMPILE_SPACER
 	if(!CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_G2EXT_CONSOLE))
 	{
@@ -265,9 +274,6 @@ void CCoreIngame::AttachCallbackHooks(void)
 	{
 		this->EraseSecuredMem((void*)0x0047099F, 125, 0x90);
 	};
-
-	// -- Set new window caption
-	*((char**)0x0089D9AC) = G2EXT_VERSIONA;
 #endif // _G2EXT_COMPILE_SPACER
 
 	G2EXT_LOG_NONE(L"Registering internal callbacks.");

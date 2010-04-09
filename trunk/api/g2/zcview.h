@@ -448,24 +448,6 @@ public:
 		XCALL(0x007A7FC0)
 	};
 
-	//.text:007A8140 ; public: void __thiscall zCView::PrintMessage(class zSTRING const &, class zSTRING const &, float, struct zCOLOR &)
-	/** Insert description. 
-	* @usable Ingame only
-	*/
-	void PrintMessage(const zSTRING& headline, const zSTRING& text, float time, zCOLOR& color)
-	{
-		XCALL(0x007A8140)
-	};
-
-	//.text:007A8450 ; public: void __thiscall zCView::PrintMessageCXY(class zSTRING const &, class zSTRING const &, float, struct zCOLOR &)
-	/** Insert description. 
-	* @usable Ingame only
-	*/
-	void PrintMessageCXY(const zSTRING& headline, const zSTRING& text, float time, zCOLOR& color)
-	{
-		XCALL(0x007A8450)
-	};
-
 	//.text:007ABD10 ; public: void __thiscall zCView::RemoveItem(class zCView *)
 	/** Insert description. 
 	* @usable Ingame only

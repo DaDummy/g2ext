@@ -225,11 +225,11 @@ typedef HRESULT (__stdcall *G2EXT_PLUGIN_VERSIONCHK_FUNC)	(int&, int&, G2EXT_DLL
 #define G2EXT_PLUGIN_INIT_FUNC_NAME		"G2Ext_PluginInit"
 #define G2EXT_PLUGIN_PREPARE_FUNC_NAME	"G2Ext_PluginPrepare"
 
-typedef stdext::hash_map<UINT, UINT>					hmKey;
-typedef stdext::hash_map<UINT, oCItem>					hmItem;
-typedef stdext::hash_map<UINT, oCNpc>					hmNpc;
-typedef std::vector<zCVob>								vVob;
-typedef std::vector<zCVob>								vMob;
+typedef stdext::hash_map<UINT, UINT>	hmKey;
+typedef std::vector<oCItem*>			vItem;
+typedef std::vector<oCNpc*>				vNpc;
+typedef std::vector<zCVob*>				vVob;
+typedef std::vector<zCVob*>				vMob;
 
 //////////////////////////////////////////////////////////////////////////
 
