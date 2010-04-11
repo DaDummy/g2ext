@@ -60,6 +60,120 @@ enum zTVobType
 	VOB_TYPE_NPC		= 130
 };
 
+enum zTVobTypeVT
+{
+	VOB_TYPE_VT_OCMOB				= 0x0083D4D4,
+	VOB_TYPE_VT_OCMOBBED			= 0x0083C914,
+	VOB_TYPE_VT_OCMOBCONTAINER		= 0x0083CB64,
+	VOB_TYPE_VT_OCMOBDOOR			= 0x0083D054,
+	VOB_TYPE_VT_OCMOBFIRE			= 0x0083D19C,
+	VOB_TYPE_VT_OCMOBINTER			= 0x0083D58C,
+	VOB_TYPE_VT_OCMOBITEMSLOT		= 0x0083D2CC,
+	VOB_TYPE_VT_OCMOBLADDER			= 0x0083CF2C,
+	VOB_TYPE_VT_OCMOBLOCKABLE		= 0x0083CCBC,
+	VOB_TYPE_VT_OCMOBMSG			= 0x0083D474,
+	VOB_TYPE_VT_OCMOBSWITCH			= 0x0083CA3C,
+	VOB_TYPE_VT_OCMOBWHEEL			= 0x0083CE04,
+	/*******************************************/
+	VOB_TYPE_VT_ZCTRIGGER			= 0x0083A3FC,
+	VOB_TYPE_VT_ZCTRIGGERLIST		= 0x00839E94,
+	VOB_TYPE_VT_ZCTRIGGERTELEPORT	= 0x00839F14,
+	VOB_TYPE_VT_ZCTRIGGERUNTOUCH	= 0x00839BC4,
+	VOB_TYPE_VT_ZCTRIGGERWORLDSTART = 0x00839E1C,
+	/*******************************************/
+	VOB_TYPE_VT_OCNPC				= 0x0083D724,
+	/*******************************************/
+	VOB_TYPE_VT_OCVOB				= 0x0083DFE4,
+	/*******************************************/
+	VOB_TYPE_VT_ZCVOB				= 0x0083997C,
+	VOB_TYPE_VT_ZCVOBLIGHT			= 0x00839A74,
+	VOB_TYPE_VT_ZCVOBSOUND			= 0x0083ACEC,
+	VOB_TYPE_VT_ZCVOBSTARTPOINT		= 0x0083E4AC,
+	VOB_TYPE_VT_ZCVOBWAYPOINT		= 0x0083E364,
+	/*******************************************/
+	VOB_TYPE_VT_ERROR				= 0x77FFFFFF
+
+};
+
+/*
+VTABLES
+.rdata:0083D4D4 ; const oCMOB::`vftable'
+.rdata:0083C914 ; const oCMobBed::`vftable'
+.rdata:0083CB64 ; const oCMobContainer::`vftable'
+.rdata:0083D054 ; const oCMobDoor::`vftable'
+.rdata:0083D19C ; const oCMobFire::`vftable'
+.rdata:0083D58C ; const oCMobInter::`vftable'
+.rdata:0083D2CC ; const oCMobItemSlot::`vftable'
+.rdata:0083CF2C ; const oCMobLadder::`vftable'
+.rdata:0083CCBC ; const oCMobLockable::`vftable'
+.rdata:0083D474 ; const oCMobMsg::`vftable'
+.rdata:0083CA3C ; const oCMobSwitch::`vftable'
+.rdata:0083CE04 ; const oCMobWheel::`vftable'
+
+.rdata:0083D724 ; const oCNpc::`vftable'
+
+.rdata:0083DFE4 ; const oCVob::`vftable'
+
+.rdata:0083997C ; const zCVob::`vftable'
+.rdata:00839A74 ; const zCVobLight::`vftable'
+.rdata:0083ACEC ; const zCVobSound::`vftable'
+.rdata:0083E4AC ; const zCVobStartpoint::`vftable'
+.rdata:0083E364 ; const zCVobWaypoint::`vftable'
+
+.rdata:0083E120 ; const oCWaypoint::`vftable'
+
+.rdata:00832DEC ; const zCSkyControler::`vftable'
+.rdata:00832CBC ; const zCSkyControler_Indoor::`vftable'
+.rdata:00832D54 ; const zCSkyControler_Mid::`vftable'
+.rdata:00832F54 ; const zCSkyControler_Outdoor::`vftable'
+
+.rdata:0083131C ; const zCSndFX_MSS::`vftable'
+.rdata:0083120C ; const zCSndSys_MSS::`vftable'
+.rdata:0083137C ; const zCSoundFX::`vftable'
+.rdata:0083A784 ; const zCSoundFXDummy::`vftable'
+.rdata:00831294 ; const zCSoundSystem::`vftable'
+.rdata:0083A6A4 ; const zCSoundSystemDummy::`vftable'
+
+*/
+
+__forceinline template<class T> zTVobTypeVT GetVobType(zCVob* vob)
+{
+	switch(*(int*)vob)
+	{
+		VOB_TYPE_VT_OCMOB:					return VOB_TYPE_VT_OCMOB; break;
+		VOB_TYPE_VT_OCMOBBED:				return VOB_TYPE_VT_OCMOBBED; break;
+		VOB_TYPE_VT_OCMOBCONTAINER:			return VOB_TYPE_VT_OCMOBCONTAINER; break;
+		VOB_TYPE_VT_OCMOBDOOR:				return VOB_TYPE_VT_OCMOBDOOR; break;
+		VOB_TYPE_VT_OCMOBFIRE:				return VOB_TYPE_VT_OCMOBFIRE; break;
+		VOB_TYPE_VT_OCMOBINTER:				return VOB_TYPE_VT_OCMOBINTER; break;
+		VOB_TYPE_VT_OCMOBITEMSLOT:			return VOB_TYPE_VT_OCMOBITEMSLOT; break;
+		VOB_TYPE_VT_OCMOBLADDER:			return VOB_TYPE_VT_OCMOBLADDER; break;
+		VOB_TYPE_VT_OCMOBLOCKABLE:			return VOB_TYPE_VT_OCMOBLOCKABLE; break;
+		VOB_TYPE_VT_OCMOBMSG:				return VOB_TYPE_VT_OCMOBMSG; break;
+		VOB_TYPE_VT_OCMOBSWITCH:			return VOB_TYPE_VT_OCMOBSWITCH; break;
+		VOB_TYPE_VT_OCMOBWHEEL:				return VOB_TYPE_VT_OCMOBWHEEL; break;
+		/*******************************************/
+		VOB_TYPE_VT_ZCTRIGGER:				return VOB_TYPE_VT_ZCTRIGGER; break;
+		VOB_TYPE_VT_ZCTRIGGERLIST:			return VOB_TYPE_VT_ZCTRIGGERLIST; break;
+		VOB_TYPE_VT_ZCTRIGGERTELEPORT:		return VOB_TYPE_VT_ZCTRIGGERTELEPORT; break;
+		VOB_TYPE_VT_ZCTRIGGERUNTOUCH:		return VOB_TYPE_VT_ZCTRIGGERUNTOUCH; break;
+		VOB_TYPE_VT_ZCTRIGGERWORLDSTART:	return VOB_TYPE_VT_ZCTRIGGERWORLDSTART; break;
+		/*******************************************/
+		VOB_TYPE_VT_OCNPC:					return VOB_TYPE_VT_OCNPC; break;
+		/*******************************************/
+		VOB_TYPE_VT_OCVOB:					return VOB_TYPE_VT_OCVOB; break;
+		/*******************************************/
+		VOB_TYPE_VT_ZCVOB:					return VOB_TYPE_VT_ZCVOB; break;
+		VOB_TYPE_VT_ZCVOBLIGHT:				return VOB_TYPE_VT_ZCVOBLIGHT; break;
+		VOB_TYPE_VT_ZCVOBSOUND:				return VOB_TYPE_VT_ZCVOBSOUND; break;
+		VOB_TYPE_VT_ZCVOBSTARTPOINT:		return VOB_TYPE_VT_ZCVOBSTARTPOINT; break;
+		VOB_TYPE_VT_ZCVOBWAYPOINT:			return VOB_TYPE_VT_ZCVOBWAYPOINT; break;
+		/*******************************************/
+	};
+
+	return VOB_TYPE_VT_ERROR;
+};
+
 /** Insert description. */
 class zCVob : public zCObject
 {	
