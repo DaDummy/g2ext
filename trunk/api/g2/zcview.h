@@ -44,6 +44,10 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 #include "api/g2/ztypes.h"
 #include "api/g2/macros.h"
 
+class zCTexture;
+class zCFont;
+class zCViewText {};
+
 #define VIEW_VXMAX 8192
 #define VIEW_VYMAX 8192
 
@@ -64,20 +68,96 @@ enum zTViewFX
 };
 
 /** Insert description. */
-enum zTRnd_AlphaBlendFunc;
+enum zTRnd_AlphaBlendFunc   
+{   
+	zRND_ALPHA_FUNC_MAT_DEFAULT,
+	zRND_ALPHA_FUNC_NONE,           
+	zRND_ALPHA_FUNC_BLEND,          
+	zRND_ALPHA_FUNC_ADD,                    
+	zRND_ALPHA_FUNC_SUB,                    
+	zRND_ALPHA_FUNC_MUL,                    
+	zRND_ALPHA_FUNC_MUL2,                   
+	zRND_ALPHA_FUNC_TEST,           
+	zRND_ALPHA_FUNC_BLEND_TEST      
+};
 
 /** zCView base class. */
 class zCViewBase
 {
-protected:
-	char m_data[4];
+private:
+	int _vtbl;
 };
 
 /** Insert description. */
 class zCView : public zCViewBase
 {
 private:
-	char m_data[220];
+	zTViewFX				zEViewFX;
+	int						m_bFillZ;
+	zCView*					next;
+	zTviewID				viewID;
+	int						flags;
+	int						intflags;
+	int						ondesk;
+	zTRnd_AlphaBlendFunc	alphafunc;
+	zCOLOR					color; 
+	int						alpha;
+	zCList<zCView>          childs;
+
+	//zList <zCView>        childs;
+	int compare;			//(*Compare)(zCView *ele1,zCView *ele2);
+	int count;				//int
+	int last;				//zCView*;
+	int wurzel;				//zCView*
+
+	zCView*					owner;
+	zCTexture*				backTex;
+
+	int						vposx; 
+	int 					vposy; 
+	int 					vsizex;
+	int 					vsizey;
+
+	int 					pposx; 
+	int 					pposy; 
+	int 					psizex;
+	int 					psizey;
+
+	zCFont* 				font;
+	zCOLOR					fontColor;
+
+	int 					px1;
+	int 					py1;
+	int 					px2;
+	int 					py2;
+
+	int 					winx;
+	int 					winy;  
+
+	zCList<zCViewText>      textLines;
+
+	int 					scrollMaxTime;
+	int 					scrollTimer;
+
+	zTViewFX 				fxOpen;
+	zTViewFX 				fxClose;
+	float 					timeDialog;
+	float 					timeOpen;
+	float 					timeClose;
+	float 					speedOpen;   
+	float 					speedClose;
+	int 					isOpen;
+	int 					isClosed;
+	int 					continueOpen;
+	int 					continueClose;
+	int 					removeOnClose;
+	int 					resizeOnOpen;
+	int 					maxTextLength;
+	zSTRING 				textMaxLength;      
+	zVEC2 					posCurrent_0;
+	zVEC2 					posCurrent_1;            
+	zVEC2 					posOpenClose_0;
+	zVEC2 					posOpenClose_1;
 public:
 	//.text:007A5700 ; public: __thiscall zCView::zCView(int, int, int, int, enum  zTviewID)
 	/** Insert description. 

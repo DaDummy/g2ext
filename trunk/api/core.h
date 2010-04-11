@@ -606,22 +606,64 @@ G2EXT_BEGIN_INTERFACE_DECLARATION(ICoreIngame)
 	*/
 	virtual IStatistics* GetStatistics(void) = NULL;
 
-	// API addition 10th April of 2010
-
+	/** Insert description.
+	* @usable	Ingame only
+	*/
 	virtual void		SetWindowCaption(LPCSTR lpcCaption) = NULL;
 
+	/** Insert description.
+	* @usable	Ingame only
+	*/
 	virtual lstVob*		GetVobList(void) = NULL;
+
+	/** Insert description.
+	* @usable	Ingame only
+	*/
 	virtual lstVob*		GetMobList(void) = NULL;
+
+	/** Insert description.
+	* @usable	Ingame only
+	*/
 	virtual lstItem*	GetItemList(void) = NULL;
+
+	/** Insert description.
+	* @usable	Ingame only
+	*/
 	virtual lstNpc*		GetNpcList(void) = NULL;
 
+	/** Insert description.
+	* @usable	Ingame only
+	*/
 	virtual void		ClearVobList(void) = NULL;
+
+	/** Insert description.
+	* @usable	Ingame only
+	*/
 	virtual void		ClearMobList(void) = NULL;
+
+	/** Insert description.
+	* @usable	Ingame only
+	*/
 	virtual void		ClearItemList(void) = NULL;
+
+	/** Insert description.
+	* @usable	Ingame only
+	*/
 	virtual void		ClearNpcList(void) = NULL;
 
+	/** Insert description.
+	* @usable	Ingame only
+	*/
 	virtual void		ProcessVobList(void) = NULL;
+
+	/** Insert description.
+	* @usable	Ingame only
+	*/
 	virtual void		ProcessItemList(void) = NULL;
+
+	/** Insert description.
+	* @usable	Ingame only
+	*/
 	virtual void		ProcessNpcList(void) = NULL;
 } G2EXT_END_INTERFACE_DECLARATION(ICoreIngame);
 
