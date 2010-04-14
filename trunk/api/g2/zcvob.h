@@ -44,8 +44,9 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 #include "api/g2/ztypes.h"
 #include "api/g2/macros.h"
 
-class zCWorld;
+class zCVob;
 class zCVisual;
+class zCWorld;
 
 /** Insert description. */
 enum zTVobType 
@@ -136,38 +137,38 @@ VTABLES
 
 */
 
-__forceinline template<class T> zTVobTypeVT GetVobType(zCVob* vob)
+__forceinline zTVobTypeVT GetVobType(zCVob* vob)
 {
 	switch(*(int*)vob)
 	{
-		VOB_TYPE_VT_OCMOB:					return VOB_TYPE_VT_OCMOB; break;
-		VOB_TYPE_VT_OCMOBBED:				return VOB_TYPE_VT_OCMOBBED; break;
-		VOB_TYPE_VT_OCMOBCONTAINER:			return VOB_TYPE_VT_OCMOBCONTAINER; break;
-		VOB_TYPE_VT_OCMOBDOOR:				return VOB_TYPE_VT_OCMOBDOOR; break;
-		VOB_TYPE_VT_OCMOBFIRE:				return VOB_TYPE_VT_OCMOBFIRE; break;
-		VOB_TYPE_VT_OCMOBINTER:				return VOB_TYPE_VT_OCMOBINTER; break;
-		VOB_TYPE_VT_OCMOBITEMSLOT:			return VOB_TYPE_VT_OCMOBITEMSLOT; break;
-		VOB_TYPE_VT_OCMOBLADDER:			return VOB_TYPE_VT_OCMOBLADDER; break;
-		VOB_TYPE_VT_OCMOBLOCKABLE:			return VOB_TYPE_VT_OCMOBLOCKABLE; break;
-		VOB_TYPE_VT_OCMOBMSG:				return VOB_TYPE_VT_OCMOBMSG; break;
-		VOB_TYPE_VT_OCMOBSWITCH:			return VOB_TYPE_VT_OCMOBSWITCH; break;
-		VOB_TYPE_VT_OCMOBWHEEL:				return VOB_TYPE_VT_OCMOBWHEEL; break;
+	case VOB_TYPE_VT_OCMOB:					return VOB_TYPE_VT_OCMOB; break;
+	case VOB_TYPE_VT_OCMOBBED:				return VOB_TYPE_VT_OCMOBBED; break;
+	case VOB_TYPE_VT_OCMOBCONTAINER:		return VOB_TYPE_VT_OCMOBCONTAINER; break;
+	case VOB_TYPE_VT_OCMOBDOOR:				return VOB_TYPE_VT_OCMOBDOOR; break;
+	case VOB_TYPE_VT_OCMOBFIRE:				return VOB_TYPE_VT_OCMOBFIRE; break;
+	case VOB_TYPE_VT_OCMOBINTER:			return VOB_TYPE_VT_OCMOBINTER; break;
+	case VOB_TYPE_VT_OCMOBITEMSLOT:			return VOB_TYPE_VT_OCMOBITEMSLOT; break;
+	case VOB_TYPE_VT_OCMOBLADDER:			return VOB_TYPE_VT_OCMOBLADDER; break;
+	case VOB_TYPE_VT_OCMOBLOCKABLE:			return VOB_TYPE_VT_OCMOBLOCKABLE; break;
+	case VOB_TYPE_VT_OCMOBMSG:				return VOB_TYPE_VT_OCMOBMSG; break;
+	case VOB_TYPE_VT_OCMOBSWITCH:			return VOB_TYPE_VT_OCMOBSWITCH; break;
+	case VOB_TYPE_VT_OCMOBWHEEL:			return VOB_TYPE_VT_OCMOBWHEEL; break;
 		/*******************************************/
-		VOB_TYPE_VT_ZCTRIGGER:				return VOB_TYPE_VT_ZCTRIGGER; break;
-		VOB_TYPE_VT_ZCTRIGGERLIST:			return VOB_TYPE_VT_ZCTRIGGERLIST; break;
-		VOB_TYPE_VT_ZCTRIGGERTELEPORT:		return VOB_TYPE_VT_ZCTRIGGERTELEPORT; break;
-		VOB_TYPE_VT_ZCTRIGGERUNTOUCH:		return VOB_TYPE_VT_ZCTRIGGERUNTOUCH; break;
-		VOB_TYPE_VT_ZCTRIGGERWORLDSTART:	return VOB_TYPE_VT_ZCTRIGGERWORLDSTART; break;
+	case VOB_TYPE_VT_ZCTRIGGER:				return VOB_TYPE_VT_ZCTRIGGER; break;
+	case VOB_TYPE_VT_ZCTRIGGERLIST:			return VOB_TYPE_VT_ZCTRIGGERLIST; break;
+	case VOB_TYPE_VT_ZCTRIGGERTELEPORT:		return VOB_TYPE_VT_ZCTRIGGERTELEPORT; break;
+	case VOB_TYPE_VT_ZCTRIGGERUNTOUCH:		return VOB_TYPE_VT_ZCTRIGGERUNTOUCH; break;
+	case VOB_TYPE_VT_ZCTRIGGERWORLDSTART:	return VOB_TYPE_VT_ZCTRIGGERWORLDSTART; break;
 		/*******************************************/
-		VOB_TYPE_VT_OCNPC:					return VOB_TYPE_VT_OCNPC; break;
+	case VOB_TYPE_VT_OCNPC:					return VOB_TYPE_VT_OCNPC; break;
 		/*******************************************/
-		VOB_TYPE_VT_OCVOB:					return VOB_TYPE_VT_OCVOB; break;
+	case VOB_TYPE_VT_OCVOB:					return VOB_TYPE_VT_OCVOB; break;
 		/*******************************************/
-		VOB_TYPE_VT_ZCVOB:					return VOB_TYPE_VT_ZCVOB; break;
-		VOB_TYPE_VT_ZCVOBLIGHT:				return VOB_TYPE_VT_ZCVOBLIGHT; break;
-		VOB_TYPE_VT_ZCVOBSOUND:				return VOB_TYPE_VT_ZCVOBSOUND; break;
-		VOB_TYPE_VT_ZCVOBSTARTPOINT:		return VOB_TYPE_VT_ZCVOBSTARTPOINT; break;
-		VOB_TYPE_VT_ZCVOBWAYPOINT:			return VOB_TYPE_VT_ZCVOBWAYPOINT; break;
+	case VOB_TYPE_VT_ZCVOB:					return VOB_TYPE_VT_ZCVOB; break;
+	case VOB_TYPE_VT_ZCVOBLIGHT:			return VOB_TYPE_VT_ZCVOBLIGHT; break;
+	case VOB_TYPE_VT_ZCVOBSOUND:			return VOB_TYPE_VT_ZCVOBSOUND; break;
+	case VOB_TYPE_VT_ZCVOBSTARTPOINT:		return VOB_TYPE_VT_ZCVOBSTARTPOINT; break;
+	case VOB_TYPE_VT_ZCVOBWAYPOINT:			return VOB_TYPE_VT_ZCVOBWAYPOINT; break;
 		/*******************************************/
 	};
 
