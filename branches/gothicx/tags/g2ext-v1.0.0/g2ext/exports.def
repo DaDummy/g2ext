@@ -1,4 +1,0 @@
-LIBRARY	"g2ext"
-EXPORTS
-	G2Ext_Init
-	G2Ext_Run
