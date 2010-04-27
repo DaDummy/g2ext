@@ -2,12 +2,13 @@
 
 ; HM NIS Edit Wizard helper defines
 !define PRODUCT_NAME "G2Ext"
-!define PRODUCT_VERSION "rev. $WCREV$"
+!define PRODUCT_VERSION "1.1.0.$WCREV$"
 !define PRODUCT_PUBLISHER "Christoffer Anselm; Patrick Vogel"
 !define PRODUCT_WEB_SITE "http://g2ext.paindevs.com"
 !define PRODUCT_DIR_REGKEY "Software\Microsoft\Windows\CurrentVersion\App Paths\g2ext_starter_dev.exe"
 !define PRODUCT_UNINST_KEY "Software\Microsoft\Windows\CurrentVersion\Uninstall\${PRODUCT_NAME}"
 !define PRODUCT_UNINST_ROOT_KEY "HKLM"
+!define SETUP_FILENAME "g2ext_v1-1-0-$WCREV$_setup.exe"
 
 SetCompressor lzma
 
@@ -51,7 +52,7 @@ SetCompressor lzma
 ; MUI end ------
 
 Name "${PRODUCT_NAME} ${PRODUCT_VERSION}"
-OutFile "out\g2ext_r$WCREV$_setup.exe"
+OutFile "out\${SETUP_FILENAME}"
 InstallDir "$PROGRAMFILES\JoWood\Gothic II\"
 InstallDirRegKey HKLM "${PRODUCT_DIR_REGKEY}" ""
 ShowInstDetails show
