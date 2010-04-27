@@ -1,0 +1,5 @@
+LIBRARY	"empty_example"
+EXPORTS
+	G2Ext_ModVersion
+	G2Ext_ModPrepare
+	G2Ext_ModInit
