@@ -39,13 +39,15 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /** This constant defines the current major version.
  * The major version is only increased upon compatibility breaking api changes.
+ *  (g2ext and mod major version have to match exactly)
  */
 #define G2EXT_MAJOR_VERSION 1
 
 /** This constant defines the current minor version.
- * The minor version is increased on every public release.
+ * The minor version is increased upon compatible api changes.
+ *  (g2ext supports older mods; mods don't support older g2ext minor versions)
  */
-#define G2EXT_MINOR_VERSION 0
+#define G2EXT_MINOR_VERSION 1
 
 /** This constant defines the current svn revision.
  * The value is being generated automatically.
