@@ -158,6 +158,8 @@ private:
 	zVEC2 					posCurrent_1;            
 	zVEC2 					posOpenClose_0;
 	zVEC2 					posOpenClose_1;
+
+	char					_data[256];
 public:
 	//.text:007A5700 ; public: __thiscall zCView::zCView(int, int, int, int, enum  zTviewID)
 	/** Insert description. 

@@ -49,7 +49,7 @@ void __stdcall CCoreIngame::GothicOnInput(UINT& uKey)
 {
 	static bool bFPSWasVisible = false;
 
-	if(CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_G2EXT_CONSOLE) && !CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_CONSOLE))
+	if(!CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_G2EXT_CONSOLE) || !CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_CONSOLE))
 	{
 		if(uKey == KEY_GRAVE)
 		{
@@ -95,7 +95,7 @@ void __stdcall CCoreIngame::GothicOnRender(void)
 {
 	pCore->m_pStatistics->Tick();
 
-	if(CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_G2EXT_CONSOLE) && !CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_CONSOLE))
+	if(!CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_G2EXT_CONSOLE) || !CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_CONSOLE))
 	{
 		pCore->m_pConsole->Tick();
 	};
@@ -106,7 +106,7 @@ void __stdcall CCoreIngame::GothicOnDone(void)
 	pCore->m_bInGame = false;
 	pCore->m_pStatistics->Stop();
 
-	if(!CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_CONSOLE))
+	if(!CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_G2EXT_CONSOLE) || !CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_CONSOLE))
 	{
 		pCore->m_pConsole->Hide();
 	};
@@ -154,7 +154,7 @@ void __stdcall CCoreIngame::GothicOnIngame(void)
 
 		G2EXT_LOG_DEBUG(L"Initializing console...")
 
-		if(!CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_CONSOLE))
+		if(!CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_G2EXT_CONSOLE) || !CCoreIngame::GetInstance()->IsFlagSet(G2EXT_PARAM_NO_CONSOLE))
 		{
 			pCore->m_pConsole->Init();
 			pCore->m_pConsole->Hide();

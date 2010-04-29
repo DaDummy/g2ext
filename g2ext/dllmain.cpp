@@ -226,7 +226,7 @@ HRESULT __stdcall G2Ext_Run(PMODINFO pModInfo) // ingame -- exported per exports
 		//G2EXT_LOG_DEBUG(L"FLAG: G2EXT_PARAM_NO_VDFS_CHECK");
 	};
 
-	// -- check for "vdfs check suppression" param
+	// -- check for classic console param
 	if(std::wstring(pModInfo->lpwCMD).find(L"--xg2con", 0) != std::wstring::npos)
 	{
 		pModInfo->dwFlags |= G2EXT_PARAM_NO_G2EXT_CONSOLE;
