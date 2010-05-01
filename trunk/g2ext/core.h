@@ -294,9 +294,9 @@ public: // interface
 	bool					RemapKey(unsigned int uOrigKey, unsigned int uRedirectKey);
 	bool					UnRemapKey(unsigned int uOrigKey);
 
-	ILog*					GetLog(void)		{ return reinterpret_cast<ILog*>(this->m_pLog);					};
-	IConsole*				GetConsole(void)	{ return reinterpret_cast<IConsole*>(this->m_pConsole);			};
-	IStatistics*			GetStatistics(void)	{ return reinterpret_cast<IStatistics*>(this->m_pStatistics);	};
+	ILog*					GetLog(void)		{ return (ILog*)this->m_pLog;				};
+	IConsole*				GetConsole(void)	{ return (IConsole*)this->m_pConsole;		};
+	IStatistics*			GetStatistics(void)	{ return (IStatistics*)this->m_pStatistics;	};
 
 	void					SetWindowCaption(LPCSTR lpcCaption);
 
