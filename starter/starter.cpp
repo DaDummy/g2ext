@@ -115,10 +115,10 @@ void CStarter::InitUI(void)
 	this->m_mControls.insert(std::make_pair<UINT, HWND>(5002, CreateWindowEx(NULL, L"STATIC", L"Team:", WS_VISIBLE | WS_CHILD, 16, 402, 128, 14, this->m_hWnd, NULL, this->m_hInstance, NULL)));
 	this->m_mControls.insert(std::make_pair<UINT, HWND>(5003, CreateWindowEx(NULL, L"STATIC", L"Web:", WS_VISIBLE | WS_CHILD, 16, 418, 128, 14, this->m_hWnd, NULL, this->m_hInstance, NULL)));
 
-	this->m_mControls.insert(std::make_pair<UINT, HWND>(IDT_TITLE, CreateWindowEx(NULL, L"STATIC", L"---", WS_VISIBLE | WS_CHILD, 60, 370, 128, 14, this->m_hWnd, NULL, this->m_hInstance, NULL)));
-	this->m_mControls.insert(std::make_pair<UINT, HWND>(IDT_VERSION, CreateWindowEx(NULL, L"STATIC", L"---", WS_VISIBLE | WS_CHILD, 60, 386, 128, 14, this->m_hWnd, NULL, this->m_hInstance, NULL)));
-	this->m_mControls.insert(std::make_pair<UINT, HWND>(IDT_TEAM, CreateWindowEx(NULL, L"STATIC", L"---", WS_VISIBLE | WS_CHILD, 60, 402, 128, 14, this->m_hWnd, NULL, this->m_hInstance, NULL)));
-	this->m_mControls.insert(std::make_pair<UINT, HWND>(IDT_WEB, CreateWindowEx(NULL, L"STATIC", L"---", WS_VISIBLE | WS_CHILD, 60, 418, 128, 14, this->m_hWnd, NULL, this->m_hInstance, NULL)));
+	this->m_mControls.insert(std::make_pair<UINT, HWND>(IDT_TITLE, CreateWindowEx(NULL, L"STATIC", L"---", WS_VISIBLE | WS_CHILD, 60, 370, 250, 14, this->m_hWnd, NULL, this->m_hInstance, NULL)));
+	this->m_mControls.insert(std::make_pair<UINT, HWND>(IDT_VERSION, CreateWindowEx(NULL, L"STATIC", L"---", WS_VISIBLE | WS_CHILD, 60, 386, 250, 14, this->m_hWnd, NULL, this->m_hInstance, NULL)));
+	this->m_mControls.insert(std::make_pair<UINT, HWND>(IDT_TEAM, CreateWindowEx(NULL, L"STATIC", L"---", WS_VISIBLE | WS_CHILD, 60, 402, 250, 14, this->m_hWnd, NULL, this->m_hInstance, NULL)));
+	this->m_mControls.insert(std::make_pair<UINT, HWND>(IDT_WEB, CreateWindowEx(NULL, L"STATIC", L"---", WS_VISIBLE | WS_CHILD, 60, 418, 250, 14, this->m_hWnd, NULL, this->m_hInstance, NULL)));
 
 	this->m_mControls.insert(std::make_pair<UINT, HWND>(5004, CreateWindowEx(NULL, L"STATIC", L"", SS_CENTERIMAGE | SS_REALSIZEIMAGE | SS_BITMAP | WS_CHILD | WS_VISIBLE, 0, 0, 524, 101, this->m_hWnd, NULL, this->m_hInstance, NULL)));
 
