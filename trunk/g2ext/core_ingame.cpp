@@ -242,7 +242,8 @@ void CCoreIngame::AttachCallbackHooks(void)
 	this->CreateHook(L"G2EXT_CALLBACK_OPEN_SAVESCREEN", (void*)0x006C2250, &CCoreIngame::OnOpenSavescreen);					// -- bound on oCGame::OpenSavescreen(bool) -- 0x006C2250
 	this->CreateHook(L"G2EXT_CALLBACK_CLOSE_LOADSCREEN", (void*)0x006C2BD0, &CCoreIngame::OnCloseLoadscreen);				// -- bound on oCGame::CloseLoadscreen(void) -- 0x006C2BD0
 	this->CreateHook(L"G2EXT_CALLBACK_CLOSE_SAVESCREEN", (void*)0x006C2630, &CCoreIngame::OnCloseSavescreen);				// -- bound on oCGame::CloseSavescreen(void) -- 0x006C2630
-	this->CreateHook(L"G2EXT_CALLBACK_ENTER_WORLD", (void*)0x006C96F0, &CCoreIngame::OnIngame);								// -- bound on oCGame::EnterWorld(class oCNpc *, int, class zSTRING const &) -- 0x006C96F0
+	//this->CreateHook(L"G2EXT_CALLBACK_ENTER_WORLD", (void*)0x006C96F0, &CCoreIngame::OnIngame);								// -- bound on oCGame::EnterWorld(class oCNpc *, int, class zSTRING const &) -- 0x006C96F0 // OLD ingame event point -> oCNpc::player uninitialized!!
+	this->CreateHook(L"G2EXT_CALLBACK_NPC_INIT", (void*)0x006C0D00, &CCoreIngame::OnIngame);								// -- bound on oCGame::NpcInit(void) -- 0x006C0D00 // NEW ingame event point
 	this->CreateHook(L"G2EXT_CALLBACK_RENDER", (void*)0x004816C0, &CCoreIngame::OnRender);									// -- bound on void __cdecl oCarsten_PerFrame() -- 0x004816C0
 	this->CreateHook(L"G2EXT_CALLBACK_REGISTER_EXTERNALS", (void*)0x006D4780, &CCoreIngame::OnRegisterExternals);			// -- bound on oCGame::DefineExternals_Ulfi(class zCParser *) -- 0x006D4780
 	//this->CreateHook(L"G2EXT_CALLBACK_REGISTER_MENU_EXTERNALS", (void*)0x0042C1D0, &CCoreIngame::OnRegisterMenuExternals);	// -- bound on DefineMenuScriptFunctions() -- 0x0042C1D0

@@ -228,33 +228,33 @@ void CLog::Write(LOG_LEVEL eLogLevel, const wchar_t* msg)
 
 			this->m_fsFile << timebuf << L"# error: " << msg << std::endl;
 
-			wchar_t* buf = new wchar_t[255];
-			swprintf_s(buf, 255, L"Error:\n\n%s", msg);
-			MessageBoxW(0, buf, L"G2Ext", MB_OK | MB_ICONERROR | MB_APPLMODAL);
-			delete [] buf;
-
 			if(this->m_hConsole != NULL)
 			{
 				SetConsoleTextAttribute(this->m_hConsole, 12);
 				std::wcout << timebuf << msg << std::endl;
 				SetConsoleTextAttribute(this->m_hConsole, 7);
 			};
+
+			wchar_t* buf = new wchar_t[255];
+			swprintf_s(buf, 255, L"Error:\n\n%s", msg);
+			MessageBoxW(0, buf, L"G2Ext", MB_OK | MB_ICONERROR | MB_APPLMODAL);
+			delete [] buf;
 		} break;
 	case LOG_CRITICAL:
 		{
 			this->m_fsFile << timebuf << L"## critical error: " << msg << std::endl;
 
-			wchar_t* buf = new wchar_t[255];
-			swprintf_s(buf, 255, L"Critical error:\n\n%s\n\nG2Ext must be terminated.", msg);
-			MessageBoxW(0, buf, L"G2Ext", MB_OK | MB_ICONERROR | MB_APPLMODAL);
-			delete [] buf;
-
 			if(this->m_hConsole != NULL)
 			{
 				SetConsoleTextAttribute(this->m_hConsole, 12);
 				std::wcout << timebuf << msg << std::endl;
 				SetConsoleTextAttribute(this->m_hConsole, 7);
 			};
+
+			wchar_t* buf = new wchar_t[255];
+			swprintf_s(buf, 255, L"Critical error:\n\n%s\n\nG2Ext must be terminated.", msg);
+			MessageBoxW(0, buf, L"G2Ext", MB_OK | MB_ICONERROR | MB_APPLMODAL);
+			delete [] buf;
 
 			this->Close();
 			exit(0);

@@ -51,7 +51,6 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 class oCAskBox;
 class oCInfo;
-class oCMag_Book;
 class oCMission;
 class oCNews;
 class oCNpc;
@@ -67,6 +66,7 @@ class zCRoute;
 class zCParticleFX;
 class zTSoundHandle;
 class oTDirectionInfo;
+class zCModel;
 
 enum oCNpc_Attribute
 {
@@ -109,6 +109,22 @@ enum oCNpc_WeaponMode
 	NPC_WEAPON_CBOW = 6,
 	NPC_WEAPON_MAG	= 7,
 	NPC_WEAPON_MAX  = 8
+};
+
+/** Insert description */
+class oCMag_Book
+{
+private:
+	char _data[64];
+public:
+	//.text:004767A0 ; public: void __thiscall oCMag_Book::Spell_Cast(void)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void Spell_Cast(void)
+	{
+		XCALL(0x004767A0);
+	};
 };
 
 /** Insert description */
@@ -786,6 +802,203 @@ public:
 	* @usable Ingame only
 	*/
 	void SetFatness(zFLOAT x) { this->model_fatness = x; };
+
+	// Begin GX addition 30 Apr 2010
+
+	//.text:00738720 ; public: class zCModel * __thiscall oCNpc::GetModel(void)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	zCModel* GetModel()
+	{
+		XCALL(0x00738720)
+	};
+	
+	//.text: ; public: class oCMag_Book * __thiscall oCNpc::GetSpellBook(void)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	oCMag_Book* GetSpellBook()
+	{
+		XCALL(0x0073EA00)
+	};
+
+	//.text:00745A20 ; public: virtual void __thiscall oCNpc::Disable(void)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void Disable()
+	{
+		XCALL(0x00745A20)
+	};
+
+	//.text:00745D40 ; public: virtual void __thiscall oCNpc::Enable(class zVEC3 &)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void Enable(zVEC3 pos)
+	{
+		XCALL(0x00745D40)
+	};
+
+	//.text:0075E920 ; int __stdcall oCNpc__SetBodyState(int Value)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void SetBodyState(int Value)
+	{
+		XCALL(0x00745D40)
+	};
+
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+    void SetName(const zSTRING& Name)
+    {
+        zSTRING& RealName = this->GetName();
+        RealName.Clear();
+        RealName.Insert(0, Name);
+    };
+
+	// End GX addition 30 Apr 2010
+
+	// Begin GX addition 9 May 2010
+
+	//.text:0067B860 ; public: virtual void __thiscall oCNpc::OnDamage(class zCVob *, class zCVob *, float, int, class zVEC3 const &)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void OnDamage(zCVob*, zCVob*, float, int, zVEC3&)
+	{
+		XCALL(0x0067B860)
+	};
+
+	//.text:006660E0 ; public: virtual void __thiscall oCNpc::OnDamage(struct oCNpc::oSDamageDescriptor &)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void OnDamage(oSDamageDescriptor &)
+	{
+		XCALL(0x006660E0)
+	};
+
+	//.text:00739C90 ; public: void __thiscall oCNpc::Equip(class oCItem *)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void Equip(class oCItem *)
+	{
+		XCALL(0x00739C90)
+	};
+
+	//.text:0073A490 ; public: void __thiscall oCNpc::EquipArmor(class oCItem *)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void EquipArmor(oCItem *)
+	{
+		XCALL(0x0073A490)
+	};
+
+	//.text:0074F0B0 ; public: void __thiscall oCNpc::EquipBestArmor(void)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void EquipBestArmor(void)
+	{
+		XCALL(0x0074F0B0)
+	};
+
+	//.text:0074EF30 ; public: void __thiscall oCNpc::EquipBestWeapon(int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void EquipBestWeapon(int)
+	{
+		XCALL(0x0074EF30)
+	};
+
+	//.text:0073A310 ; public: void __thiscall oCNpc::EquipFarWeapon(class oCItem *)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void EquipFarWeapon(oCItem *)
+	{
+		XCALL(0x0073A310)
+	};
+
+	//.text:007323C0 ; public: void __thiscall oCNpc::EquipItem(class oCItem *)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void EquipItem(oCItem *)
+	{
+		XCALL(0x007323C0)
+	};
+
+	//.text:0073A030 ; public: void __thiscall oCNpc::EquipWeapon(class oCItem *)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void EquipWeapon(oCItem *)
+	{
+		XCALL(0x0073A030)
+	};
+
+	//.text:00744DD0 ; public: virtual int __thiscall oCNpc::DoDropVob(class zCVob *)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void DoDropVob(zCVob *)
+	{
+		XCALL(0x00744DD0)
+	};
+
+	//.text:007449C0 ; public: virtual int __thiscall oCNpc::DoTakeVob(class zCVob *)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void DoTakeVob(zCVob *)
+	{
+		XCALL(0x007449C0)
+	};
+
+	//.text:007446B0 ; public: virtual int __thiscall oCNpc::DoShootArrow(int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void DoShootArrow(int)
+	{
+		XCALL(0x007446B0)
+	};
+
+	//.text:0073E990 ; public: void __thiscall oCNpc::OpenSpellBook(int)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void OpenSpellBook(int)
+	{
+		XCALL(0x0073E990)
+	};
+
+	//.text:007450B0 ; public: virtual int __thiscall oCNpc::DoThrowVob(class zCVob *, float)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void oCNpc::DoThrowVob(zCVob *, float)
+	{
+		XCALL(0x007450B0)
+	};
+
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	oCNpcInventory* GetInventory()
+	{
+		return &this->inventory2;
+	};
+
+	// End GX addition 30 Apr 2010
 
 	/** This method returns the current oCNpc::Hero instance
 	* @usable Ingame only
