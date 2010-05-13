@@ -176,10 +176,10 @@ __forceinline zTVobTypeVT GetVobType(zCVob* vob)
 };
 
 /** Insert description. */
-class zCVob : public zCObject
+class zCVob : public zCObjectNVT
 {	
 public:
-	int				globalVobTreeNode;         // 0x0024 zCTree<zCVob>*
+	zCTree<zCVob>*	globalVobTreeNode;         // 0x0024 zCTree<zCVob>*
 	int				lastTimeDrawn;             // 0x0028 zTFrameCtr
 	DWORD			lastTimeCollected;         // 0x002C zDWORD
 	zCArray<void*>	vobLeafList;
@@ -187,7 +187,7 @@ public:
 	zTBBox3D		bbox3D;
 	zTBSphere3D		bsphere3D;
 	zCArray<zCVob*> touchVobList;
-	int				type;                      // 0x00B0 zTVobType
+	zTVobType		type;                      // 0x00B0 zTVobType
 	DWORD			groundShadowSizePacked;    // 0x00B4 zDWORD
 	zCWorld*		homeWorld;                 // 0x00B8 zCWorld*
 	void*			groundPoly;                // 0x00BC zCPolygon* // FIXME: TYPE
@@ -596,6 +596,24 @@ public:
 	int DetectCollision(zMAT4* mat)
 	{
 		XCALL(0x0061D890);
+	};
+
+	// Begin GothicX addition of 1 May 2010
+
+	//.text:0052DCB0 ; public: class zVEC3 __thiscall zCVob::GetAtVectorWorld(void)const
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	zVEC3 GetAtVectorWorld()
+	{
+		XCALL(0x0052DCB0);
+	};
+
+	// End GothicX addition of 1 May 2010
+
+	zVEC3 GetVobPosition()
+	{
+		return zVEC3(this->trafoObjToWorld.m[0][3], this->trafoObjToWorld.m[1][3], this->trafoObjToWorld.m[2][3]);
 	};
 };
 

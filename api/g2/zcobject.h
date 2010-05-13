@@ -112,6 +112,72 @@ public:
 	};	
 };
 
+/** ZenGin object base class. */
+class zCObjectNVT
+{
+private:
+	//int		_vtbl;
+protected:
+	int		refCtr;
+	int		hashIndex;
+	int		hashNext;
+	zSTRING objectName;
+public:    
+	//.text:00401ED0 ; public: virtual void __thiscall zCObject::Archive(class zCArchiver &)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void Archive(zCArchiver & pA)
+	{
+		XCALL(0x00401ED0);
+	};
+
+	//.text:005A90A0 ; public: class zCObject * __thiscall zCObject::CreateCopy(void)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	zCObject* CreateCopy(void)
+	{
+		XCALL(0x005A90A0);
+	};
+
+	//.text:005A9CD0 ; public: class zSTRING const & __thiscall zCObject::GetObjectName(void)const
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	zSTRING & GetObjectName(void)
+	{
+		XCALL(0x005A9CD0);
+	};
+
+	//.text:0040C310 ; public: int __thiscall zCObject::Release(void)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	int Release(void)
+	{
+		XCALL(0x0040C310);
+	};
+
+	//.text:005A9CE0 ; public: int __thiscall zCObject::SetObjectName(class zSTRING const &)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	int SetObjectName(zSTRING & pA)
+	{
+		XCALL(0x005A9CE0);
+	};
+
+	//.text:00401EE0 ; public: virtual void __thiscall zCObject::Unarchive(class zCArchiver &)
+	/** Insert description. 
+	* @usable Ingame only
+	*/
+	void Unarchive(zCArchiver & pA)
+	{
+		XCALL(0x00401EE0);
+	};	
+};
+
 #undef __G2EXT_API_HEADER
 
 #endif //__API_G2_ZCOBJECT_H__
