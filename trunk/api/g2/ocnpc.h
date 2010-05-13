@@ -836,7 +836,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	void Enable(zVEC3 pos)
+	void Enable(zVEC3& pos)
 	{
 		XCALL(0x00745D40)
 	};
@@ -855,9 +855,10 @@ public:
 	*/
     void SetName(const zSTRING& Name)
     {
-        zSTRING& RealName = this->GetName();
-        RealName.Clear();
-        RealName.Insert(0, Name);
+       //*&& */zSTRING& RealName = this->GetName();
+		MessageBoxA(0, this->name[0].ToChar(), 0,0);
+        this->name[0].Clear();
+        this->name[0].Insert(0, Name);
     };
 
 	// End GX addition 30 Apr 2010
