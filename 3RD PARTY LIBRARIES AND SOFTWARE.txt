@@ -14,6 +14,12 @@ BugTrap
  * Homepage: 	http://www.intellesoft.net/
  * Licence: 	http://www.intellesoft.net/bugtrap-license.php
 
+google-sparsehash
+
+ * Author: 	Google
+ * Homepage: 	http://code.google.com/p/google-sparsehash/
+ * Licence: 	http://www.opensource.org/licenses/bsd-license.php
+
 libinject
 
  * Author: 	Daniel Diepold<br />

@@ -286,7 +286,7 @@ bool CCoreIngame::RedirectCall(LPCWSTR lpwName, void* pDestination, void* pNewFu
 
 void CCoreIngame::RemoveHook(LPCWSTR lpwName)
 {
-	stdext::hash_map<LPCWSTR, UINT>::const_iterator it = this->m_hmHooks.find(lpwName);
+	hmHook::const_iterator it = this->m_hmHooks.find(lpwName);
 	if(it != this->m_hmHooks.end())
 		libInject::PerformRollback(it->second);
 };

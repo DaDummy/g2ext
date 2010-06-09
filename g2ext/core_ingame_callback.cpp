@@ -225,14 +225,17 @@ bool CCoreIngame::UnRegisterCallback(G2EXT_CALLBACKTYPE cbType, LPCWSTR lpwName)
 {
 	G2EXT_LOGF_DEBUG(L"Unregistering callback '%s' of type '%s'", lpwName, GetCallbackNameByID(cbType));
 
-	hmCallback::const_iterator it = this->m_hmCallbacks[cbType].find(lpwName);
-	if(it != this->m_hmCallbacks[cbType].end())
+	if(!this->m_hmCallbacks[cbType].erase(lpwName))
 	{
-		this->m_hmCallbacks[cbType].erase(it);
-		return true;
-	};
+		G2EXT_LOGF_NONE(L"UnRegisterCallback: Callback '%s' of type '%s' does not exist.", lpwName, GetCallbackNameByID(cbType));
+	}
 
-	G2EXT_LOGF_WARNING(L"UnRegisterCallback: Callback '%s' of type '%s' does not exist.", lpwName, GetCallbackNameByID(cbType));
+	//hmCallback::const_iterator it = this->m_hmCallbacks[cbType].find(lpwName);
+	//if(it != this->m_hmCallbacks[cbType].end())
+	//{
+	//	this->m_hmCallbacks[cbType].erase(it);
+	//	return true;
+	//};
 
 	return false;
 };

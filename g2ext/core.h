@@ -42,6 +42,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 #include "log.h"
 
+#include <google/dense_hash_map>
 #include <hash_map>
 #include <vector>
 
@@ -223,9 +224,12 @@ typedef struct _PLUGIN
 
 //////////////////////////////////////////////////////////////////////////
 
-typedef stdext::hash_map<LPCWSTR, UINT>			 hmHook;
-typedef stdext::hash_map<LPCWSTR, PCALLBACKINFO> hmCallback;
-typedef stdext::hash_map<LPCWSTR, PPLUGIN>		 hmPlugin;
+//typedef stdext::hash_map<LPCWSTR, UINT>			 hmHook;
+typedef google::dense_hash_map<LPCWSTR, UINT>			 hmHook;
+//typedef stdext::hash_map<LPCWSTR, PCALLBACKINFO>	 hmCallback;
+typedef google::dense_hash_map<LPCWSTR, PCALLBACKINFO>	 hmCallback;
+//typedef stdext::hash_map<LPCWSTR, PPLUGIN>		 hmPlugin;
+typedef google::dense_hash_map<LPCWSTR, PPLUGIN>		 hmPlugin;
 
 //////////////////////////////////////////////////////////////////////////
 
