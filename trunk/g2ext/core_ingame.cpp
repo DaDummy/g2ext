@@ -28,6 +28,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #include "stats.h"
 #include "splash.h"
 #include "utils.h"
+#include "limits.h"
 
 #ifdef _G2EXT_COMPILE_SPACER
 #include "api/spacer/zcinput.h"
@@ -46,6 +47,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #endif //_G2EXT_COMPILE_SPACER
 
 #include "common/version.h"
+
+#define GDHM_EMPTY_KEY L"(NULL-XYZABC)"
 
 #pragma warning(disable:4244)
 #pragma warning(disable:4996)
@@ -80,6 +83,16 @@ void CCoreIngame::Init(PMODINFO pModInfo)
 
 	this->m_bUseCustomSplashScreen = false;
 	this->m_bSplashShowVersionInfo = true;
+
+	
+	// Prepare all google::dense_hash_map instances
+	for(UINT i = 0; i < G2EXT_CB_MAX; i++)
+	{
+		this->m_hmCallbacks[i].set_empty_key(GDHM_EMPTY_KEY);
+	}
+
+	this->m_hmHooks.set_empty_key(GDHM_EMPTY_KEY);
+	this->m_hmPlugins.set_empty_key(GDHM_EMPTY_KEY);
 
 #ifndef _G2EXT_COMPILE_SPACER
 	if(this->IsFlagSet(G2EXT_PARAM_DEBUG))
