@@ -65,7 +65,6 @@ class TNpcSlot;
 class zCPlayerGroup;
 class zCRoute;
 class zCParticleFX;
-class zTSoundHandle;
 class oTDirectionInfo;
 
 enum oCNpc_Attribute
