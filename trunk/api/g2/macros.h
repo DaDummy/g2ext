@@ -51,6 +51,14 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 	__asm { mov eax, uAddr	}	\
 	__asm { jmp eax			}
 
+#define _XCALL(uAddr)			\
+	{							\
+	__asm { mov esp, ebp	}	\
+	__asm { pop ebp			}	\
+	__asm { mov eax, uAddr	}	\
+	__asm { jmp eax			}	\
+	}
+
 #undef __G2EXT_API_HEADER
 
 #endif //__API_G2_MACROS_H__

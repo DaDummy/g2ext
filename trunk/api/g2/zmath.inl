@@ -30,8 +30,8 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 /////////////////////////////////////////////////////////////////////////////*/
 
-#ifndef __ZTYPES_INL_INCLUDED__
-#define __ZTYPES_INL_INCLUDED__
+#ifndef __ZMATH_INL_INCLUDED__
+#define __ZMATH_INL_INCLUDED__
 
 #ifndef INLINE
 #ifdef _MSC_VER
@@ -856,75 +856,4 @@ INLINE bool zMAT4::operator != ( const zMAT4 & _m ) const
 		);
 };
 
-///////////////////////////////////////////////////////////////////////////////
-//
-// zCOLOR
-//
-///////////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////////
-// -- constructors
-
-INLINE zCOLOR::zCOLOR() 
-{ 
-	this->Clear(); 
-};
-
-INLINE zCOLOR::zCOLOR(zBYTE _r, zBYTE _g, zBYTE _b) 
-{ 
-	b = _b; 
-	g = _g; 
-	r = _r; 
-	a = 255; 
-}; 
-
-INLINE zCOLOR::zCOLOR(zBYTE _r, zBYTE _g, zBYTE _b, zBYTE _a) 
-{ 
-	b = _b; 
-	g = _g; 
-	r = _r; 
-	a = _a; 
-};
-
-INLINE zCOLOR::zCOLOR(zDWORD _color)
-{
-	color = _color;	
-}; 
-
-///////////////////////////////////////////////////////////////////////////////
-// -- functions
-INLINE void zCOLOR::Clear() 
-{ 
-	b = 0; 
-	g = 0; 
-	r = 0; 
-	a = 255; 
-};
-
-INLINE void zCOLOR::SetRGBA(BYTE _r, BYTE _g, BYTE _b, BYTE _a) 
-{ 
-	r = _r; 
-	g = _g; 
-	b = _b; 
-	a = _a; 
-};
-
-INLINE void zCOLOR::SetBGRA(BYTE _b, BYTE _g, BYTE _r, BYTE _a) 
-{ 
-	r = _r; 
-	g = _g; 
-	b = _b; 
-	a = _a; 
-};
-
-INLINE void zCOLOR::SetR(BYTE _c) { r = _c; };
-INLINE void zCOLOR::SetG(BYTE _c) { g = _c; };
-INLINE void zCOLOR::SetB(BYTE _c) { b = _c; };
-INLINE void zCOLOR::SetA(BYTE _c) { a = _c; };
-
-INLINE BYTE zCOLOR::GetR(void) { return r; };
-INLINE BYTE zCOLOR::GetG(void) { return g; };
-INLINE BYTE zCOLOR::GetB(void) { return b; };
-INLINE BYTE zCOLOR::GetA(void) { return a; };
-
-#endif  //__ZTYPES_INL_INCLUDED__
+#endif  //__ZMATH_INL_INCLUDED__

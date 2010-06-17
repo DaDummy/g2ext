@@ -47,13 +47,36 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 /** Insert description. */
 class zCTimer
 {
+private:
+	float factorMotion;        //zREAL 
+	float frameTimeFloat;      //zREAL [msec]
+	float totalTimeFloat;      //zREAL [msec]
+	float frameTimeFloatSecs;  //zREAL  [s]
+	float totalTimeFloatSecs;  //zREAL  [s]
+	DWORD lastTimer;           //zDWORD
+	DWORD frameTime;           //zDWORD [msec]
+	DWORD totalTime;           //zDWORD [msec]
+	DWORD minFrameTime;        //zDWORD
+	DWORD forcedMaxFrameTime;  //zDWORD
 public:
-	//.text:006370B0 ; public: void __thiscall zCTimer::SetMotionFactor(float)
-	void SetMotionFactor(float p1)
-	{
-		XCALL(0x006370B0);
-	};
+	//.text:005F9680 ; public: __thiscall zCTimer::zCTimer(void)
+	zCTimer(void) _XCALL(0x005F9680);
 
+	//.text:006370B0 ; public: void __thiscall zCTimer::SetMotionFactor(float)
+	void SetMotionFactor(float p1) _XCALL(0x006370B0);
+
+	//.text:005F9920 ; public: void __thiscall zCTimer::LimitFPS(int)
+	void LimitFPS(int p1) _XCALL(0x005F9920);
+
+	//.text:005F96B0 ; public: void __thiscall zCTimer::ResetTimer(void)
+	void ResetTimer(void) _XCALL(0x005F96B0);
+
+	//.text:005F9800 ; int __stdcall zCTimer__SetFrameTime(float)
+	void SetFrameTime(float p1) _XCALL(0x005F9800);
+
+	//.text:005F9890 ; public: void __thiscall zCTimer::SetMaxFPS(unsigned long)
+	void SetMaxFPS(DWORD p1) _XCALL(0x005F9890);
+	
 	//.data:0099B3D4 ; class zCTimer ztimer
 	static zCTimer* GetTimer()
 	{

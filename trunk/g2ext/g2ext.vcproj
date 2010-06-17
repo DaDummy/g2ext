@@ -498,6 +498,18 @@
 						>
 					</File>
 					<File
+						RelativePath="..\api\g2\zcolor.h"
+						>
+					</File>
+					<File
+						RelativePath=".\zcolor.h"
+						>
+					</File>
+					<File
+						RelativePath=".\zcontainers.h"
+						>
+					</File>
+					<File
 						RelativePath="..\api\g2\zcoption.h"
 						>
 					</File>
@@ -526,6 +538,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\api\g2\zctrigger.h"
+						>
+					</File>
+					<File
 						RelativePath="..\api\g2\zcview.h"
 						>
 					</File>
@@ -538,7 +554,15 @@
 						>
 					</File>
 					<File
+						RelativePath="..\api\g2\zcwaynet.h"
+						>
+					</File>
+					<File
 						RelativePath="..\api\g2\zcworld.h"
+						>
+					</File>
+					<File
+						RelativePath=".\zmath.h"
 						>
 					</File>
 					<File
@@ -549,10 +573,18 @@
 						RelativePath="..\api\g2\ztypes.h"
 						>
 					</File>
-					<File
-						RelativePath="..\api\g2\ztypes.inl"
+					<Filter
+						Name="inl"
 						>
-					</File>
+						<File
+							RelativePath="..\api\g2\zcolor.inl"
+							>
+						</File>
+						<File
+							RelativePath="..\api\g2\zmath.inl"
+							>
+						</File>
+					</Filter>
 				</Filter>
 				<Filter
 					Name="spacer"
