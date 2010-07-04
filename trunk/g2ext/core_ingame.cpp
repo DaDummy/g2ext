@@ -337,7 +337,7 @@ void CCoreIngame::ProcessVobList(void)
 	{
 		if((uListSize = pVobList->GetSize()) != 0)
 		{
-			G2EXT_LOGF_DEBUG(L"Processing VOB list. [%d entrys]", uListSize)
+			G2EXT_LOGF_DEBUG(L"Processing VOB list. [%d entries]", uListSize)
 
 			for(UINT i = 0; i < uListSize; i++)
 			{
@@ -366,7 +366,7 @@ void CCoreIngame::ProcessItemList(void)
 	{
 		if((uListSize = pItemList->GetSize()) != 0)
 		{
-			G2EXT_LOGF_DEBUG(L"Processing item list. [%d entrys]", uListSize)
+			G2EXT_LOGF_DEBUG(L"Processing item list. [%d entries]", uListSize)
 
 			for(UINT i = 0; i < uListSize; i++)
 			{
@@ -384,7 +384,7 @@ void CCoreIngame::ProcessNpcList(void)
 	{
 		if((uListSize = pNpcList->GetSize()) != 0)
 		{
-			G2EXT_LOGF_DEBUG(L"Processing NPC list. [%d entrys]", uListSize)
+			G2EXT_LOGF_DEBUG(L"Processing NPC list. [%d entries]", uListSize)
 
 			for(UINT i = 0; i < uListSize; i++)
 			{
