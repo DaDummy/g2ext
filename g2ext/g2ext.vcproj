@@ -426,6 +426,10 @@
 						>
 					</File>
 					<File
+						RelativePath="..\api\g2\ocmob.h"
+						>
+					</File>
+					<File
 						RelativePath="..\api\g2\ocnpc.h"
 						>
 					</File>
@@ -502,11 +506,15 @@
 						>
 					</File>
 					<File
-						RelativePath=".\zcolor.h"
+						RelativePath="..\api\g2\zcolor.inl"
 						>
 					</File>
 					<File
 						RelativePath=".\zcontainers.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\g2\zcontainers.h"
 						>
 					</File>
 					<File
@@ -527,6 +535,10 @@
 					</File>
 					<File
 						RelativePath="..\api\g2\zcsession.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\g2\zcskycontroller.h"
 						>
 					</File>
 					<File
@@ -562,7 +574,11 @@
 						>
 					</File>
 					<File
-						RelativePath=".\zmath.h"
+						RelativePath="..\api\g2\zmath.h"
+						>
+					</File>
+					<File
+						RelativePath="..\api\g2\zmath.inl"
 						>
 					</File>
 					<File
@@ -573,18 +589,6 @@
 						RelativePath="..\api\g2\ztypes.h"
 						>
 					</File>
-					<Filter
-						Name="inl"
-						>
-						<File
-							RelativePath="..\api\g2\zcolor.inl"
-							>
-						</File>
-						<File
-							RelativePath="..\api\g2\zmath.inl"
-							>
-						</File>
-					</Filter>
 				</Filter>
 				<Filter
 					Name="spacer"
