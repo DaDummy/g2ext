@@ -64,7 +64,6 @@ class TNpcSlot;
 class zCPlayerGroup;
 class zCRoute;
 class zCParticleFX;
-class zTSoundHandle;
 class oTDirectionInfo;
 class zCModel;
 
