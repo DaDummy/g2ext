@@ -7,6 +7,7 @@ cls
 :skipcls1
 
 call "%VS90COMNTOOLS%\vsvars32.bat"
+call "%VS100COMNTOOLS%\vsvars32.bat"
 
 if "%1"=="dadummy" goto skipcls2
 cls
