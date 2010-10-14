@@ -1,13 +1,13 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 10.00
-# Visual Studio 2008
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "g2ext", "g2ext\g2ext.vcproj", "{50F84987-14AD-4D74-A157-71F5E4C75B81}"
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "g2ext", "g2ext\g2ext.vcxproj", "{50F84987-14AD-4D74-A157-71F5E4C75B81}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libg2extutils", "libg2extutils\libg2extutils.vcproj", "{A39B969B-4883-4A0E-83C0-B72DDD7B031F}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libg2extutils", "libg2extutils\libg2extutils.vcxproj", "{A39B969B-4883-4A0E-83C0-B72DDD7B031F}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "g2ext_starter", "starter\starter.vcproj", "{898A4313-86C7-43CE-8876-619CC8F91BE2}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "g2ext_starter", "starter\starter.vcxproj", "{898A4313-86C7-43CE-8876-619CC8F91BE2}"
 EndProject
-Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libg2extutils_test", "test\libg2extutils_test\libg2extutils_test.vcproj", "{B8C09159-FDE1-40B0-9230-9F76FA5E71A0}"
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "libg2extutils_test", "test\libg2extutils_test\libg2extutils_test.vcxproj", "{B8C09159-FDE1-40B0-9230-9F76FA5E71A0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
