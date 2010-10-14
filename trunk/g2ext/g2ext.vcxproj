@@ -1,0 +1,375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup Label="ProjectConfigurations">
+    <ProjectConfiguration Include="Debug (Spacer)|Win32">
+      <Configuration>Debug (Spacer)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Debug|Win32">
+      <Configuration>Debug</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release (Spacer)|Win32">
+      <Configuration>Release (Spacer)</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+    <ProjectConfiguration Include="Release|Win32">
+      <Configuration>Release</Configuration>
+      <Platform>Win32</Platform>
+    </ProjectConfiguration>
+  </ItemGroup>
+  <PropertyGroup Label="Globals">
+    <ProjectGuid>{50F84987-14AD-4D74-A157-71F5E4C75B81}</ProjectGuid>
+    <RootNamespace>g2ext</RootNamespace>
+    <Keyword>Win32Proj</Keyword>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release (Spacer)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Spacer)|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+    <WholeProgramOptimization>true</WholeProgramOptimization>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="Configuration">
+    <ConfigurationType>DynamicLibrary</ConfigurationType>
+    <CharacterSet>Unicode</CharacterSet>
+  </PropertyGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
+  <ImportGroup Label="ExtensionSettings">
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release (Spacer)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Spacer)|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <ImportGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" Label="PropertySheets">
+    <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
+  </ImportGroup>
+  <PropertyGroup Label="UserMacros" />
+  <PropertyGroup>
+    <_ProjectFileVersion>10.0.30319.1</_ProjectFileVersion>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Debug (Spacer)|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Debug (Spacer)|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Debug (Spacer)|Win32'">false</LinkIncremental>
+    <OutDir Condition="'$(Configuration)|$(Platform)'=='Release (Spacer)|Win32'">$(SolutionDir)$(Configuration)\</OutDir>
+    <IntDir Condition="'$(Configuration)|$(Platform)'=='Release (Spacer)|Win32'">$(Configuration)\</IntDir>
+    <LinkIncremental Condition="'$(Configuration)|$(Platform)'=='Release (Spacer)|Win32'">false</LinkIncremental>
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug (Spacer)|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug (Spacer)|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug (Spacer)|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release (Spacer)|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release (Spacer)|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release (Spacer)|Win32'" />
+    <CodeAnalysisRuleSet Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">AllRules.ruleset</CodeAnalysisRuleSet>
+    <CodeAnalysisRules Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+    <CodeAnalysisRuleAssemblies Condition="'$(Configuration)|$(Platform)'=='Release|Win32'" />
+  </PropertyGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
+    <PreBuildEvent>
+      <Command>cd ..\
+"svnver.cmd"
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>./;../;../bugtrap/;../libinject/include/;../libg2extutils/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;G2EXT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <OpenMPSupport>false</OpenMPSupport>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>BugTrapU.lib;libinject.lib;winmm.lib;psapi.lib;libg2extutils.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Debug\g2ext.dll</OutputFile>
+      <AdditionalLibraryDirectories>./;../;../dx7sdk/lib/;../dx9sdk/lib/;../libinject/lib/;../bugtrap/;../debug/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <NoEntryPoint>false</NoEntryPoint>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
+    <PreBuildEvent>
+      <Command>cd ..\
+"svnver.cmd"
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <AdditionalIncludeDirectories>./;../;../bugtrap/;../libinject/include/;../libg2extutils/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;G2EXT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>false</OpenMPSupport>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>BugTrapU.lib;libinject.lib;winmm.lib;psapi.lib;libg2extutils.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Release\g2ext.dll</OutputFile>
+      <AdditionalLibraryDirectories>./;../;../dx7sdk/lib/;../dx9sdk/lib/;../libinject/lib/;../bugtrap/;../release/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <NoEntryPoint>false</NoEntryPoint>
+      <SetChecksum>false</SetChecksum>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug (Spacer)|Win32'">
+    <PreBuildEvent>
+      <Command>cd ..\
+"svnver.cmd"
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/D "_G2EXT_COMPILE_SPACER" %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>Disabled</Optimization>
+      <AdditionalIncludeDirectories>./;../;../bugtrap/;../libinject/include/;../libg2extutils/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;_DEBUG;_WINDOWS;_USRDLL;G2EXT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <MinimalRebuild>true</MinimalRebuild>
+      <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
+      <RuntimeLibrary>MultiThreadedDebugDLL</RuntimeLibrary>
+      <OpenMPSupport>false</OpenMPSupport>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>EditAndContinue</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>BugTrapU.lib;libinject.lib;winmm.lib;psapi.lib;libg2extutils.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Debug\g2ext.spacer.dll</OutputFile>
+      <AdditionalLibraryDirectories>./;../;../dx7sdk/lib/;../dx9sdk/lib/;../libinject/lib/;../bugtrap/;../debug/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <NoEntryPoint>false</NoEntryPoint>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+  </ItemDefinitionGroup>
+  <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release (Spacer)|Win32'">
+    <PreBuildEvent>
+      <Command>cd ..\
+"svnver.cmd"
+</Command>
+    </PreBuildEvent>
+    <ClCompile>
+      <AdditionalOptions>/D "_G2EXT_COMPILE_SPACER" %(AdditionalOptions)</AdditionalOptions>
+      <Optimization>MaxSpeed</Optimization>
+      <IntrinsicFunctions>true</IntrinsicFunctions>
+      <FavorSizeOrSpeed>Speed</FavorSizeOrSpeed>
+      <OmitFramePointers>false</OmitFramePointers>
+      <AdditionalIncludeDirectories>./;../;../bugtrap/;../libinject/include/;../libg2extutils/;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <PreprocessorDefinitions>WIN32;NDEBUG;_WINDOWS;_USRDLL;G2EXT_EXPORTS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <RuntimeLibrary>MultiThreadedDLL</RuntimeLibrary>
+      <FunctionLevelLinking>true</FunctionLevelLinking>
+      <EnableEnhancedInstructionSet>StreamingSIMDExtensions2</EnableEnhancedInstructionSet>
+      <OpenMPSupport>false</OpenMPSupport>
+      <PrecompiledHeader>
+      </PrecompiledHeader>
+      <WarningLevel>Level3</WarningLevel>
+      <DebugInformationFormat>ProgramDatabase</DebugInformationFormat>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>BugTrapU.lib;libinject.lib;winmm.lib;psapi.lib;libg2extutils.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <OutputFile>..\Release\g2ext.spacer.dll</OutputFile>
+      <AdditionalLibraryDirectories>./;../;../dx7sdk/lib/;../dx9sdk/lib/;../libinject/lib/;../bugtrap/;../release/;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <ModuleDefinitionFile>exports.def</ModuleDefinitionFile>
+      <GenerateDebugInformation>true</GenerateDebugInformation>
+      <SubSystem>Windows</SubSystem>
+      <OptimizeReferences>true</OptimizeReferences>
+      <EnableCOMDATFolding>true</EnableCOMDATFolding>
+      <NoEntryPoint>false</NoEntryPoint>
+      <SetChecksum>false</SetChecksum>
+      <TargetMachine>MachineX86</TargetMachine>
+    </Link>
+    <PostBuildEvent>
+      <Command>
+      </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="..\api\console.h" />
+    <ClInclude Include="..\api\core.h" />
+    <ClInclude Include="..\api\g2ext.h" />
+    <ClInclude Include="..\api\interface.h" />
+    <ClInclude Include="..\api\log.h" />
+    <ClInclude Include="..\api\stats.h" />
+    <ClInclude Include="..\api\sysinfo.h" />
+    <ClInclude Include="..\api\g2\cgamemanager.h" />
+    <ClInclude Include="..\api\g2\constants.h" />
+    <ClInclude Include="..\api\g2\macros.h" />
+    <ClInclude Include="..\api\g2\ocanictrl_human.h" />
+    <ClInclude Include="..\api\g2\ocgame.h" />
+    <ClInclude Include="..\api\g2\ocitem.h" />
+    <ClInclude Include="..\api\g2\ocmob.h" />
+    <ClInclude Include="..\api\g2\ocnpc.h" />
+    <ClInclude Include="..\api\g2\ocnpcinventory.h" />
+    <ClInclude Include="..\api\g2\ocobjectfactory.h" />
+    <ClInclude Include="..\api\g2\ocspell.h" />
+    <ClInclude Include="..\api\g2\ocviewgothicprogressbar.h" />
+    <ClInclude Include="..\api\g2\ocviewprogressbar.h" />
+    <ClInclude Include="..\api\g2\ocviewstatusbar.h" />
+    <ClInclude Include="..\api\g2\ocvob.h" />
+    <ClInclude Include="..\api\g2\ocworldtimer.h" />
+    <ClInclude Include="..\api\g2\zcaiplayer.h" />
+    <ClInclude Include="..\api\g2\zcbsptree.h" />
+    <ClInclude Include="..\api\g2\zccamera.h" />
+    <ClInclude Include="..\api\g2\zcconsole.h" />
+    <ClInclude Include="..\api\g2\zcinput.h" />
+    <ClInclude Include="..\api\g2\zcinputcallback.h" />
+    <ClInclude Include="..\api\g2\zcmesh.h" />
+    <ClInclude Include="..\api\g2\zcmodel.h" />
+    <ClInclude Include="..\api\g2\zcobject.h" />
+    <ClInclude Include="..\api\g2\zcolor.h" />
+    <ClInclude Include="zcontainers.h" />
+    <ClInclude Include="..\api\g2\zcontainers.h" />
+    <ClInclude Include="..\api\g2\zcoption.h" />
+    <ClInclude Include="..\api\g2\zcpar_symbol.h" />
+    <ClInclude Include="..\api\g2\zcparser.h" />
+    <ClInclude Include="..\api\g2\zcrenderer.h" />
+    <ClInclude Include="..\api\g2\zcsession.h" />
+    <ClInclude Include="..\api\g2\zcskycontroller.h" />
+    <ClInclude Include="..\api\g2\zcsoundsystem.h" />
+    <ClInclude Include="..\api\g2\zctimer.h" />
+    <ClInclude Include="..\api\g2\zctrigger.h" />
+    <ClInclude Include="..\api\g2\zcview.h" />
+    <ClInclude Include="..\api\g2\zcvisual.h" />
+    <ClInclude Include="..\api\g2\zcvob.h" />
+    <ClInclude Include="..\api\g2\zcwaynet.h" />
+    <ClInclude Include="..\api\g2\zcworld.h" />
+    <ClInclude Include="..\api\g2\zmath.h" />
+    <ClInclude Include="..\api\g2\zstring.h" />
+    <ClInclude Include="..\api\g2\ztypes.h" />
+    <ClInclude Include="..\api\spacer\constants.h" />
+    <ClInclude Include="..\api\spacer\macros.h" />
+    <ClInclude Include="..\api\spacer\ocgame.h" />
+    <ClInclude Include="..\api\spacer\ocitem.h" />
+    <ClInclude Include="..\api\spacer\ocnpc.h" />
+    <ClInclude Include="..\api\spacer\ocnpcinventory.h" />
+    <ClInclude Include="..\api\spacer\ocvob.h" />
+    <ClInclude Include="..\api\spacer\ocworldtimer.h" />
+    <ClInclude Include="..\api\spacer\zbsptree.h" />
+    <ClInclude Include="..\api\spacer\zcconsole.h" />
+    <ClInclude Include="..\api\spacer\zcinput.h" />
+    <ClInclude Include="..\api\spacer\zcinputcallback.h" />
+    <ClInclude Include="..\api\spacer\zcobject.h" />
+    <ClInclude Include="..\api\spacer\zcpar_symbol.h" />
+    <ClInclude Include="..\api\spacer\zcparser.h" />
+    <ClInclude Include="..\api\spacer\zcsession.h" />
+    <ClInclude Include="..\api\spacer\zctimer.h" />
+    <ClInclude Include="..\api\spacer\zcview.h" />
+    <ClInclude Include="..\api\spacer\zcvob.h" />
+    <ClInclude Include="..\api\spacer\zcworld.h" />
+    <ClInclude Include="..\api\spacer\zstring.h" />
+    <ClInclude Include="..\api\spacer\ztypes.h" />
+    <ClInclude Include="..\common\osheader.h" />
+    <ClInclude Include="..\common\version.h" />
+    <ClInclude Include="console.h" />
+    <ClInclude Include="core.h" />
+    <ClInclude Include="injection.h" />
+    <ClInclude Include="injection_code.h" />
+    <ClInclude Include="splash.h" />
+    <ClInclude Include="stats.h" />
+    <ClInclude Include="exceptionhandler.h" />
+    <ClInclude Include="getcode.h" />
+    <ClInclude Include="log.h" />
+    <ClInclude Include="mtutils.h" />
+    <ClInclude Include="singleton.h" />
+    <ClInclude Include="sysinfo.h" />
+    <ClInclude Include="..\libinject\include\libInject.h" />
+    <ClInclude Include="ex_array.h" />
+    <ClInclude Include="ex_ieeefloat.h" />
+    <ClInclude Include="softfloat-macros.h" />
+    <ClInclude Include="softfloat-specialize.h" />
+    <ClInclude Include="softfloat.h" />
+    <ClInclude Include="..\docs\3rd party.h" />
+    <ClInclude Include="..\docs\credits.h" />
+    <ClInclude Include="..\docs\externals.h" />
+    <ClInclude Include="..\docs\faq.h" />
+    <ClInclude Include="..\docs\getting started.h" />
+    <ClInclude Include="..\docs\license.h" />
+    <ClInclude Include="..\docs\main page.h" />
+    <ClInclude Include="..\docs\system requirements.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="..\api\g2\zcolor.inl" />
+    <None Include="..\api\g2\zmath.inl" />
+    <None Include="..\api\spacer\ztypes.inl" />
+    <None Include="..\version.in" />
+    <None Include="g2ext.ico" />
+    <None Include="res.rc2" />
+    <None Include="splash_enu.bmp" />
+    <None Include="..\docs\img\g2ext_logo.png" />
+    <None Include="..\docs\template\footer.html" />
+    <None Include="..\docs\template\header.html" />
+    <None Include="exports.def" />
+    <None Include="..\build.cmd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="res.rc" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="dllmain.cpp" />
+    <ClCompile Include="console.cpp" />
+    <ClCompile Include="core_ingame.cpp" />
+    <ClCompile Include="core_ingame_bankey.cpp" />
+    <ClCompile Include="core_ingame_callback.cpp" />
+    <ClCompile Include="core_ingame_game.cpp" />
+    <ClCompile Include="core_ingame_hook.cpp" />
+    <ClCompile Include="core_outgame.cpp" />
+    <ClCompile Include="injection.cpp" />
+    <ClCompile Include="injection_code.cpp" />
+    <ClCompile Include="splash.cpp" />
+    <ClCompile Include="stats.cpp" />
+    <ClCompile Include="exceptionhandler.cpp" />
+    <ClCompile Include="log.cpp" />
+    <ClCompile Include="sysinfo.cpp" />
+    <ClCompile Include="ex_array.cpp" />
+    <ClCompile Include="ex_ieeefloat.cpp" />
+    <ClCompile Include="softfloat.c" />
+  </ItemGroup>
+  <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
+  <ImportGroup Label="ExtensionTargets">
+  </ImportGroup>
+</Project>
