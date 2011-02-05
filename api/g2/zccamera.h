@@ -106,10 +106,15 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	static zMAT4* GetMatrix(void)
+	//static zMAT4* GetMatrix(void)
+	//{
+	//	return (zMAT4*)((int)(*(zCCamera**)0x008D7F94)+0x148);
+	//};
+
+	zMAT4* GetMatrix(int trafo)
 	{
-		return (zMAT4*)((int)(*(zCCamera**)0x008D7F94)+0x148);
-	};
+		XCALL(0x0054A6A0)
+	}
 
 	/** Insert description. 
 	* @usable Ingame only
