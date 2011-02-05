@@ -1,1 +1,0 @@
-if hhc.exe reports a not registered dll please install the htmlhelp.exe package.
