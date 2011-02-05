@@ -846,7 +846,7 @@ public:
 	*/
 	void SetBodyState(int Value)
 	{
-		XCALL(0x00745D40)
+		XCALL(0x0075E920)
 	};
 
 	/** Insert description. 
@@ -855,7 +855,6 @@ public:
     void SetName(const zSTRING& Name)
     {
        //*&& */zSTRING& RealName = this->GetName();
-		MessageBoxA(0, this->name[0].ToChar(), 0,0);
         this->name[0].Clear();
         this->name[0].Insert(0, Name);
     };
@@ -999,6 +998,30 @@ public:
 	};
 
 	// End GX addition 30 Apr 2010
+
+	//.text:00749350 ; public: class oCItem * __thiscall oCNpc::PutInInv(class oCItem *)
+	oCItem* PutInInv(oCItem* i)
+	{
+		XCALL(0x00749350)
+	};
+
+	//.text:00738350 ; public: void __thiscall oCNpc::SetAdditionalVisuals(class zSTRING &, int, int, class zSTRING &, int, int, int)
+	void SetAdditionalVisuals(class zSTRING &, int, int, class zSTRING &, int, int, int)
+	{
+		XCALL(0x00738350)
+	};
+
+	//.text:0074A9D0 ; public: void __thiscall oCNpc::UpdateSlots(void)
+	void UpdateSlots()
+	{
+		XCALL(0x0074A9D0)
+	};
+
+	//.text:00730800 ; public: void __thiscall oCNpc::CreateItems(int, int)
+	void CreateItems(int, int)
+	{
+		XCALL(0x00730800)
+	};
 
 	/** This method returns the current oCNpc::Hero instance
 	* @usable Ingame only

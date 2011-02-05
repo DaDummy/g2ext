@@ -159,7 +159,7 @@ public:
 	*/
 	const T& GetItem(const unsigned int pos)
 	{
-		if((pos =< this->m_numInArray) && (pos =< this->m_numAlloc))
+		if((pos <= this->m_numInArray) && (pos <= this->m_numAlloc))
 			return this->m_array[pos];
 	};
 

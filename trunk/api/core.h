@@ -206,6 +206,23 @@ typedef struct _MODINFO
 #endif  //G2EXT_MODINFO_DEFINED
 
 //////////////////////////////////////////////////////////////////////////
+	
+#define FUNCROUTER(i, f)						void __stdcall route##f() { i->f(); } 
+#define FUNCROUTER1(i, f, _p1)						void __stdcall route##f(_p1 __p1) { i->f(__p1); } 
+#define FUNCROUTER2(i, f, _p1, _p2)					void __stdcall route##f(_p1 __p1, _p2 __p2) { i->f(__p1, __p2); } 
+#define FUNCROUTER3(i, f, _p1, _p2, _p3)				void __stdcall route##f(_p1 __p1, _p2 __p2, _p3 __p3) { i->f(__p1, __p2, __p3); } 
+#define FUNCROUTER4(i, f, _p1, _p2, _p3, _p4)				void __stdcall route##f(_p1 __p1, _p2 __p2, _p3 __p3, _p4 __p4) { i->f(__p1, __p2, __p3, __p4); } 
+#define FUNCROUTER5(i, f, _p1, _p2, _p3, _p4, _p5)			void __stdcall route##f(_p1 __p1, _p2 __p2, _p3 __p3, _p4 __p4, _p5 __p5) { i->f(__p1, __p2, __p3, __p4, __p5); } 
+#define FUNCROUTER7(i, f, _p1, _p2, _p3, _p4, _p5, _p6, _p7) 		void __stdcall route##f(_p1 __p1, _p2 __p2, _p3 __p3, _p4 __p4, _p5 __p5, _p6 __p6, _p7 __p7) { i->f(__p1, __p2, __p3, __p4, __p5, __p6, __p7); } 
+#define FUNCROUTERR(i, f, r)						r __stdcall route##f() { return i->f(); } 
+#define FUNCROUTER1R(i, f, r, _p1)					r __stdcall route##f(_p1 __p1) { return i->f(__p1); } 
+#define FUNCROUTER2R(i, f, r, _p1, _p2)					r __stdcall route##f(_p1 __p1, _p2 __p2) { return i->f(__p1, __p2); } 
+#define FUNCROUTER3R(i, f, r, _p1, _p2, _p3)				r __stdcall route##f(_p1 __p1, _p2 __p2, _p3 __p3) { return i->f(__p1, __p2, __p3); } 
+#define FUNCROUTER4R(i, f, r, _p1, _p2, _p3, _p4)			r __stdcall route##f(_p1 __p1, _p2 __p2, _p3 __p3, _p4 __p4) { return i->f(__p1, __p2, __p3, __p4); } 
+#define FUNCROUTER5R(i, f, r, _p1, _p2, _p3, _p4, _p5)			r __stdcall route##f(_p1 __p1, _p2 __p2, _p3 __p3, _p4 __p4, _p5 __p5) { return i->f(__p1, __p2, __p3, __p4, __p5); } 
+#define FUNCROUTER6R(i, f, r, _p1, _p2, _p3, _p4, _p5, _p6)		r __stdcall route##f(_p1 __p1, _p2 __p2, _p3 __p3, _p4 __p4, _p5 __p5, _p6 __p6) { return i->f(__p1, __p2, __p3, __p4, __p5, __p6); } 
+#define FUNCROUTER7R(i, f, r, _p1, _p2, _p3, _p4, _p5, _p6, _p7)	r __stdcall route##f(_p1 __p1, _p2 __p2, _p3 __p3, _p4 __p4, _p5 __p5, _p6 __p6, _p7 __p7) { return i->f(__p1, __p2, __p3, __p4, __p5, __p6, __p7); } 
+#define FUNCROUTED(f) route##f
 
 typedef HRESULT (__stdcall *G2EXT_SYSTEM_INIT_FUNC)			(PMODINFO);
 typedef HRESULT (__stdcall *G2EXT_SYSTEM_RUN_FUNC)			(PMODINFO);

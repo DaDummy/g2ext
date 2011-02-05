@@ -46,12 +46,13 @@ Full license at http://creativecommons.org/licenses/by-nc/3.0/legalcode
 
 class oCNpc;
 class oCItem;
+class oCItemContainer;
 
 /** Insert description. */
 class oCNpcInventory
 {
 public:
-	oCItemContainer inv;
+	oCItemContainer* inv; // FIXME!?
 	oCNpc*			owner;
 	zBOOL			packAbility;
 	//zCListSort<oCItem> {
@@ -85,7 +86,7 @@ public:
 	/** Insert description. 
 	* @usable Ingame only
 	*/
-	oCItem* Insert(oCItem* pA) { XCALL(0x0070c730) };
+	oCItem* Insert(oCItem* pA) { XCALL(0x0070C730) };
 
 	//.text:0070CA80 ; public: virtual class oCItem * __thiscall oCNpcInventory::IsIn(class oCItem *, int)
 	/** Insert description. 

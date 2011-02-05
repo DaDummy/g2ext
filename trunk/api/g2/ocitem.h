@@ -318,6 +318,12 @@ public:
 		XCALL(0x00711970);
 	};
 
+	//.text:00711BD0 ; public: void __thiscall oCItem::InitByScript(int, int)
+	void InitByScript(int p1, int p2)
+	{
+		XCALL(0x00711BD0);
+	};
+
 	//.text:00712550 ; public: zINT __thiscall oCItem::IsDeadly(void)
 	/** Insert description. 
 	* @usable Ingame only
