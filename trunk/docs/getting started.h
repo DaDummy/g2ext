@@ -143,7 +143,7 @@
  * // G2EXT_CB_ON_REGISTER_MENU_EXTERNALS
  * // G2EXT_CB_ON_REGISTER_CLASSES
  * 
- * void __stdcall CallbackFunc(zCParser* pView)
+ * void __stdcall CallbackFunc(zCParser* pParser)
  * {
  * 	// code
  * }
