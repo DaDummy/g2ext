@@ -37,11 +37,11 @@
  *
  * @section faq_17 Can I make a commercial mod based on G2Ext?
  *
- * No. The licences used for G2Ext (GPLv3/CC) forbid that. And if you ask me, Piranha Bytes or JoWood don't like to see commercial mods for their games...
+ * No. The licences used for G2Ext (GPLv3/CC) forbid that. And if you ask me, Piranha Bytes or JoWood wouldn't like to see commercial mods for their games either...
  *
  * @section faq_18 Is G2Ext being officially supported by Piranha Bytes and/or JoWood?
  *
- * No. This is a private project made by some totally mad people, which have nothing else to do in their free time. ;]
+ * No. This is a private project made by some totally mad people, who have nothing else to do in their free time. ;]
  *
  * @section faq_19 Can you make me a sandwich?
  * 

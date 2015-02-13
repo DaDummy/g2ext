@@ -2,13 +2,13 @@
  *
  * @section welcome_sec Welcome to the G2Ext SDK documentation
  *
- * In this documentation, you can find informations that could help you creating your own Gothic II engine modification.<br />
+ * In this documentation, you can find information that will help you create your own Gothic II engine modification.<br />
  * Have a lot of fun.
  *
  * @section note_sec Important note
  *
  * Please be aware, that this is a <i>beta</i> version of G2Ext!<br />
- * Some information/comment/functionalities may be missing, malfunctional and/or incomplete!
+ * Some information/comment/functionalities may be missing, malfunctioning and/or incomplete!
  *
  * @section intro_sec Introduction
  *
@@ -31,7 +31,7 @@
  *
  * @section links_sec Links
  *
+ * @li <a href="https://code.google.com/p/g2ext/" target="_blank">G2Ext on Google Code</a>
  * @li <a href="http://g2ext.blogspot.com" target="_blank">G2Ext development blog</a>
- * @li <a href="http://g2ext.paindevs.com" target="_blank">G2Ext homepage</a>
  * @li <a href="http://www.worldofgothic.com" target="_blank">World of Gothic</a>
  */
