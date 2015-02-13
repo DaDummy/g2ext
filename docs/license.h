@@ -4,7 +4,7 @@
  *
  *
  * G2Ext is a fan-made engine SDK for Gothic II TNotR (v2.6).
- * Copyright (C) 2009, 2010 by Paindevs and Patrick Vogel
+ * Copyright (C) 2009-2015 by Christoffer Anselm and Patrick Vogel
  *
  * This program is free software: you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -36,7 +36,7 @@
  * Developed by Christoffer Anselm and Patrick Vogel.<br />
  * All rights reserved.
  *
- * Copyright (C) 2009, 2010 by Paindevs and Patrick Vogel
+ * Copyright (C) 2009-2015 by Christoffer Anselm and Patrick Vogel
  *
  *
  */
