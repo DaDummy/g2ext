@@ -43,4 +43,4 @@ IMPORTANT NOTICE
 We tried our best to contact every licencor/owner of Gothic/the ZenGin. Unfortunatelly, we were unable to
 reach the Mad Scientists.
 In case any Mad Scientist (Ulf Wohlers, Dieter Hildebrandt, Bert Speckels) has something against our project and/or
-even wants us to stop developing/publish G2Ext, please send a mail to: g2ext@gothic-x-project.de
+even wants us to stop developing/publish G2Ext, please send a mail to: c.anselm@paindevs.com
